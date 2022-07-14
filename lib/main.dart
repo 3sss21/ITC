@@ -10,7 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
   // test
-  //123
   runApp(const MyApp());
 }
 
