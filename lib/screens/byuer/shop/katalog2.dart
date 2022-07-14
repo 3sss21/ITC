@@ -1,3 +1,4 @@
+import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
 import 'package:cashback_app/screens/seller/shop/catalog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,6 +12,7 @@ class CatProductBuyer extends StatefulWidget {
 
 class _CatProductBuyerState extends State<CatProductBuyer> {
   double balance = 300;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,6 +83,7 @@ class _CatProductBuyerState extends State<CatProductBuyer> {
           ]),
         ),
       ),
+        bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 }

@@ -1,41 +1,50 @@
-import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive/hive.dart';
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+// import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
+// import 'package:cashback_app/screens/seller/branch/choose_branch.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:hive/hive.dart';
 
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
+// class SplashScreen extends StatefulWidget {
+//   const SplashScreen({Key? key}) : super(key: key);
 
-class _SplashScreenState extends State<SplashScreen> {
-  @override
-  void initState() {
-    customFunction();
-    super.initState();
-  }
+//   @override
+//   State<SplashScreen> createState() => _SplashScreenState();
+// }
 
-  customFunction() async {
-    var box = Hive.box('tokenBox');
-    String token = box.get('token', defaultValue: '');
+// class _SplashScreenState extends State<SplashScreen> {
+//   @override
+//   void initState() {
+//     customFunction();
+//     super.initState();
+//   }
 
-    await Future.delayed(Duration(seconds: 3));
+//   customFunction() async {
+//     var box = Hive.box('tokenBox');
+//     String token = box.get('token', defaultValue: '');
 
-    if (token == '') {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MyBottomNavigation()));
-    } else {
-      Future.delayed(Duration(seconds: 3));
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => MyBottomNavigation()));
-    }
-  }
+//     await Future.delayed(Duration(seconds: 3));
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-    body: Container(width: 1.sw, height: 1.sh,child: Image.asset("assets/images/splash.jpg",fit: BoxFit.cover,),),
-    );
-  }
-}
+//     if (token == '') {
+//       Navigator.push(
+//           context, MaterialPageRoute(builder: (context) => BranchScreen()));
+//     } else {
+//       Future.delayed(Duration(seconds: 3));
+//       Navigator.push(
+//           context, MaterialPageRoute(builder: (context) => BranchScreen()));
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Container(
+//         width: 1.sw,
+//         height: 1.sh,
+//         child: Image.asset(
+//           "assets/images/splash.jpg",
+//           fit: BoxFit.cover,
+//         ),
+//       ),
+//     );
+//   }
+// }

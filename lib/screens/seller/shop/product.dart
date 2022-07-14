@@ -1,17 +1,18 @@
 
+import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'catalog.dart';
 
-class Product extends StatefulWidget {
-  const Product({Key? key}) : super(key: key);
+class ProductScreen extends StatefulWidget {
+  const ProductScreen({Key? key}) : super(key: key);
 
   @override
-  State<Product> createState() => _ProductState();
+  State<ProductScreen> createState() => _ProductScreenState();
 }
 
-class _ProductState extends State<Product> {
+class _ProductScreenState extends State<ProductScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,7 @@ class _ProductState extends State<Product> {
             Image.asset("assets/images/feliz_logo.png"),
             SizedBox(
               width: 20.w,
-              child: Text(""),
+              child: Text(""),  // peredelat'
             ),
           ],
           shape: RoundedRectangleBorder(
@@ -72,6 +73,7 @@ class _ProductState extends State<Product> {
           ]),
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 }

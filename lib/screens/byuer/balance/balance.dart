@@ -1,3 +1,4 @@
+import 'package:cashback_app/screens/byuer/balance/balance_history.dart';
 import 'package:cashback_app/screens/seller/income/screen_1.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -122,7 +123,11 @@ class _BalanceScreenState extends State<BalanceScreen> {
                                 minimumSize: Size(334.w, 40.h),
                               ),
                               onPressed: () {
-                                // Navigator.push(context, route)
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            BalanceHistory()));
                               },
                               child: Row(children: [
                                 SizedBox(

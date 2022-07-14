@@ -1,4 +1,5 @@
 import 'package:cashback_app/screens/auth_screen/sign_up/sign_up.dart';
+import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,17 +22,22 @@ class _BranchScreenState extends State<BranchScreen> {
               left: 37.w,
               child: Column(
                 children: const [
-                  Text("Выбирите филиал", style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, color: Color.fromRGBO(23, 69, 59, 0.8))),
+                  Text("Выбирите филиал",
+                      style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: Color.fromRGBO(23, 69, 59, 0.8))),
                   SizedBox(height: 43),
                   BranchButton(
                     titleOfBranch: "БЦ Олимп",
                   ),
-                  SizedBox(height:43),
+                  SizedBox(height: 43),
                   BranchButton(titleOfBranch: "БЦ Олимп"),
                 ],
               )),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 0),
     );
   }
 }
