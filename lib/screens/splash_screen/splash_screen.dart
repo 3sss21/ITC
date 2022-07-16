@@ -1,4 +1,5 @@
 import 'package:cashback_app/screens/byuer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/isUser_screen/isUser_screen.dart';
 import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,8 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const SellerNavigationWidget(currentIndex: 0),
+        builder: (context) => const IsUserScreen(),
+        // const SellerNavigationWidget(currentIndex: 0),
       ),
     );
   }
