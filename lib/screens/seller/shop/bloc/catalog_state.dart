@@ -8,7 +8,7 @@ class CatalogInitial extends CatalogState {}
 class CatalogLoadingState extends CatalogState {}
 
 class CatalogterFetchedState extends CatalogState {
-  List<CatalogModel> catalogList;
+  List<CatalogProductModel> catalogList;
 
   CatalogterFetchedState({required this.catalogList});
 }

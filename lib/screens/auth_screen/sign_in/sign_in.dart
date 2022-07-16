@@ -1,3 +1,5 @@
+import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +17,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          Logo(),
+          const FelizLogoWidget(),
           Positioned(
             top: 196.h,
             left: 37.w,
@@ -67,8 +69,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      elevation: 0, 
-                      primary: Color.fromRGBO(23, 69, 59, 0.8)),
+                    elevation: 0,
+                    primary: ThemeHelper.green80,
+                  ),
                   onPressed: () {},
                   child: const Text(
                     "Забыли пароль?",

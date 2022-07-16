@@ -1,3 +1,4 @@
+import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           height: 812.h,
           child: Stack(
             children: <Widget>[
-              Logo(),
+              const FelizLogoWidget(),
               Positioned(
                 top: 196.h,
                 left: 37.w,
@@ -88,26 +89,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-class Logo extends StatelessWidget {
-  const Logo({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      left: 225.w,
-      top: -150.h,
-      child: SizedBox(
-          width: 300,
-          height: 300,
-          child: Image.asset(
-            "assets/images/feliz_logo.png",
-            color: Color.fromRGBO(23, 69, 59, 0.8),
-          )),
-    );
-  }
-}
 
 class RegistrationField extends StatelessWidget {
   final String nameOfHintext;
@@ -118,7 +100,7 @@ class RegistrationField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 270.w,
       height: 20.h,
       child: TextField(

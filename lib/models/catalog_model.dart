@@ -1,5 +1,5 @@
-class CatalogModel {
+class CatalogProductModel {
   String? name;
 
-  CatalogModel({this.name});
+  CatalogProductModel({this.name});
 }

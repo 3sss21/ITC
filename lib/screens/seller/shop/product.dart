@@ -1,5 +1,4 @@
 
-import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -73,7 +72,7 @@ class _ProductScreenState extends State<ProductScreen> {
           ]),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
+      // bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 }

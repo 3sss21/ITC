@@ -17,10 +17,10 @@ this.mycontroller,
       child: TextField(
       controller:mycontroller ,
         decoration: InputDecoration(
-          fillColor: Color(0xffF2F2F2),
+          fillColor: const Color(0xffF2F2F2),
           filled: true,
           hintText: hintText,
-          hintStyle: TextStyle(
+          hintStyle: const TextStyle(
             color:Colors.grey,
             fontSize: 16
           ),

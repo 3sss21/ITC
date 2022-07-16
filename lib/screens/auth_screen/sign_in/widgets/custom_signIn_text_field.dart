@@ -6,7 +6,7 @@ class CustomSignInTextField extends StatefulWidget {
   final bool? isPrefixIcon;
   final bool? isSuffixIcon;
 
-  CustomSignInTextField({
+  const CustomSignInTextField({
     Key? key,
     this.mycontroller,
     this.hintText,
@@ -35,16 +35,16 @@ class _CustomSignInTextFieldState extends State<CustomSignInTextField> {
         controller: widget.mycontroller,
         obscureText: isHiddenPassword,
         decoration: InputDecoration(
-          fillColor: Color(0xffF2F2F2),
+          fillColor: const Color(0xffF2F2F2),
           filled: true,
           hintText: widget.hintText,
-          hintStyle: TextStyle(fontSize: 16, color: Colors.grey),
+          hintStyle: const TextStyle(fontSize: 16, color: Colors.grey),
           prefixIcon: widget.isPrefixIcon!
-              ? Icon(
+              ? const Icon(
                   Icons.person_outline,
                   color: Colors.black,
                 )
-              : Icon(
+              : const Icon(
                   Icons.lock,
                   color: Colors.black,
                 ),
@@ -55,7 +55,7 @@ class _CustomSignInTextFieldState extends State<CustomSignInTextField> {
                   },
                   child: Icon(Icons.visibility),
                 )
-              : SizedBox(),
+              : const SizedBox(),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide.none,

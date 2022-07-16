@@ -18,9 +18,7 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 120.h,
-              ),
+              SizedBox(height: 120.h),
               SizedBox(
                 width: 150.w,
                 height: 150.h,
@@ -34,16 +32,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     fontWeight: FontWeight.w500,
                     color: Colors.black),
               ),
-              SizedBox(
-                height: 36.h,
-              ),
-              AuthButton(
+              SizedBox(height: 36.h),
+              const AuthButton(
                 nameOfButton: "ВХОД",
               ),
-              SizedBox(
-                height: 36.h,
-              ),
-              AuthButton(
+              SizedBox(height: 36.h),
+              const AuthButton(
                 nameOfButton: "ЗАРЕГИСТРИРОВАТЬСЯ",
               ),
             ],
@@ -71,14 +65,12 @@ class AuthButton extends StatelessWidget {
           shadowColor: Colors.green,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
-          
           ),
         ),
         onPressed: () {},
         child: Text(
           nameOfButton,
           style: const TextStyle(
-            
             fontSize: 22,
             fontWeight: FontWeight.w700,
             fontFamily: "Lato",

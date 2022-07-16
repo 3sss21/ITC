@@ -1,11 +1,9 @@
-import 'package:cashback_app/constants/text_helper.dart';
-import 'package:cashback_app/screens/bottomNavigation/myBottomNavigation.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/screens/seller/shop/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../byuer/shop/katalog2.dart';
 import 'bloc/catalog_bloc.dart';
 
 class CatalogScreen extends StatefulWidget {
@@ -149,7 +147,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
           return const SizedBox();
         },
       ),
-      bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
+      // bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 }
