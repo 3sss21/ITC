@@ -28,11 +28,14 @@ class _CatalogScreenState extends State<CatalogScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
+        preferredSize: const Size.fromHeight(100),
         child: AppBar(
-          backgroundColor: Color.fromRGBO(23, 69, 59, 0.8),
-          title: Text('      КАТАЛОГ',
-              textAlign: TextAlign.center, style: TextHelper.medium18),
+          backgroundColor: const Color.fromRGBO(23, 69, 59, 0.8),
+          title: Text(
+            '      КАТАЛОГ',
+            textAlign: TextAlign.center,
+            style: TextStyleHelper.medium18,
+          ),
           centerTitle: false,
           actions: [
             Padding(

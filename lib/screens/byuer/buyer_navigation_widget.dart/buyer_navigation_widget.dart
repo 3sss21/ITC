@@ -6,15 +6,15 @@ import 'package:cashback_app/screens/byuer/screens/shop_screen/shop_screen.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuyerNavigationWidgeState extends StatefulWidget {
+class BuyerNavigationWidget extends StatefulWidget {
   final int currentIndex;
-  const BuyerNavigationWidgeState({Key? key, required this.currentIndex}) : super(key: key);
+  const BuyerNavigationWidget({Key? key, required this.currentIndex}) : super(key: key);
 
   @override
-  State<BuyerNavigationWidgeState> createState() => _BuyerNavigationWidgeStateState();
+  State<BuyerNavigationWidget> createState() => _BuyerNavigationWidgetState();
 }
 
-class _BuyerNavigationWidgeStateState extends State<BuyerNavigationWidgeState> {
+class _BuyerNavigationWidgetState extends State<BuyerNavigationWidget> {
   late int _selectedIndex;
 
   final List<Widget> _widgetOptions = <Widget>[

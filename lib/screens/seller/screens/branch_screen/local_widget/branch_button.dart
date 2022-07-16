@@ -4,29 +4,36 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BranchButton extends StatelessWidget {
   final String titleOfBranch;
+  final double width;
+  final double height;
+  final double fontSize;
+
   final Function() function;
   const BranchButton({
     Key? key,
     required this.titleOfBranch,
     required this.function,
+    required this.width,
+    required this.height,
+    required this.fontSize,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(300.w, 100.h),
-        maximumSize: Size(300.w, 100.h),
+        minimumSize: Size(width.w, height.h),
+        maximumSize: Size(width.w, height.h),
         primary: ThemeHelper.green80,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
         ),
       ),
-      onPressed: () => function,
+      onPressed: () => function(),
       child: Text(
         titleOfBranch,
-        style: const TextStyle(
-          fontSize: 20,
+        style: TextStyle(
+          fontSize: fontSize.sp,
           fontWeight: FontWeight.w700,
           color: Colors.white,
         ),

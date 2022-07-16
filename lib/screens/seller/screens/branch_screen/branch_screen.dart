@@ -33,11 +33,17 @@ class _BranchScreenState extends State<BranchScreen> {
                 ),
                 SizedBox(height: 43.h),
                 BranchButton(
+                  fontSize: 20,
+                  width: 300,
+                  height: 100,
                   titleOfBranch: "БЦ Олимп",
                   function: () {},
                 ),
                 SizedBox(height: 43.h),
                 BranchButton(
+                  fontSize: 20,
+                  width: 300,
+                  height: 100,
                   titleOfBranch: "БЦ Олимп",
                   function: () {},
                 ),
