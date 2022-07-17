@@ -40,16 +40,38 @@ abstract class TextStyleHelper {
     fontWeight: FontWeight.w500,
     color: ThemeHelper.white,
   );
+
   static TextStyle authBox = TextStyle(
     fontFamily: "Lato",
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,
     color: ThemeHelper.white,
   );
+
   static TextStyle forgotPass = TextStyle(
     fontFamily: "Lato",
     fontSize: 10.sp,
     fontWeight: FontWeight.w500,
     color: ThemeHelper.white50,
+  );
+
+  static TextStyle textDate = TextStyle(
+    fontFamily: "Lato",
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+    color: ThemeHelper.green100,
+  );
+
+  static TextStyle textBalance = TextStyle(
+    fontFamily: "Lato",
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w700,
+    color: ThemeHelper.yellow,
+  );
+
+  static TextStyle productName = TextStyle(
+    color: ThemeHelper.green80,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
   );
 }

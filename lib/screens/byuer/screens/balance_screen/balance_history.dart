@@ -1,4 +1,4 @@
-import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_widgets/appCover_balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,82 +13,46 @@ class _BalanceHistoryState extends State<BalanceHistory> {
   double balance = 300;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100.h),
-        child: AppBar(
-          backgroundColor: ThemeHelper.green80,
-          centerTitle: false,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 20, left: 20),
-              child: Row(
+    return Column(
+      children: [
+        
+        Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 149.h,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.arrow_back_ios,
+                      color: Color.fromRGBO(69, 106, 98, 1),
+                    ),
+                  ),
                   const Text(
-                    'БАЛАНС',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+                    "назад",
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color.fromRGBO(69, 106, 98, 0.8)),
                   ),
-                  SizedBox(
-                    width: 49.w,
+                  const SizedBox(
+                    width: 189,
                   ),
-                  Text(
-                    "$balance",
-                    style: const TextStyle(
-                        fontSize: 36,
-                        fontWeight: FontWeight.w700,
-                        color: Color.fromRGBO(255, 214, 0, 1)),
+                  const Text(
+                    "30.07.2022",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
                   ),
-                  SizedBox(
-                      width: 22,
-                      height: 19,
-                      child: Image.asset(
-                        "assets/images/coin.png",
-                        fit: BoxFit.cover,
-                      ))
                 ],
               ),
-            ),
-          ],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
+            ],
           ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(children: [
-          SizedBox(
-            height: 149.h,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.arrow_back_ios,
-                  color: Color.fromRGBO(69, 106, 98, 1),
-                ),
-              ),
-              const Text(
-                "назад",
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromRGBO(69, 106, 98, 0.8)),
-              ),
-              const SizedBox(
-                width: 189,
-              ),
-              const Text(
-                "30.07.2022",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-              ),
-            ],
-          )
-        ]),
-      ),
+      ],
     );
   }
 }

@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HistoryButton extends StatelessWidget {
-  final Function()? function;
+  final Function() function;
+  final TextStyle textStyleDate;
+  final TextStyle textStyleBalance;
+
   const HistoryButton({
     Key? key,
-    this.function,
+    required this.function,
+    required this.textStyleDate,
+    required this.textStyleBalance,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: function,
+      onTap: () => function(),
       child: Container(
         width: 334.w,
         height: 40.h,
@@ -28,23 +33,9 @@ class HistoryButton extends StatelessWidget {
             children: [
               SizedBox(
                 width: 160.w,
-                child: const Text(
-                  "06.06.22",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                    color: Color.fromRGBO(23, 69, 59, 0.8),
-                  ),
-                ),
+                child: Text("06.06.22", style: textStyleDate),
               ),
-              Text(
-                "+80.00",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: ThemeHelper.yellow,
-                ),
-              ),
+              Text("+80.00", style: textStyleBalance),
             ],
           ),
         ),

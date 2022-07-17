@@ -1,18 +1,17 @@
-// import 'package:cashback_app/basket/bottomNavigation/myBottomNavigation.dart';
-// import 'package:cashback_app/screens/seller/shop/catalog.dart';
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// class CatProductBuyer extends StatefulWidget {
-//   const CatProductBuyer({Key? key}) : super(key: key);
+// import 'catalog.dart';
+
+// class ProductScreen extends StatefulWidget {
+//   const ProductScreen({Key? key}) : super(key: key);
 
 //   @override
-//   State<CatProductBuyer> createState() => _CatProductBuyerState();
+//   State<ProductScreen> createState() => _ProductScreenState();
 // }
 
-// class _CatProductBuyerState extends State<CatProductBuyer> {
-//   double balance = 300;
-  
+// class _ProductScreenState extends State<ProductScreen> {
 //   @override
 //   Widget build(BuildContext context) {
 //     return Scaffold(
@@ -20,28 +19,17 @@
 //         preferredSize: Size.fromHeight(100),
 //         child: AppBar(
 //           backgroundColor: Color.fromRGBO(23, 69, 59, 0.8),
-          
+//           title: const Text(
+//             '      КАТАЛОГ',
+//             textAlign: TextAlign.center,
+//             style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
+//           ),
 //           centerTitle: false,
 //           actions: [
-//             Padding(
-//               padding: const EdgeInsets.only(right: 20),
-//               child: Row(
-//                 children: [
-//                   const Text(
-//               '   КАТАЛОГ',
-//               textAlign: TextAlign.center,
-//               style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-//           ),SizedBox(width: 49.w,),
-//                   Text(
-//                     "$balance",
-//                     style: TextStyle(
-//                         fontSize: 36,
-//                         fontWeight: FontWeight.w700,
-//                         color: Color.fromRGBO(255, 214, 0, 1)),
-//                   ),
-//                   Container(width: 22, height: 19, child: Image.asset("assets/images/coin.png",fit: BoxFit.cover, ))
-//                 ],
-//               ),
+//             Image.asset("assets/images/feliz_logo.png"),
+//             SizedBox(
+//               width: 20.w,
+//               child: Text(""),  // peredelat'
 //             ),
 //           ],
 //           shape: RoundedRectangleBorder(
@@ -63,33 +51,34 @@
 //             SizedBox(
 //               height: 22.h,
 //             ),
-//             SingleProductByuer(),
+//             SingleProduct(),
 //             SizedBox(
 //               height: 28.h,
 //             ),
-//             SingleProductByuer(),
+//             SingleProduct(),
 //             SizedBox(
 //               height: 28.h,
 //             ),
-//             SingleProductByuer(),
+//             SingleProduct(),
 //             SizedBox(
 //               height: 28.h,
 //             ),
-//             SingleProductByuer(),
-//             SizedBox(
+//             SingleProduct(),
+//               SizedBox(
 //               height: 28.h,
 //             ),
-//             SingleProductByuer(),
+//             SingleProduct(),
+
 //           ]),
 //         ),
 //       ),
-//         bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
+//       // bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
 //     );
 //   }
 // }
 
-// class SingleProductByuer extends StatelessWidget {
-//   const SingleProductByuer({
+// class SingleProduct extends StatelessWidget {
+//   const SingleProduct({
 //     Key? key,
 //   }) : super(key: key);
 
@@ -98,17 +87,11 @@
 //     return Row(
 //       children: [
 //         Container(
-//           width: 334,
+//           width: 260,
 //           height: 98,
 //           decoration: BoxDecoration(
 //             borderRadius: BorderRadius.circular(20),
-//             color: Color.fromRGBO(255, 255, 255, 1),
-//             boxShadow: [BoxShadow(
-//                       color: Color.fromRGBO(23, 69, 59, 0.2),
-//                       offset: const Offset(0.9, 0.9),
-//                       blurRadius: 0.9,
-//                       spreadRadius: 0.9,
-//                     ), ]
+//             color: Color.fromRGBO(23, 69, 59, 0.8),
 //           ),
 //           child: Row(
 //             children: [
@@ -118,7 +101,7 @@
 //               Container(
 //                 width: 60.w,
 //                 height: 60.h,
-//                 color: Color.fromRGBO(23, 69, 59, 0.5),
+//                 color: Colors.white,
 //               ),
 //               SizedBox(
 //                 width: 13.w,
@@ -134,7 +117,7 @@
 //                     "ICE Tea (зеленый)",
 //                     style: TextStyle(
 //                         fontSize: 16,
-//                         color: Color.fromRGBO(23, 69, 59, 0.8),
+//                         color: Colors.white,
 //                         fontWeight: FontWeight.w600),
 //                   ),
 //                   SizedBox(
@@ -144,18 +127,18 @@
 //                     "Напитки",
 //                     style: TextStyle(
 //                         fontSize: 16,
-//                         color: Color.fromRGBO(23, 69, 59, 0.8),
+//                         color: Colors.white,
 //                         fontWeight: FontWeight.w600),
 //                   ),
 //                   Row(
 //                     children: [
 //                       SizedBox(
-//                         width: 147.w,
+//                         width: 78.w,
 //                       ),
-//                      const Text(
+//                       Text(
 //                         "90 cом/",
 //                         style: TextStyle(
-//                           color: Color.fromRGBO(23, 69, 59, 0.8),
+//                           color: Colors.white,
 //                           fontSize: 12,
 //                         ),
 //                       ),
@@ -171,7 +154,6 @@
 //                           height: 11,
 //                           child: Image.asset(
 //                             "assets/images/coin.png",
-//                             fit: BoxFit.cover,
 //                             color: Colors.amber,
 //                           ))
 //                     ],
@@ -184,6 +166,62 @@
 //         SizedBox(
 //           width: 14.w,
 //         ),
+//         Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           mainAxisAlignment: MainAxisAlignment.start,
+//           children: [
+//             Container(
+//               width: 45.w,
+//               height: 45.h,
+//               decoration: const BoxDecoration(
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: Color.fromRGBO(23, 69, 59, 0.25),
+//                       blurRadius: 20,
+//                     )
+//                   ],
+//                   borderRadius: BorderRadius.all(
+//                     Radius.circular(20),
+//                   ),
+//                   color: Colors.white),
+//               child: IconButton(
+//                 icon: const Text(
+//                   "+",
+//                   style: TextStyle(
+//                       fontSize: 27,
+//                       fontWeight: FontWeight.w700,
+//                       color: Color.fromRGBO(23, 69, 59, 1)),
+//                 ),
+//                 onPressed: () {},
+//               ),
+//             ),
+//             SizedBox(
+//               height: 8.h,
+//             ),
+//             Container(
+//               width: 45.w,
+//               height: 45.h,
+//               decoration: const BoxDecoration(
+//                   boxShadow: [
+//                     BoxShadow(
+//                       color: Color.fromRGBO(23, 69, 59, 0.25),
+//                       blurRadius: 20,
+//                     )
+//                   ],
+//                   borderRadius: BorderRadius.all(
+//                     Radius.circular(20),
+//                   ),
+//                   color: Colors.white),
+//               child: IconButton(
+//                 icon: Image.asset(
+//                   "assets/images/basket.png",
+//                   color: Color.fromRGBO(23, 69, 59, 1),
+//                 ),
+//                 onPressed: () {},
+//               ),
+//             ),
+//           ],
+//         )
 //       ],
 //     );
 //   }
