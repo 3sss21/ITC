@@ -20,6 +20,14 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
             CatalogProductModel(name: 'Кофе44'),
             CatalogProductModel(name: 'Кофе55'),
             CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
+            CatalogProductModel(name: 'Кофе77'),
           ];
 
           emit(CatalogterFetchedState(catalogList: catalogList));

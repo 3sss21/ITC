@@ -1,7 +1,9 @@
+import 'package:cashback_app/basket/shop/catalog.dart';
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/screens/byuer/screens/QR_code_screen/QR_code_screen.dart';
 import 'package:cashback_app/screens/byuer/screens/profile_screen/profile_screen.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/shop_screen.dart';
+import 'package:cashback_app/screens/seller/basket/seller_basket.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/boxOffice_screen.dart';
 import 'package:cashback_app/screens/seller/screens/branch_screen/branch_screen.dart';
 import 'package:cashback_app/screens/seller/screens/clients_screen/clients_screen.dart';
@@ -23,8 +25,8 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
 
   final List<Widget> _widgetOptions = <Widget>[
     const BranchScreen(),
-    const ClientsScreen(),
-    const ShopScreen(),
+    const CatalogScreen(),
+    const Basket(),
     const BoxOfficeScreen(),
   ];
 

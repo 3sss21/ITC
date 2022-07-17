@@ -20,8 +20,8 @@ class _BuyerNavigationWidgetState extends State<BuyerNavigationWidget> {
   final List<Widget> _widgetOptions = <Widget>[
     const ShopScreen(),
     const BalanceScreen(),
-    const QRCodeScreen(),
-    const ProfileScreen(),
+    const QrCodeScreen(),
+    const ProfileSceen(),
   ];
 
   void _onItemTapped(int index) {
