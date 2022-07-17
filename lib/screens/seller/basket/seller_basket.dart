@@ -96,7 +96,14 @@ class BasketChoise extends StatelessWidget {
                   color: Color.fromRGBO(23, 69, 59, 0.8)),
             ),
             IconButton(
-              onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=> Basket1()));},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Basket(),
+                  ),
+                );
+              },
               icon: Icon(
                 isCamera ? Icons.camera_alt_outlined : Icons.arrow_forward_ios,
                 color: Color.fromRGBO(23, 69, 59, 0.8),

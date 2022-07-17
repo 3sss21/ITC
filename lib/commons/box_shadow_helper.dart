@@ -8,4 +8,10 @@ class BoxShadowHelper{
     blurRadius: 10,
     spreadRadius: 0,
   );
+  static BoxShadow boxShadow25 = BoxShadow(
+    color: ThemeHelper.green25,
+    offset: const Offset(0, 4),
+    blurRadius: 10,
+    spreadRadius: 0,
+  );
 }

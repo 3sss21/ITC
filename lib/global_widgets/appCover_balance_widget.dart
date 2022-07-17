@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppCoverBalanceWidget extends StatelessWidget {
   final String nameCover;
-  final String balance;
+  final double balance;
   const AppCoverBalanceWidget({
     Key? key,
     required this.nameCover,
@@ -38,7 +38,7 @@ class AppCoverBalanceWidget extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  '$balance.00',
+                  '${balance}0',
                   style: TextStyle(
                     color: ThemeHelper.yellow,
                     fontSize: 36.sp,
