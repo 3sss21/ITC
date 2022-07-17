@@ -13,13 +13,13 @@ class CatalogBloc extends Bloc<CatalogEvent, CatalogState> {
         emit(CatalogLoadingState());
 
         try {
-          List<CatalogModel> catalogList = [
-            CatalogModel(name: 'Кофе'),
-            CatalogModel(name: 'Кофе2'),
-            CatalogModel(name: 'Кофе33'),
-            CatalogModel(name: 'Кофе44'),
-            CatalogModel(name: 'Кофе55'),
-            CatalogModel(name: 'Кофе77'),
+          List<CatalogProductModel> catalogList = [
+            CatalogProductModel(name: 'Кофе'),
+            CatalogProductModel(name: 'Кофе2'),
+            CatalogProductModel(name: 'Кофе33'),
+            CatalogProductModel(name: 'Кофе44'),
+            CatalogProductModel(name: 'Кофе55'),
+            CatalogProductModel(name: 'Кофе77'),
           ];
 
           emit(CatalogterFetchedState(catalogList: catalogList));
