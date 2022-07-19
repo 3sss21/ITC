@@ -90,7 +90,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
                     children: [
                       Text(
                         'ИТОГО ЗА ДЕНЬ',
-                        style: TextStyleHelper.fontSize14,
+                        style: TextStyleHelper.f14w600,
                       ),
                       Text(
                         '120.00',
