@@ -74,4 +74,14 @@ abstract class TextStyleHelper {
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle f14w600 = TextStyle(
+    color: ThemeHelper.white,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle f12w400 = TextStyle(
+    color: ThemeHelper.white,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
 }

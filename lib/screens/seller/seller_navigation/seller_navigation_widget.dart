@@ -1,8 +1,7 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/screens/byuer/screens/QR_code_screen/QR_code_screen.dart';
-import 'package:cashback_app/screens/byuer/screens/profile_screen/profile_screen.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/shop_screen.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/boxOffice_screen.dart';
+import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/cashBox_screen.dart';
 import 'package:cashback_app/screens/seller/screens/branch_screen/branch_screen.dart';
 import 'package:cashback_app/screens/seller/screens/clients_screen/clients_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
     const BranchScreen(),
     const ClientsScreen(),
     const ShopScreen(),
-    const BoxOfficeScreen(),
+    const CashBoxScreen(),
   ];
 
   void _onItemTapped(int index) {
