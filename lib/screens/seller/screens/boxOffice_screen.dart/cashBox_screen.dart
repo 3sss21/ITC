@@ -1,9 +1,9 @@
-import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/clients_cashBox.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/phone_number.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,8 +28,6 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
               children: [
                 SearchTextFieldWidget(
                   hintText: 'DD / MM/ YY',
-                  contentPadding:
-                      EdgeInsets.only(left: 28.h, top: 9.h, bottom: 9.h),
                   suffix: Icon(
                     Icons.keyboard_arrow_down_outlined,
                     color: ThemeHelper.green80,
@@ -46,6 +44,7 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: const SellerNavigationWidget(currentIndex: 3),
     );
   }
 }

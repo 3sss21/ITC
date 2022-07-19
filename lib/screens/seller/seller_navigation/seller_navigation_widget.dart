@@ -24,7 +24,7 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
     const BranchScreen(),
     const ClientsScreen(),
     const ShopScreen(),
-    const CashBoxScreen(),
+    const BoxOfficeScreen(),
   ];
 
   void _onItemTapped(int index) {
