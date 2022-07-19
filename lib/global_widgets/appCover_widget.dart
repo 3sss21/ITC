@@ -24,7 +24,7 @@ class AppCoverWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              nameCover,
+              nameCover.toUpperCase(),
               style: TextStyle(
                 color: ThemeHelper.white,
                 fontSize: 24.sp,

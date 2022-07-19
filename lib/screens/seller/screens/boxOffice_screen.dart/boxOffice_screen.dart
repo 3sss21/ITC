@@ -3,6 +3,7 @@ import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
+import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/cashBox_screen.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/history_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,8 +25,6 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
             const AppCoverWidget(nameCover: 'КАССА'),
             SizedBox(height: 22.h),
             SearchTextFieldWidget(
-              // contentPadding: EdgeInsets.only(
-              //     left: 28.0.w, top: 9.0.h, right: 15.w, bottom: 9.0.h),
               hintText: 'DD/MM/YY',
               suffix: ImageIcon(
                 AssetImage(IconsImages.iconV),
@@ -42,7 +41,14 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: HistoryButton(
-                      function: (){},
+                      function: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CashBoxScreen(),
+                          ),
+                        );
+                      },
                       textStyleDate: TextStyleHelper.textDate,
                       textStyleBalance: TextStyleHelper.textBalance,
                     ),
