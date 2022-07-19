@@ -21,6 +21,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
     isState = true;
     super.initState();
   }
+
   double balance = 300;
   @override
   Widget build(BuildContext context) {
@@ -33,32 +34,38 @@ class _BalanceScreenState extends State<BalanceScreen> {
             nameCover: 'БАЛАНС',
             balance: 300,
           ),
-          
-          Expanded(
-            // width: 1.sw,
-            // height: 0.726.sh,
-            child: isState ? ListView.separated(
-              padding: EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
-              itemCount: 20,
-              itemBuilder: (context, index) {
-                return SizedBox(
-                  width: 334.w,
-                  child: HistoryButton(
-                    textStyleDate: TextStyleHelper.textDate,
-                    textStyleBalance: TextStyleHelper.textBalance.copyWith(color: ThemeHelper.green100),
-                    function: () {
-                      setState(() {
-                        isState = false;
-                      });
+          SizedBox(
+            width: 1.sw,
+            height: 0.726.sh,
+            child: isState
+                ? ListView.separated(
+                    padding:
+                        EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
+                    itemCount: 20,
+                    itemBuilder: (context, index) {
+                      return SizedBox(
+                        width: 334.w,
+                        child: HistoryButton(
+                          textStyleDate: TextStyleHelper.textDate,
+                          textStyleBalance: TextStyleHelper.textBalance
+                              .copyWith(color: ThemeHelper.green100),
+                          function: () {
+                            setState(() {
+                              isState = false;
+                            });
+                          },
+                        ),
+                      );
                     },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(height: 16.h);
+                    },
+                  ) : const BoxPurchaseHistoryWidget(
+                    datePurchase: '30.06.2021',
+                    nameProduct: 'Ice Teaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa',
+                    priceProduct: 20.00,
                   ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(height: 16.h);
-              },
-            ) : const BalanceHistory(),
-          ) ,
+          ),
         ],
       ),
     );

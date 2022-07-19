@@ -1,3 +1,6 @@
+import 'package:cashback_app/commons/box_shadow_helper.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
+import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,39 +18,32 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
     return Scaffold(
       body: Column(
         children: [
-          AppCoverWidget(nameCover: "qr-code"),
-          SizedBox(height: 59.h,),
-          const Text(
+          const AppCoverWidget(nameCover: "QR-CODE"),
+          SizedBox(height: 59.h),
+          Text(
             'Отсканируйте QR-code',
-            style: TextStyle(fontSize: 16, color: Colors.black),
+            style: TextStyleHelper.productName,
           ),
           SizedBox(height: 22.h),
           Container(
+            width: 334.w,
+            height: 334.h,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: const Color.fromRGBO(255, 255, 255, 1),
-              boxShadow: const [
-                BoxShadow(
-                  color: Color.fromRGBO(23, 69, 59, 0.25),
-                  offset: Offset(0.9, 0.9),
-                  blurRadius: 0.9,
-                  spreadRadius: 0.9,
-                ),
-              ],
+              borderRadius: BorderRadius.circular(20.r),
+              color: ThemeHelper.white,
+              boxShadow: [BoxShadowHelper.boxShadow25],
             ),
             child: Image.asset(
               'assets/images/Group.png',
-              width: 334.w,
-              height: 334.h,
             ),
           ),
-          SizedBox(height: 22.h,),
-         const Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+          Padding(
+            padding: EdgeInsets.only(left: 20.w, top: 22.h, right: 20.w),
             child: Text(
-                'Историю изменения количества баллов вы сможете просмотреть во вкладке “БАЛАНС”',
-               textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black)),
+              'Историю изменения количества баллов вы сможете просмотреть во вкладке “БАЛАНС”',
+              textAlign: TextAlign.center,
+              style: TextStyleHelper.productName.copyWith(fontWeight: FontWeight.w500),
+            ),
           ),
         ],
       ),
