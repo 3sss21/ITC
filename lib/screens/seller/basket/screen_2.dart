@@ -1,3 +1,5 @@
+import 'package:cashback_app/screens/seller/basket/screen_3.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -449,7 +451,9 @@ class _Basket1State extends State<Basket1> {
                     maximumSize: Size(150.w, 40.h),
                     minimumSize: Size(150.w, 40.h),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Basket12()));
+                  },
                   child: const Text(
                     "Списать баллы",
                     style: TextStyle(
@@ -462,6 +466,7 @@ class _Basket1State extends State<Basket1> {
           ),
         ],
       ),
+      // bottomNavigationBar: SellerNavigationWidget(currentIndex: 2),
     );
   }
 }
