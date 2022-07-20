@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 
 class CustomButton extends StatelessWidget {
-  final bool isTextButton;
+  final  bool isTextButton;
   final Function? onTap;
 
   const CustomButton({
@@ -26,11 +26,11 @@ class CustomButton extends StatelessWidget {
         ),
         onPressed: ()=>  onTap != null ? onTap!() : null,
         child: isTextButton
-            ? Text(
+            ? const Text(
                 'Войти',
                 style:TextStyle(fontSize: 14, color: Colors.white),
               )
-            : Text(
+            : const Text(
                 'Создать',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),

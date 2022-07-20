@@ -70,8 +70,34 @@ abstract class TextStyleHelper {
   );
 
   static TextStyle productName = TextStyle(
+    fontFamily: 'Lato',
     color: ThemeHelper.green80,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle f12w400 = TextStyle(
+    color: ThemeHelper.white,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+  static TextStyle f14w600 = TextStyle(
+    color: ThemeHelper.white,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+  // static TextStyle f14w600 = TextStyle(
+  //   color: ThemeHelper.white,
+  //   fontSize: 14.sp,
+  //   fontWeight: FontWeight.w600,
+  // );
+  // static TextStyle productName = TextStyle(
+  //   color: ThemeHelper.green80,
+  //   fontSize: 16.sp,
+  //   fontWeight: FontWeight.w600,
+  // );
+  // static TextStyle f12w400 = TextStyle(
+  //   color: ThemeHelper.white,
+  //   fontSize: 12.sp,
+  //   fontWeight: FontWeight.w400,
+  // );
 }
