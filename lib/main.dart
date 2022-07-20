@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const SellerNavigationWidget(currentIndex: 3,)
+        home: const BuyerNavigationWidget(currentIndex: 3,)
       ),
     );
   }
