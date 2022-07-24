@@ -8,4 +8,6 @@ class IconsImages {
   static String clientsIcon = 'assets/images/clients.png';
   static String incomeIcon = 'assets/images/income.png';
   static String iconV = 'assets/images/icon_v.png';
+  static String iconBasket = 'assets/images/basket.png';
+  static String iconCamera = 'assets/images/camera.png';
 }

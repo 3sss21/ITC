@@ -1,3 +1,4 @@
+import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_balance_widget.dart';
@@ -14,15 +15,6 @@ class BalanceScreen extends StatefulWidget {
 }
 
 class _BalanceScreenState extends State<BalanceScreen> {
-  late bool isState;
-
-  @override
-  void initState() {
-    isState = true;
-    super.initState();
-  }
-
-  double balance = 300;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +29,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
           SizedBox(
             width: 1.sw,
             height: 0.726.sh,
-            child: isState
+            child: ScreensState.isState
                 ? ListView.separated(
                     padding:
                         EdgeInsets.only(left: 20.w, top: 25.h, right: 20.w),
@@ -46,12 +38,14 @@ class _BalanceScreenState extends State<BalanceScreen> {
                       return SizedBox(
                         width: 334.w,
                         child: HistoryButton(
+                          dateTimeBalance: '06.06.22',
+                          balance: 78,
                           textStyleDate: TextStyleHelper.textDate,
-                          textStyleBalance: TextStyleHelper.textBalance
+                          textStyleBalance: TextStyleHelper.f16fw700
                               .copyWith(color: ThemeHelper.green100),
                           function: () {
                             setState(() {
-                              isState = false;
+                              ScreensState.isState = false;
                             });
                           },
                         ),
@@ -60,11 +54,17 @@ class _BalanceScreenState extends State<BalanceScreen> {
                     separatorBuilder: (BuildContext context, int index) {
                       return SizedBox(height: 16.h);
                     },
-                  ) : const BoxPurchaseHistoryWidget(
+                  )
+                :  BoxPurchaseHistoryWidget(
                     datePurchase: '30.06.2021',
                     nameProduct: 'Ice Teaaaaaa aaaaaaaaaaaaaaaaaaaaaaaa',
                     priceProduct: 20.00,
-                  ),
+                  function: () {
+                    setState(() {
+                      ScreensState.isState = true;
+                    });
+                  },
+                ), 
           ),
         ],
       ),

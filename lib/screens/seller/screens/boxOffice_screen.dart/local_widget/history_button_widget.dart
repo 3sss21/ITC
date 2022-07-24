@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HistoryButton extends StatelessWidget {
+  final String dateTimeBalance;
+  final double balance;
   final Function() function;
   final TextStyle textStyleDate;
   final TextStyle textStyleBalance;
 
   const HistoryButton({
     Key? key,
+    required this.dateTimeBalance,
+    required this.balance,
     required this.function,
     required this.textStyleDate,
     required this.textStyleBalance,
@@ -33,9 +37,9 @@ class HistoryButton extends StatelessWidget {
             children: [
               SizedBox(
                 width: 160.w,
-                child: Text("06.06.22", style: textStyleDate),
+                child: Text(dateTimeBalance, style: textStyleDate),
               ),
-              Text("+80.00", style: textStyleBalance),
+              Text('+${balance}0', style: textStyleBalance),
             ],
           ),
         ),

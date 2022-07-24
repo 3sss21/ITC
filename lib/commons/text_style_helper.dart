@@ -62,7 +62,7 @@ abstract class TextStyleHelper {
     color: ThemeHelper.green100,
   );
 
-  static TextStyle textBalance = TextStyle(
+  static TextStyle f16fw700 = TextStyle(
     fontFamily: "Lato",
     fontSize: 16.sp,
     fontWeight: FontWeight.w700,
@@ -76,12 +76,35 @@ abstract class TextStyleHelper {
     fontWeight: FontWeight.w600,
   );
   static TextStyle f12w400 = TextStyle(
+    fontFamily: 'Lato',
     color: ThemeHelper.white,
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
   );
   static TextStyle f14w600 = TextStyle(
+    fontFamily: 'Lato',
     color: ThemeHelper.white,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle f12fw600 = TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.green80,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
+  );
+
+  static TextStyle f14fw500 = TextStyle(
+    fontFamily: 'Lato',
+   color: ThemeHelper.green60,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle f14w600green80 = TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.green80,
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
   );

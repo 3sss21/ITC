@@ -26,7 +26,7 @@ class ProductNameWidget extends StatelessWidget {
             color: ThemeHelper.green50,
             width: 0.4.w,
           ),
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(20.r),
           boxShadow: [
             BoxShadowHelper.boxShadow25,
           ],

@@ -1,18 +1,16 @@
-import 'package:cashback_app/commons/box_shadow_helper.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/cashed_network_image.dart.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ProductInfoBoxWidget extends StatelessWidget {
+class BoxCatalogProductsWidget extends StatelessWidget {
   final String imageUrl;
   final String productName;
   final String productType;
   final int price;
   final int cashBack;
-
-  const ProductInfoBoxWidget({
+  const BoxCatalogProductsWidget({
     Key? key,
     required this.imageUrl,
     required this.productName,
@@ -24,15 +22,14 @@ class ProductInfoBoxWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 334.w,
+      width: 260.w,
       height: 98.h,
       decoration: BoxDecoration(
-        color: ThemeHelper.white,
+        color: ThemeHelper.green80,
         borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [BoxShadowHelper.boxShadow25],
       ),
       child: Padding(
-        padding: EdgeInsets.only(left: 19.w),
+        padding: EdgeInsets.only(left: 18.w),
         child: Row(
           children: [
             CustomCachedNetworkImageWidget(
@@ -46,21 +43,32 @@ class ProductInfoBoxWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  productName,
-                  style: TextStyleHelper.productName,
+                SizedBox(
+                  width: 150.w,
+                  child: Text(
+                    productName,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyleHelper.productName
+                        .copyWith(color: ThemeHelper.white),
+                  ),
                 ),
-                Text(
-                  productType,
-                  style: TextStyleHelper.f14fw500,
+                SizedBox(
+                  width: 90.w,
+                  child: Text(
+                    productType,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyleHelper.f14fw500
+                        .copyWith(color: ThemeHelper.white),
+                  ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 120.w),
+                  padding: EdgeInsets.only(left: 7.w),
                   child: Row(
                     children: [
                       Text(
                         '$price сом/ ',
-                        style: TextStyleHelper.f12fw600,
+                        style: TextStyleHelper.f12fw600
+                            .copyWith(color: ThemeHelper.white),
                       ),
                       Row(
                         children: [

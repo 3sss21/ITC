@@ -7,11 +7,13 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
   final String datePurchase;
   final String nameProduct;
   final double priceProduct;
+  final Function() function;
   const BoxPurchaseHistoryWidget({
     Key? key,
     required this.datePurchase,
     required this.nameProduct,
     required this.priceProduct,
+    required this.function,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                // onTap: () => Navigator.pop(context),
+                onTap: () => function(),
                 child: Row(
                   children: [
                     Icon(
@@ -73,7 +75,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
                           ),
                           Text(
                             '+${priceProduct.toString()}',
-                            style: TextStyleHelper.textBalance
+                            style: TextStyleHelper.f16fw700
                                 .copyWith(color: ThemeHelper.white),
                           ),
                         ],
@@ -94,7 +96,8 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
                       ),
                       Text(
                         '120.00',
-                        style: TextStyleHelper.textBalance.copyWith(color: ThemeHelper.white),
+                        style: TextStyleHelper.f16fw700
+                            .copyWith(color: ThemeHelper.white),
                       ),
                     ],
                   ),

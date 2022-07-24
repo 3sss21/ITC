@@ -41,6 +41,8 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: HistoryButton(
+                      dateTimeBalance: '06.06.22',
+                      balance: 78,
                       function: () {
                         Navigator.push(
                           context,
@@ -50,7 +52,7 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                         );
                       },
                       textStyleDate: TextStyleHelper.textDate,
-                      textStyleBalance: TextStyleHelper.textBalance,
+                      textStyleBalance: TextStyleHelper.f16fw700,
                     ),
                   );
                 },
