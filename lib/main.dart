@@ -1,6 +1,5 @@
-import 'package:cashback_app/screens/byuer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/basket_screen/basket_screen.dart';
-import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scannerQRCode_screen/scannerQRCode_screen.dart';
+import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const BasketScreen()
+        home: const SplashScreen()
         // SellerNavigationWidget(currentIndex: 2)
       ),
     );

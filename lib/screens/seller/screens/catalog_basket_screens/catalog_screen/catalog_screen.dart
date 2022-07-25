@@ -5,7 +5,7 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/bloc/shop_bloc.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

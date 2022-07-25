@@ -1,12 +1,13 @@
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/basket_screen/local_widgets/buttonScanner_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/points_deduction_screen.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scannerQRCode_screen/local_widgets/buttonScanner_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BasketScreen extends StatelessWidget {
-  const BasketScreen({Key? key}) : super(key: key);
+class ScannerQRCodeScreen extends StatelessWidget {
+  const ScannerQRCodeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,12 @@ class BasketScreen extends StatelessWidget {
           ),
           SizedBox(height: 32.h),
           ButtonScannerWidget(
-            function: () {},
+            function: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const PointsDeductionScreen(),
+              ),
+            ),
             buttonTxt: 'Без приложения',
             iconWidget: Icon(
               Icons.keyboard_arrow_right_outlined,
