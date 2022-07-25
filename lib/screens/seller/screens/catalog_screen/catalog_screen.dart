@@ -5,19 +5,19 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/bloc/shop_bloc.dart';
 import 'package:cashback_app/screens/byuer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/byuer/screens/shop_screen/local_widgets/product_info_box_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ShopScreen extends StatefulWidget {
-  const ShopScreen({Key? key}) : super(key: key);
+class CatalogScreen extends StatefulWidget {
+  const CatalogScreen({Key? key}) : super(key: key);
 
   @override
-  State<ShopScreen> createState() => _ShopScreenState();
+  State<CatalogScreen> createState() => _CatalogScreenState();
 }
 
-class _ShopScreenState extends State<ShopScreen> {
+class _CatalogScreenState extends State<CatalogScreen> {
   late ShopBloc shopBloc;
 
   @override
@@ -86,24 +86,25 @@ class _ShopScreenState extends State<ShopScreen> {
                             ),
                           ),
                         )
-                      : ListView.separated(
+                      : 
+                      ListView.separated(
                           padding: EdgeInsets.only(
                             left: 20.w,
                             top: 21.h,
                             right: 20.w,
                           ),
                           itemCount: state.catalogProductModelList.length,
-                          itemBuilder: (context, index) => ProductInfoBoxWidget(
+                          itemBuilder: (context, index) => CatalogProductWidget(
                             imageUrl:
                                 'https://mykaleidoscope.ru/uploads/posts/2021-09/1632713203_1-mykaleidoscope-ru-p-kapuchino-s-shokoladom-krasivo-foto-1.jpg',
-                            productName: 'Капучино',
+                            productName: 'Капучиноj jsdkx,cjn  jsdkx,cn k',
                             productType:
                                 state.catalogProductModelList[index].name!,
                             price: 999,
                             cashBack: 999,
                           ),
                           separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(height: 21.h);
+                            return SizedBox(height: 28.h);
                           },
                         ),
                 );

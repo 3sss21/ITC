@@ -35,24 +35,28 @@ class AppCoverBalanceWidget extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            Row(
-              children: [
-                Text(
-                  '${balance}0',
-                  style: TextStyle(
-                    color: ThemeHelper.yellow,
-                    fontSize: 36.sp,
-                    fontWeight: FontWeight.w700,
+            SizedBox(
+              height: 44.h,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    '${balance}0',
+                    style: TextStyle(
+                      color: ThemeHelper.yellow,
+                      fontSize: 36.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: 22.w,
-                  height: 19.h,
-                  child: Image.asset(
-                    "assets/images/coin.png",
+                  SizedBox(
+                    width: 22.w,
+                    height: 19.h,
+                    child: Image.asset(
+                      "assets/images/coin.png",
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
