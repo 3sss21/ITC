@@ -1,8 +1,8 @@
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/basket_screen/basket_screen.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/local_widgets/boxCatalogProducts_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/local_widgets/circleButton_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/boxCatalogProducts_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/circleButton_widget.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scannerQRCode_screen/scannerQRCode_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -52,7 +52,7 @@ class CatalogProductWidget extends StatelessWidget {
               function: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const BasketScreen(),
+                  builder: (context) => const ScannerQRCodeScreen(),
                 ),
               ),
               iconWidget: ImageIcon(

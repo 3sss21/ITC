@@ -1,16 +1,14 @@
-import 'package:cashback_app/screens/seller/basket/screen_3.dart';
-import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Basket1 extends StatefulWidget {
-  const Basket1({Key? key}) : super(key: key);
+class PaymentScreen extends StatefulWidget {
+  const PaymentScreen({Key? key}) : super(key: key);
 
   @override
-  State<Basket1> createState() => _Basket1State();
+  State<PaymentScreen> createState() => _PaymentScreenState();
 }
 
-class _Basket1State extends State<Basket1> {
+class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -131,17 +129,15 @@ class _Basket1State extends State<Basket1> {
                             color: Color.fromRGBO(255, 255, 255, 0.8),
                           ),
                         ),
-
-                         SizedBox(
+                        SizedBox(
                           height: 15.h,
                         ),
                         const Text(
                           "Итого",
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromRGBO(255, 255, 255, 0.8),
-                            fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 12,
+                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontWeight: FontWeight.w600),
                         )
                       ],
                     ),
@@ -221,16 +217,15 @@ class _Basket1State extends State<Basket1> {
                             color: Color.fromRGBO(255, 255, 255, 0.8),
                           ),
                         ),
-                           SizedBox(
+                        SizedBox(
                           height: 15.h,
                         ),
                         const Text(
                           "450 сом",
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromRGBO(255, 255, 255, 0.8),
-                            fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 12,
+                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontWeight: FontWeight.w600),
                         )
                       ],
                     ),
@@ -310,18 +305,16 @@ class _Basket1State extends State<Basket1> {
                             color: Color.fromRGBO(255, 255, 255, 0.8),
                           ),
                         ),
-                           SizedBox(
+                        SizedBox(
                           height: 15.h,
                         ),
                         const Text(
                           "36 баллов",
                           style: TextStyle(
-                            fontSize: 12,
-                            color: Color.fromRGBO(255, 255, 255, 0.8),
-                            fontWeight: FontWeight.w600
-                          ),
+                              fontSize: 12,
+                              color: Color.fromRGBO(255, 255, 255, 0.8),
+                              fontWeight: FontWeight.w600),
                         )
-                  
                       ],
                     ),
                   ],
@@ -332,75 +325,8 @@ class _Basket1State extends State<Basket1> {
           const SizedBox(
             height: 29,
           ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 21.w,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(23, 69, 59, 0.25),
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      primary: const Color.fromRGBO(255, 255, 255, 1),
-                      maximumSize: Size(150.w, 40.h),
-                      minimumSize: Size(150.w, 40.h),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Копить баллы",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(23, 69, 59, 0.8),
-                      ),
-                    )),
-              ),
-              SizedBox(
-                width: 34.w,
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color.fromRGBO(23, 69, 59, 0.25),
-                      blurRadius: 20,
-                    ),
-                  ],
-                ),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      primary: const Color.fromRGBO(255, 255, 255, 1),
-                      maximumSize: Size(150.w, 40.h),
-                      minimumSize: Size(150.w, 40.h),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      "Списать баллы",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromRGBO(23, 69, 59, 0.8),
-                      ),
-                    )),
-              ),
-            ],
-          ),
           Padding(
-            padding: const EdgeInsets.only(left: 113, top: 23),
+            padding: const EdgeInsets.only(left: 113),
             child: Container(
               decoration: const BoxDecoration(
                 boxShadow: [
@@ -421,41 +347,7 @@ class _Basket1State extends State<Basket1> {
                   ),
                   onPressed: () {},
                   child: const Text(
-                    "Списать часть баллов",
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(23, 69, 59, 0.8),
-                    ),
-                    textAlign: TextAlign.center,
-                  )),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 113, top: 23),
-            child: Container(
-              decoration: const BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromRGBO(23, 69, 59, 0.25),
-                    blurRadius: 20,
-                  ),
-                ],
-              ),
-              child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    primary: const Color.fromRGBO(255, 255, 255, 1),
-                    maximumSize: Size(150.w, 40.h),
-                    minimumSize: Size(150.w, 40.h),
-                  ),
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Basket12()));
-                  },
-                  child: const Text(
-                    "Списать баллы",
+                    "оплатить",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -466,7 +358,6 @@ class _Basket1State extends State<Basket1> {
           ),
         ],
       ),
-      // bottomNavigationBar: SellerNavigationWidget(currentIndex: 2),
     );
   }
 }

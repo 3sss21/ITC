@@ -1,7 +1,9 @@
+import 'package:cashback_app/commons/barItem_helper.dart';
 import 'package:cashback_app/commons/icon_images.dart';
+import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/boxOffice_screen.dart';
 import 'package:cashback_app/screens/seller/screens/branch_screen/branch_screen.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_screen/catalog_screen.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/catalog_screen.dart';
 import 'package:cashback_app/screens/seller/screens/clients_screen/clients_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -48,47 +50,16 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
-            canvasColor: const Color(0xff17453B),
+            canvasColor: ThemeHelper.green80,
           ),
           child: BottomNavigationBar(
             showUnselectedLabels: false,
             showSelectedLabels: false,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white,
-            iconSize: 40,
             items: [
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    IconsImages.branchIcon,
-                  ),
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    IconsImages.clientsIcon,
-                  ),
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    IconsImages.shopIcon,
-                  ),
-                ),
-                label: '',
-              ),
-              BottomNavigationBarItem(
-                icon: ImageIcon(
-                  AssetImage(
-                    IconsImages.incomeIcon,
-                  ),
-                ),
-                label: '',
-              ),
+              BarItemHelper().barItem(IconsImages.branchIcon),
+              BarItemHelper().barItem(IconsImages.clientsIcon),
+              BarItemHelper().barItem(IconsImages.shopIcon),
+              BarItemHelper().barItem(IconsImages.incomeIcon),
             ],
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
