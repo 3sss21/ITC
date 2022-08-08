@@ -19,7 +19,7 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАССА'),
+          const AppCoverWidget(nameCover: 'КАССА', isSeller:  true,),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 21.w, vertical: 22.h),
             child: Column(
@@ -27,9 +27,10 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
               children: [
                 SearchTextFieldWidget(
                   hintText: 'DD / MM/ YY',
+                  
                   suffix: Icon(
                     Icons.keyboard_arrow_down_outlined,
-                    color: ThemeHelper.green80,
+                    color: Color.fromRGBO(83, 42, 42, 0.8),
                   ),
                 ),
                 const PhoneNumber(phoneNumber: '+996 555 55 55 55'),

@@ -32,7 +32,7 @@ class _ShopScreenState extends State<ShopScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАТАЛОГ'),
+          const AppCoverWidget(nameCover: 'КАТАЛОГ', isSeller:  false,),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
             hintText: 'Поиск',

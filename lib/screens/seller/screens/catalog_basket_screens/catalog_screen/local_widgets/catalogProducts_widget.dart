@@ -41,7 +41,7 @@ class CatalogProductWidget extends StatelessWidget {
               function: () {},
               iconWidget: Icon(
                 Icons.add,
-                color: ThemeHelper.green100,
+                color:Color.fromRGBO(83, 42, 42, 0.8),
                 size: 23,
               ),
             ),
@@ -59,7 +59,7 @@ class CatalogProductWidget extends StatelessWidget {
                 AssetImage(
                   IconsImages.iconBasket,
                 ),
-                color: ThemeHelper.green100,
+                color: Color.fromRGBO(83, 42, 42, 0.8),
                 size: 23,
               ),
             ),

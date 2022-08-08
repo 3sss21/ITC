@@ -3,8 +3,8 @@ import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/byuer/screens/shop_screen/bloc/shop_bloc.dart';
-import 'package:cashback_app/screens/byuer/screens/shop_screen/local_widgets/product_name_widget.dart';
+import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/shop_bloc.dart';
+import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +32,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАТАЛОГ'),
+          const AppCoverWidget(
+            nameCover: 'КАТАЛОГ',
+            isSeller: true,
+          ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
             hintText: 'Поиск',
@@ -86,8 +89,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                             ),
                           ),
                         )
-                      : 
-                      ListView.separated(
+                      : ListView.separated(
                           padding: EdgeInsets.only(
                             left: 20.w,
                             top: 21.h,

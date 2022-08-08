@@ -22,7 +22,7 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppCoverWidget(nameCover: 'КАССА'),
+            const AppCoverWidget(nameCover: 'КАССА', isSeller: true,),
             SizedBox(height: 22.h),
             SearchTextFieldWidget(
               hintText: 'DD/MM/YY',
