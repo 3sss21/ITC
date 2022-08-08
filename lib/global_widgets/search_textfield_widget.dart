@@ -35,7 +35,7 @@ class SearchTextFieldWidget extends StatelessWidget {
             hintText: hintText,
             hintStyle: TextStyle(
               height: 0.5.h,
-              color: ThemeHelper.green80,
+              color:Color.fromRGBO(83, 42, 42, 0.8),
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
             ),

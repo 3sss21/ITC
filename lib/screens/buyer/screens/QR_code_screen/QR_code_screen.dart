@@ -18,7 +18,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: "QR-CODE"),
+          const AppCoverWidget(nameCover: "QR-CODE", isSeller:  false,),
           SizedBox(height: 59.h),
           Text(
             'Отсканируйте QR-code',

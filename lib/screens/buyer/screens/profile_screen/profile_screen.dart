@@ -19,7 +19,8 @@ class _ProfileSceenState extends State<ProfileSceen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppCoverWidget(nameCover: "Profile"),
+            
+            const AppCoverWidget(nameCover: "Profile", isSeller: false,),
             SizedBox(height: 79.h),
             Container(
               width: 334.w,
