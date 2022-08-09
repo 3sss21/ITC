@@ -15,7 +15,7 @@ class PhoneNumber extends StatelessWidget {
       padding: EdgeInsets.only(left: 20.h, top: 16.h, bottom: 8.h),
       child: Text(
         phoneNumber,
-        style: TextStyleHelper.productName,
+        style:TextStyle(color: Color.fromRGBO(83, 42, 42, 0.8), fontSize: 16.sp)
       ),
     );
   }

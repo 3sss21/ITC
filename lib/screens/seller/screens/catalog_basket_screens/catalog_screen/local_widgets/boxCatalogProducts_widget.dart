@@ -25,7 +25,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
       width: 260.w,
       height: 98.h,
       decoration: BoxDecoration(
-        color: ThemeHelper.green80,
+        color: Color.fromRGBO(83, 42, 42, 0.8),
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Padding(

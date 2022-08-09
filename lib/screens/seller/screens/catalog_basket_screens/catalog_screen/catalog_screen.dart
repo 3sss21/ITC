@@ -32,7 +32,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАТАЛОГ'),
+          const AppCoverWidget(
+            nameCover: 'КАТАЛОГ',
+            isSeller: true,
+          ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
             hintText: 'Поиск',
@@ -86,8 +89,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                             ),
                           ),
                         )
-                      : 
-                      ListView.separated(
+                      : ListView.separated(
                           padding: EdgeInsets.only(
                             left: 20.w,
                             top: 21.h,
