@@ -5,19 +5,29 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoxPurchaseHistoryWidget extends StatelessWidget {
   final String datePurchase;
-  final String nameProduct;
-  final double priceProduct;
+  final List<String> listOfProduct;
+  final List<double> listOfPoints;
   final Function() function;
   const BoxPurchaseHistoryWidget({
     Key? key,
     required this.datePurchase,
-    required this.nameProduct,
-    required this.priceProduct,
+    required this.listOfProduct,
+    required this.listOfPoints,
     required this.function,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    dynamic value;
+    listOfProducts() {
+      for (int i = 0; i == listOfProduct.length; i++) {
+        value = listOfProduct[i];
+      }
+      // for (final el in listOfProduct) {
+
+      // }
+    }
+
     return Padding(
       padding: EdgeInsets.only(left: 20.w, top: 75.h, right: 20.w),
       child: Column(
@@ -26,7 +36,11 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap: () => function(),
+                onTap: () {
+                  function();
+                  print(listOfProduct[0]);
+                  print(value);
+                },
                 child: Row(
                   children: [
                     Icon(
@@ -67,14 +81,15 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
                             width: 160.w,
                             height: 16.h,
                             child: Text(
-                              nameProduct,
+                              '$value',
+                              // nameProduct.first,
                               style: TextStyleHelper.textDate
                                   .copyWith(color: ThemeHelper.white),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                           Text(
-                            '+${priceProduct.toString()}',
+                            '+$value',
                             style: TextStyleHelper.f16fw700
                                 .copyWith(color: ThemeHelper.white),
                           ),
