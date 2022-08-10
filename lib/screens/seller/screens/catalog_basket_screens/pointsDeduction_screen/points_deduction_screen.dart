@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/payment_screen.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -234,7 +235,7 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PaymentScreen(),
+                        builder: (context) => const PaymentWithApp(),
                       ),
                     );
                   },
