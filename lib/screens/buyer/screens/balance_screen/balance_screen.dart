@@ -40,9 +40,6 @@ class _BalanceScreenState extends State<BalanceScreen> {
                         child: HistoryButton(
                           dateTimeBalance: '06.06.22',
                           balance: 78,
-                          textStyleDate: TextStyleHelper.textDate,
-                          textStyleBalance: TextStyleHelper.f16fw700
-                              .copyWith(color: ThemeHelper.green100),
                           function: () {
                             setState(() {
                               ScreensState.isState = false;

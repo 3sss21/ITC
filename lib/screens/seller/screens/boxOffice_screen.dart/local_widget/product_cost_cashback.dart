@@ -6,6 +6,7 @@ class ProductCostCashback extends StatelessWidget {
   final String product;
   final String cost;
   final String cashback;
+  
   const ProductCostCashback({
     Key? key,
     required this.product,

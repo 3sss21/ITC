@@ -22,7 +22,7 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
         child: AppBar(
           backgroundColor: Color.fromRGBO(83, 42, 42, 0.8),
           title: const Text(
-            '      КОРЗИНА',
+            'КОРЗИНА',
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
           ),
