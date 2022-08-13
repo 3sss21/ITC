@@ -12,8 +12,7 @@ class Titles extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text('Наименование',
-            style: TextStyleHelper.f14w600),
+        Text('Наименование', style: TextStyleHelper.f14w600),
         Text('Стоимость', style: TextStyleHelper.f14w600),
         Text('Кэшбек', style: TextStyleHelper.f14w600),
       ],

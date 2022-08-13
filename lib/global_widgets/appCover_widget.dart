@@ -6,7 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppCoverWidget extends StatelessWidget {
   final String nameCover;
   final bool isSeller;
-  const AppCoverWidget({Key? key, required this.nameCover, required this.isSeller}) : super(key: key);
+
+  const AppCoverWidget(
+      {Key? key, required this.nameCover, required this.isSeller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class AppCoverWidget extends StatelessWidget {
       width: 1.sw,
       height: 139.h,
       decoration: BoxDecoration(
-        color: isSeller? Color.fromRGBO(83, 42, 42, 0.8): ThemeHelper.green80,
+        color: isSeller ? ThemeHelper.brown80 : ThemeHelper.green80,
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(20.r),
         ),
