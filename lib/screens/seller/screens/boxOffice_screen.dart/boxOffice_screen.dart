@@ -22,13 +22,13 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppCoverWidget(nameCover: 'КАССА', isSeller: true,),
+            const AppCoverWidget(nameCover: 'КАССА', isSeller: true),
             SizedBox(height: 22.h),
             SearchTextFieldWidget(
               hintText: 'DD/MM/YY',
               suffix: ImageIcon(
-                AssetImage(IconsImages.iconV),
-                color: ThemeHelper.green80,
+                AssetImage(IconsImages.iconVbrown),
+                color: ThemeHelper.brown80,
               ),
             ),
             SizedBox(
@@ -41,6 +41,7 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 20),
                     child: HistoryButton(
+                      som: 1500,
                       dateTimeBalance: '06.06.22',
                       balance: 78,
                       function: () {
@@ -51,8 +52,6 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                           ),
                         );
                       },
-                      textStyleDate: TextStyleHelper.textDate,
-                      textStyleBalance: TextStyleHelper.f16fw700,
                     ),
                   );
                 },
