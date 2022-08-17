@@ -10,8 +10,8 @@ class CatalogProductWidget extends StatelessWidget {
   final String imageUrl;
   final String productName;
   final String productType;
-  final int price;
-  final int cashBack;
+  final String price;
+  final String cashBack;
   const CatalogProductWidget({
     Key? key,
     required this.imageUrl,
@@ -30,7 +30,7 @@ class CatalogProductWidget extends StatelessWidget {
           imageUrl: imageUrl,
           productName: productName,
           productType: productType,
-          price: price,
+          price: price.toString(),
           cashBack: cashBack,
         ),
         Column(

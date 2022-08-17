@@ -3,7 +3,7 @@ import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/shop_bloc.dart';
+import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/byuer_catalog_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_info_box_widget.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +18,12 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
-  late ShopBloc shopBloc;
+  late BuyerCatalogBloc buyerCatalogBloc;
 
   @override
   void initState() {
-    shopBloc = ShopBloc();
-    shopBloc.add(GetShopEvent());
+    buyerCatalogBloc = BuyerCatalogBloc();
+    buyerCatalogBloc.add(GetCatalogEvent());
     super.initState();
   }
 
@@ -41,31 +41,31 @@ class _ShopScreenState extends State<ShopScreen> {
               color: ThemeHelper.green80,
             ),
           ),
-          BlocConsumer<ShopBloc, ShopState>(
-            bloc: shopBloc,
+          BlocConsumer<BuyerCatalogBloc, BuyerCatalogState>(
+            bloc: buyerCatalogBloc,
             listener: (context, state) {},
             builder: (context, state) {
-              if (state is LoadingShopState) {
+              if (state is CatalogBuyerLoadingState) {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
 
-              if (state is ErrorShopState) {
+              if (state is CatlaogBuyerErrorState) {
                 return Center(
                   child: ElevatedButton(
-                    onPressed: () => shopBloc.add(GetShopEvent()),
+                    onPressed: () => buyerCatalogBloc.add(GetCatalogEvent()),
                     child: const Text('Try Again'),
                   ),
                 );
               }
 
-              if (state is LoadedShopState) {
+              if (state is CatalogBuyerFetchedState) {
                 return Expanded(
                   child: ScreensState.isState
                       ? GridView.builder(
                           padding: EdgeInsets.only(top: 57.h),
-                          itemCount: state.catalogProductModelList.length,
+                          itemCount:state.catalogBuyerModel.length,
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
                             mainAxisExtent: 80.w,
@@ -77,7 +77,7 @@ class _ShopScreenState extends State<ShopScreen> {
                             padding: EdgeInsets.symmetric(horizontal: 21.w),
                             child: ProductNameWidget(
                               productName:
-                                  state.catalogProductModelList[index].name!,
+                                  state.catalogBuyerModel[index].name ??"unknown",
                               function: () {
                                 setState(() {
                                   ScreensState.isState = false;
@@ -92,13 +92,13 @@ class _ShopScreenState extends State<ShopScreen> {
                             top: 21.h,
                             right: 20.w,
                           ),
-                          itemCount: state.catalogProductModelList.length,
+                          itemCount: state.catalogBuyerModel.length,
                           itemBuilder: (context, index) => ProductInfoBoxWidget(
                             imageUrl:
                                 'https://mykaleidoscope.ru/uploads/posts/2021-09/1632713203_1-mykaleidoscope-ru-p-kapuchino-s-shokoladom-krasivo-foto-1.jpg',
                             productName: 'Капучино',
                             productType:
-                                state.catalogProductModelList[index].name!,
+                                state.catalogBuyerModel[index].name??"unknown",
                             price: 999,
                             cashBack: 999,
                           ),

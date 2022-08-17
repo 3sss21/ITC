@@ -114,4 +114,10 @@ abstract class TextStyleHelper {
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
+    static TextStyle f16w4000= TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.yellow,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
 }
