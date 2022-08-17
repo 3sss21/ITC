@@ -1,4 +1,4 @@
-
+import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 
 class ProductCashback extends StatelessWidget {
@@ -8,11 +8,11 @@ class ProductCashback extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
+    return Text(
       "9 баллов",
       style: TextStyle(
         fontSize: 12,
-        color: Color.fromRGBO(255, 255, 255, 0.8),
+        color: ThemeHelper.white70,
       ),
     );
   }

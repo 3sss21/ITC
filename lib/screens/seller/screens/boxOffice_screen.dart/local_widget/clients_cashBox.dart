@@ -41,7 +41,6 @@ class ClientsCashBox extends StatelessWidget {
                 ),
               ],
             ),
-            // SizedBox(height: 7.h),
             ProductCostCashback(
               product: 'итого'.toUpperCase(),
               cost: '280 сом',
