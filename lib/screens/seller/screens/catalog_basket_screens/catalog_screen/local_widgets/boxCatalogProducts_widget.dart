@@ -72,7 +72,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('+ $cashBack', style: TextStyleHelper.f16w4000),
+                          Text('+ $cashBack', style:TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: Colors.yellow)),
                           ImageIcon(
                             const AssetImage('assets/images/coin.png'),
                             color: ThemeHelper.yellow,
