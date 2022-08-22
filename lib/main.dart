@@ -1,8 +1,13 @@
 import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async{
+  await Hive.initFlutter();
+  await Hive.openBox("tokenBox");
+  await Hive.openBox("phoneNumberBox");
+
   runApp(const MyApp());
 }
 

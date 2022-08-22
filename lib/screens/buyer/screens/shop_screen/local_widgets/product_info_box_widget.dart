@@ -64,7 +64,7 @@ class ProductInfoBoxWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('+ $cashBack', style: TextStyleHelper.f14w600),
+                          Text('+ $cashBack', style: TextStyleHelper.f16w4000),
                           ImageIcon(
                             const AssetImage('assets/images/coin.png'),
                             color: ThemeHelper.yellow,

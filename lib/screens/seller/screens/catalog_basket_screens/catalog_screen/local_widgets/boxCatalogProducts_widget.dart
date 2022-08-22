@@ -61,6 +61,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                         .copyWith(color: ThemeHelper.white),
                   ),
                 ),
+                SizedBox(width: 50.w,),
                 Padding(
                   padding: EdgeInsets.only(left: 7.w),
                   child: Row(
@@ -70,16 +71,20 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                         style: TextStyleHelper.f12fw600
                             .copyWith(color: ThemeHelper.white),
                       ),
-                      Row(
-                        children: [
-                          Text('+ $cashBack', style:TextStyle(fontSize: 14, fontWeight: FontWeight.w400,color: Colors.yellow)),
-                          ImageIcon(
-                            const AssetImage('assets/images/coin.png'),
-                            color: ThemeHelper.yellow,
-                            size: 12,
-                          ),
-                        ],
-                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 7.w),
+                        child: Row(
+                          children: [
+                            Text('+ $cashBack',
+                                style: TextStyleHelper.f16fw700),
+                            ImageIcon(
+                              const AssetImage('assets/images/coin.png'),
+                              color: ThemeHelper.yellow,
+                              size: 12,
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
