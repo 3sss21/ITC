@@ -1,12 +1,17 @@
 import 'dart:developer';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:dio/dio.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 class ApiRequester {
-  static String url = 'http://165.22.49.123/api/v1/list';
+  var box = Hive.box("tokenbox");
+  static String url = 'http://165.22.49.123/api/';
+  
   Future<Dio> initDio() async {
+    String token = await box.get("token", defaultValue: '');
+
     return Dio(
       BaseOptions(
-        headers: {'Authorization' : 'Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46'},
+        headers: {'Authorization' : token},
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
@@ -23,4 +28,17 @@ class ApiRequester {
     } catch (e) {
       throw CatchException.convertException(e);
     }
-  }}
+  }
+
+  Future<Response> toPost(String url,
+      {Map<String, dynamic>? param, required Map<String, dynamic> body}) async {
+    Dio dio = await initDio();
+    try {
+      return dio.post(url, queryParameters: param, data: body);
+
+    } catch (e) {
+      log(e.toString());
+      throw CatchException.convertException(e);
+    }
+  }
+  }
