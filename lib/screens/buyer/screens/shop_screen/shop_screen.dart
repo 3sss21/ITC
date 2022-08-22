@@ -1,5 +1,6 @@
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/screens_state.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
@@ -32,9 +33,14 @@ class _ShopScreenState extends State<ShopScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАТАЛОГ', isSeller:  false,),
+          const AppCoverWidget(
+            nameCover: 'КАТАЛОГ',
+            isSeller: false,
+          ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
+            fillColor: ThemeHelper.green20,
+            hintTextColor: ThemeHelper.green80,
             hintText: 'Поиск',
             prefix: ImageIcon(
               AssetImage(IconsImages.searchIcon),
@@ -76,6 +82,8 @@ class _ShopScreenState extends State<ShopScreen> {
                           itemBuilder: (context, index) => Padding(
                             padding: EdgeInsets.symmetric(horizontal: 21.w),
                             child: ProductNameWidget(
+                              textStyle: TextStyleHelper.productNameGreen80,
+                              borderColor: ThemeHelper.green50,
                               productName:
                                   state.catalogProductModelList[index].name!,
                               function: () {

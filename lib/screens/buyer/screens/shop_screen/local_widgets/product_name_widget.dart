@@ -7,10 +7,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ProductNameWidget extends StatelessWidget {
   final String productName;
   final Function() function;
+  final TextStyle textStyle;
+  final Color borderColor;
   const ProductNameWidget({
     Key? key,
     required this.productName,
     required this.function,
+    required this.textStyle,
+    required this.borderColor,
   }) : super(key: key);
 
   @override
@@ -23,7 +27,7 @@ class ProductNameWidget extends StatelessWidget {
         decoration: BoxDecoration(
           color: ThemeHelper.white,
           border: Border.all(
-            color: ThemeHelper.green50,
+            color: borderColor,
             width: 0.4.w,
           ),
           borderRadius: BorderRadius.circular(20.r),
@@ -36,7 +40,7 @@ class ProductNameWidget extends StatelessWidget {
             productName,
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
-            style: TextStyleHelper.productName,
+            style: textStyle,
           ),
         ),
       ),

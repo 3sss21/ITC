@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
-  final bool isUser;
-  const SignInScreen({Key? key, required this.isUser}) : super(key: key);
+  const SignInScreen({Key? key}) : super(key: key);
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -52,9 +51,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     txtButton: 'ВОЙТИ',
                     function: () => Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => widget.isUser
-                            ? const BuyerNavigationWidget(currentIndex: 0)
-                            : const SellerNavigationWidget(currentIndex: 0),
+                        builder: (context) =>
+                            const BuyerNavigationWidget(currentIndex: 0),
                       ),
                     ),
                   ),

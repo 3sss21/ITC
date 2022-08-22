@@ -48,7 +48,7 @@ class ProductInfoBoxWidget extends StatelessWidget {
               children: [
                 Text(
                   productName,
-                  style: TextStyleHelper.productName,
+                  style: TextStyleHelper.productNameGreen80,
                 ),
                 Text(
                   productType,

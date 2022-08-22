@@ -16,7 +16,7 @@ class ClientsCashBox extends StatelessWidget {
       height: 130.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        color: Color.fromRGBO(83, 42, 42, 0.8),
+        color: ThemeHelper.brown80,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),

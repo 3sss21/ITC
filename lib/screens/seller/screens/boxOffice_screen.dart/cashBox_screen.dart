@@ -19,18 +19,22 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАССА', isSeller:  true,),
+          const AppCoverWidget(
+            nameCover: 'КАССА',
+            isSeller: true,
+          ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 21.w, vertical: 22.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SearchTextFieldWidget(
+                  fillColor: ThemeHelper.brown20,
+                  hintTextColor: ThemeHelper.brown80,
                   hintText: 'DD / MM/ YY',
-                  
                   suffix: Icon(
                     Icons.keyboard_arrow_down_outlined,
-                    color: Color.fromRGBO(83, 42, 42, 0.8),
+                    color: ThemeHelper.brown80,
                   ),
                 ),
                 const PhoneNumber(phoneNumber: '+996 555 55 55 55'),

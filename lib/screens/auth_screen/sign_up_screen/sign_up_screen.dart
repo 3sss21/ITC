@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpScreen extends StatefulWidget {
-  final bool isUser;
-  const SignUpScreen({Key? key, required this.isUser}) : super(key: key);
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -54,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
                       function: () => Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => SignInScreen(isUser: widget.isUser,),
+                          builder: (context) => SignInScreen(),
                         ),
                       ),
                     ),
