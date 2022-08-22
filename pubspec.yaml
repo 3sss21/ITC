@@ -41,6 +41,7 @@ dependencies:
   dio: ^4.0.6
   cached_network_image: ^3.2.1
   r_dotted_line_border: ^0.1.1
+  flutter_barcode_scanner: ^2.0.0
 
 dev_dependencies:
   flutter_test:

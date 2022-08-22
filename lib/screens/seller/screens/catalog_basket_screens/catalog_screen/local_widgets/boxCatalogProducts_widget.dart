@@ -25,7 +25,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
       width: 260.w,
       height: 98.h,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(83, 42, 42, 0.8),
+        color: ThemeHelper.brown80,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Padding(
@@ -73,7 +73,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                       Row(
                         children: [
                           Text('+ $cashBack', style: TextStyleHelper.f16w4000),
-                          ImageIcon(
+                          ImageIcon(  
                             const AssetImage('assets/images/coin.png'),
                             color: ThemeHelper.yellow,
                             size: 12,

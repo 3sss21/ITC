@@ -1,10 +1,8 @@
-import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/local_widgets/total_cost.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
+import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/total_cost.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +35,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   SizedBox(
                     width: 38.w,
-                    // height: 17.h,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,11 +65,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           ),
                         ],
                       ),
-                      ProductCostCashback(
-                        product: 'итого'.toUpperCase(),
-                        cost: '280 сом',
-                        cashback: '+18 баллов',
-                      ),
+                      TotalCost(
+                          product: 'итого'.toUpperCase(),
+                          cost: '280 сом',
+                          cashback: '+18 баллов',
+                        ),
                     ],
                   ),
                 ],

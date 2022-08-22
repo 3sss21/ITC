@@ -7,8 +7,15 @@ import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scann
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ScannerQRCodeScreen extends StatelessWidget {
+class ScannerQRCodeScreen extends StatefulWidget {
   const ScannerQRCodeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ScannerQRCodeScreen> createState() => _ScannerQRCodeScreenState();
+}
+
+class _ScannerQRCodeScreenState extends State<ScannerQRCodeScreen> {
+  final qrKey = GlobalKey(debugLabel: 'QR');
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,13 @@ class ScannerQRCodeScreen extends StatelessWidget {
           ),
           SizedBox(height: 220.h),
           ButtonScannerWidget(
-            function: () {},
+            function: () {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //   ),
+              // );
+            },
             //  AssetImage(IconsImages.iconCamera),
             buttonTxt: 'Сканировать QR-код',
             iconWidget: IconButton(
@@ -32,7 +45,7 @@ class ScannerQRCodeScreen extends StatelessWidget {
                 icon: ImageIcon(
                   AssetImage(IconsImages.iconCamera),
                   size: 25,
-                  color: ThemeHelper.green80,
+                  color: ThemeHelper.brown80,
                 )),
           ),
           SizedBox(height: 32.h),
@@ -46,12 +59,13 @@ class ScannerQRCodeScreen extends StatelessWidget {
             buttonTxt: 'Без приложения',
             iconWidget: Icon(
               Icons.keyboard_arrow_right_outlined,
-              color: ThemeHelper.green80,
+              color: ThemeHelper.brown80,
               size: 25,
             ),
           ),
         ],
       ),
     );
+
   }
 }

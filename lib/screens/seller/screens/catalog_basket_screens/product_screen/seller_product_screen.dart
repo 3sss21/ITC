@@ -1,10 +1,7 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/bloc/seller_catalog_bloc.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/product_screen/bloc/product_bloc.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +102,8 @@ class _ProductSellerScreenState extends State<ProductSellerScreen> {
                           state.productSellerModel[index].slug ?? 'testType',
                       price:
                           state.productSellerModel[index].price ?? 'testPrice',
-                      cashBack: state.productSellerModel[index].percentCashback.toString(),
+                      cashBack: state.productSellerModel[index].percentCashback
+                          .toString(),
                     ),
                     separatorBuilder: (BuildContext context, int index) {
                       return SizedBox(height: 28.h);

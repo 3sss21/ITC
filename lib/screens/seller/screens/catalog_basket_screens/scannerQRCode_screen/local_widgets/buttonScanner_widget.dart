@@ -37,7 +37,8 @@ class ButtonScannerWidget extends StatelessWidget {
                 child: Text(
                   buttonTxt,
                   textAlign: TextAlign.center,
-                  style: TextStyleHelper.f14w600green80,
+                  style: TextStyleHelper.f14w600
+                      .copyWith(color: ThemeHelper.brown80),
                 ),
               ),
               iconWidget

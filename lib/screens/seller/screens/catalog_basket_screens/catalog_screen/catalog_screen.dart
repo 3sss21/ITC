@@ -1,11 +1,9 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/bloc/seller_catalog_bloc.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/product_screen/seller_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +40,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
             hintText: 'Поиск',
             prefix: ImageIcon(
               AssetImage(IconsImages.searchIcon),
-              color: ThemeHelper.green80,
+              color: ThemeHelper.brown80,
             ),
           ),
           BlocConsumer<SellerCatalogBloc, SellerCatalogState>(
@@ -73,7 +71,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     mainAxisExtent: 80.w,
                     mainAxisSpacing: 53.w,
                     crossAxisCount: 2,
-                    crossAxisSpacing: 54.h,
+                    crossAxisSpacing: 28.h,
                   ),
                   itemBuilder: (context, index) => Padding(
                     padding: EdgeInsets.symmetric(horizontal: 21.w),
@@ -82,9 +80,11 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           state.catalogSellerModel[index].name ?? 'testName',
                       function: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductSellerScreen()));
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const ProductSellerScreen()),
+                        );
                         // setState(() {
                         //   ScreensState.isState = false;
                         // });
