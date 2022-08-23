@@ -7,8 +7,8 @@ class BranchButton extends StatelessWidget {
   final double width;
   final double height;
   final double fontSize;
-
   final Function() function;
+  
   const BranchButton({
     Key? key,
     required this.titleOfBranch,

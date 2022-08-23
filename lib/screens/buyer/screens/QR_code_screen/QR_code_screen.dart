@@ -22,7 +22,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
           SizedBox(height: 59.h),
           Text(
             'Отсканируйте QR-code',
-            style: TextStyleHelper.productName,
+            style: TextStyleHelper.productNameGreen80,
           ),
           SizedBox(height: 22.h),
           Container(
@@ -42,7 +42,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
             child: Text(
               'Историю изменения количества баллов вы сможете просмотреть во вкладке “БАЛАНС”',
               textAlign: TextAlign.center,
-              style: TextStyleHelper.productName.copyWith(fontWeight: FontWeight.w500),
+              style: TextStyleHelper.productNameGreen80.copyWith(fontWeight: FontWeight.w500),
             ),
           ),
         ],

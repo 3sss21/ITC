@@ -58,50 +58,52 @@ class _BalanceScreenState extends State<BalanceScreen> {
 
               if (state is LoadedBalanceState) {
                 return SizedBox(
-                    width: 1.sw,
-                    height: 0.726.sh,
-                    child: ListView.separated(
-                      padding: EdgeInsets.only(
-                        left: 20.w,
-                        top: 25.h,
-                        right: 20.w,
-                      ),
-                      itemCount: state.balanceModel.length,
-                      itemBuilder: (context, index) {
-                        return ScreensState.isState
-                            ? SizedBox(
-                                width: 334.w,
-                                child: HistoryButton(
-                                  dateTimeBalance:
-                                      state.balanceModel[index].dateTime!,
-                                  balance: state
-                                      .balanceModel[index].listOfPoints!
-                                      .elementAt(1),
-                                  textStyleDate: TextStyleHelper.textDate,
-                                  textStyleBalance: TextStyleHelper.f16fw700
-                                      .copyWith(color: ThemeHelper.green100),
-                                  function: () {
-                                    setState(() {
-                                      ScreensState.isState = false;
-                                    });
-                                  },
-                                ),
-                              )
-                            : BoxPurchaseHistoryWidget(
-                                datePurchase: state.balanceModel[index].dateTime!,
-                                listOfProduct:
-                                    state.balanceModel[index].listOfProducts!,
-                                listOfPoints: state.balanceModel[index].listOfPoints!,
+                  width: 1.sw,
+                  height: 0.726.sh,
+                  child: ListView.separated(
+                    padding: EdgeInsets.only(
+                      left: 20.w,
+                      top: 25.h,
+                      right: 20.w,
+                    ),
+                    itemCount: state.balanceModel.length,
+                    itemBuilder: (context, index) {
+                      return ScreensState.isState
+                          ? SizedBox(
+                              width: 334.w,
+                              child: HistoryButton(
+                                dateTimeBalance:
+                                    state.balanceModel[index].dateTime!,
+                                balance: state.balanceModel[index].listOfPoints!
+                                    .elementAt(1),
+                                textStyleDate: TextStyleHelper.textDate,
+                                textStyleBalance: TextStyleHelper.f16fw700
+                                    .copyWith(color: ThemeHelper.green100),
                                 function: () {
                                   setState(() {
-                                    ScreensState.isState = true;
+                                    ScreensState.isState = false;
                                   });
+                                },
+                              ),
+                            )
+                          : BoxPurchaseHistoryWidget(
+                              datePurchase: state.balanceModel[index].dateTime!,
+                              listOfProduct:
+                                  state.balanceModel[index].listOfProducts!,
+                              listOfPoints:
+                                  state.balanceModel[index].listOfPoints!,
+                              function: () {
+                                setState(() {
+                                  ScreensState.isState = true;
                                 });
-                      },
-                      separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(height: 16.h);
-                      },
-                    ));
+                              },
+                            );
+                    },
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(height: 16.h);
+                    },
+                  ),
+                );
               }
               return const SizedBox();
             },

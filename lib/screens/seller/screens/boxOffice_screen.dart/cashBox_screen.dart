@@ -28,6 +28,7 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 21.w, vertical: 22.h),
+<<<<<<< HEAD
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,6 +51,18 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
                         );
                       },
                     ),
+=======
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SearchTextFieldWidget(
+                  fillColor: ThemeHelper.brown20,
+                  hintTextColor: ThemeHelper.brown80,
+                  hintText: 'DD / MM/ YY',
+                  suffix: Icon(
+                    Icons.keyboard_arrow_down_outlined,
+                    color: ThemeHelper.brown80,
+>>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
                   ),
                 ],
               ),

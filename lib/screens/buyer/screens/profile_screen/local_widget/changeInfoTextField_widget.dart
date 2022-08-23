@@ -26,7 +26,7 @@ class ChangeInfoTextFieldWidget extends StatelessWidget {
       children: [
         Text(
           '$valueTextField:',
-          style: TextStyleHelper.productName.copyWith(
+          style: TextStyleHelper.productNameGreen80.copyWith(
             color: ThemeHelper.white,
           ),
         ),

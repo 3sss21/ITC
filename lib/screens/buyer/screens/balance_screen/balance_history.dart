@@ -19,14 +19,14 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     dynamic value;
-    listOfProducts() {
-      for (int i = 0; i == listOfProduct.length; i++) {
-        value = listOfProduct[i];
-      }
-      // for (final el in listOfProduct) {
+    // listOfProducts() {
+    //   for (int i = 0; i == listOfProduct.length; i++) {
+    //     value = listOfProduct[i];
+    //   }
+    //   // for (final el in listOfProduct) {
 
-      // }
-    }
+    //   // }
+    // }
 
     return Padding(
       padding: EdgeInsets.only(left: 20.w, top: 75.h, right: 20.w),
@@ -38,8 +38,6 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
               InkWell(
                 onTap: () {
                   function();
-                  print(listOfProduct[0]);
-                  print(value);
                 },
                 child: Row(
                   children: [
@@ -56,7 +54,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
               ),
               Text(
                 datePurchase,
-                style: TextStyleHelper.productName,
+                style: TextStyleHelper.productNameGreen80,
               ),
             ],
           ),

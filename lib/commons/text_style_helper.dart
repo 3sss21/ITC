@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class TextStyleHelper {
+
   static TextStyle medium18 = TextStyle(
     fontSize: 18.sp,
     fontFamily: "Lato",
@@ -69,9 +70,15 @@ abstract class TextStyleHelper {
     color: ThemeHelper.yellow,
   );
 
-  static TextStyle productName = TextStyle(
+  static TextStyle productNameGreen80 = TextStyle(
     fontFamily: 'Lato',
     color: ThemeHelper.green80,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+  );
+  static TextStyle productNameBrown80 = TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.brown80,
     fontSize: 16.sp,
     fontWeight: FontWeight.w600,
   );
@@ -97,7 +104,7 @@ abstract class TextStyleHelper {
 
   static TextStyle f14fw500 = TextStyle(
     fontFamily: 'Lato',
-   color: ThemeHelper.green60,
+    color: ThemeHelper.green60,
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
   );
@@ -119,5 +126,10 @@ abstract class TextStyleHelper {
     color: ThemeHelper.yellow,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
+    );
+  static TextStyle labelStyle = TextStyle(
+    fontFamily: 'Lato',
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
   );
 }

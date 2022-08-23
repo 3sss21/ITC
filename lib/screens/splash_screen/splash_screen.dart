@@ -1,4 +1,4 @@
-import 'package:cashback_app/screens/isUser_screen/isUser_screen.dart';
+import 'package:cashback_app/screens/auth_screen/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const IsUserScreen(),
+        builder: (context) => AuthScreen(),
         // const SellerNavigationWidget(currentIndex: 0),
       ),
     );

@@ -3,13 +3,12 @@ import 'package:cashback_app/commons/text_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/sign_up_screen.dart';
-import 'package:cashback_app/screens/seller/screens/branch_screen/local_widget/branch_button.dart';
+import 'package:cashback_app/screens/buyer/screens/branch_screen/local_widget/branch_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AuthScreen extends StatefulWidget {
-  final bool isUser;
-  const AuthScreen({Key? key, required this.isUser}) : super(key: key);
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
@@ -55,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 titleOfBranch: "ВХОД",
                 function: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => SignInScreen(isUser: widget.isUser),
+                    builder: (context) => SignInScreen(),
                   ),
                 ),
               ),
@@ -67,7 +66,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 titleOfBranch: "ЗАРЕГИСТРИРОВАТЬСЯ",
                 function: () => Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => SignUpScreen(isUser: widget.isUser),
+                    builder: (context) => SignUpScreen(),
                   ),
                 ),
               ),

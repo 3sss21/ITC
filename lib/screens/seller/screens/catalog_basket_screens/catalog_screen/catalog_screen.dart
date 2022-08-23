@@ -1,5 +1,6 @@
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/screens_state.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
@@ -39,10 +40,12 @@ class _CatalogScreenState extends State<CatalogScreen> {
           ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
+            fillColor: ThemeHelper.brown20,
+            hintTextColor: ThemeHelper.brown80,
             hintText: 'Поиск',
             prefix: ImageIcon(
               AssetImage(IconsImages.searchIcon),
-              color: ThemeHelper.green80,
+              color: ThemeHelper.brown80,
             ),
           ),
           BlocConsumer<SellerCatalogBloc, SellerCatalogState>(
@@ -66,6 +69,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
               if (state is CatalogSellerFetchedState) {
                 return Expanded(
+<<<<<<< HEAD
                     child: GridView.builder(
                   padding: EdgeInsets.only(top: 57.h),
                   itemCount: state.catalogSellerModel.length,
@@ -113,6 +117,55 @@ class _CatalogScreenState extends State<CatalogScreen> {
                     //     },
                     //   ),
                     );
+=======
+                  child: ScreensState.isState
+                      ? GridView.builder(
+                          padding: EdgeInsets.only(top: 57.h),
+                          itemCount: state.catalogProductModelList.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            mainAxisExtent: 80.w,
+                            mainAxisSpacing: 53.w,
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 54.h,
+                          ),
+                          itemBuilder: (context, index) => Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 21.w),
+                            child: ProductNameWidget(
+                              textStyle: TextStyleHelper.productNameBrown80,
+                              borderColor: ThemeHelper.brown50,
+                              productName:
+                                  state.catalogProductModelList[index].name!,
+                              function: () {
+                                setState(() {
+                                  ScreensState.isState = false;
+                                });
+                              },
+                            ),
+                          ),
+                        )
+                      : ListView.separated(
+                          padding: EdgeInsets.only(
+                            left: 20.w,
+                            top: 21.h,
+                            right: 20.w,
+                          ),
+                          itemCount: state.catalogProductModelList.length,
+                          itemBuilder: (context, index) => CatalogProductWidget(
+                            imageUrl:
+                                'https://mykaleidoscope.ru/uploads/posts/2021-09/1632713203_1-mykaleidoscope-ru-p-kapuchino-s-shokoladom-krasivo-foto-1.jpg',
+                            productName: 'Капучиноj jsdkx,cjn  jsdkx,cn k',
+                            productType:
+                                state.catalogProductModelList[index].name!,
+                            price: 999,
+                            cashBack: 999,
+                          ),
+                          separatorBuilder: (BuildContext context, int index) {
+                            return SizedBox(height: 28.h);
+                          },
+                        ),
+                );
+>>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
               }
               return const SizedBox();
             },
