@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:cashback_app/commons/barItem_helper.dart';
 import 'package:cashback_app/commons/icon_images.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
+import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/boxOffice_screen.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/catalog_screen.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scannerQRCode_screen/scannerQRCode_screen.dart';
@@ -47,15 +51,19 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
         ),
         child: Theme(
           data: Theme.of(context).copyWith(
-            canvasColor: Color.fromRGBO(83, 42, 42, 0.8),
+            canvasColor: ThemeHelper.brown80,
           ),
           child: BottomNavigationBar(
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
+            showUnselectedLabels: true,
+            showSelectedLabels: true,
+            selectedItemColor: ThemeHelper.white,
+            unselectedItemColor: ThemeHelper.white50,
+            selectedLabelStyle: TextStyleHelper.labelStyle,
+            unselectedLabelStyle: TextStyleHelper.labelStyle,
             items: [
-              BarItemHelper().barItem(IconsImages.shopIcon),
-              BarItemHelper().barItem(IconsImages.iconBasket),
-              BarItemHelper().barItem(IconsImages.incomeIcon),
+              BarItemHelper().barItem(IconsImages.shopIcon, 'Каталог'),
+              BarItemHelper().barItem(IconsImages.iconBasket, 'Корзина'),
+              BarItemHelper().barItem(IconsImages.incomeIcon, 'Касса'),
             ],
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,

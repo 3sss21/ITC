@@ -22,12 +22,25 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+<<<<<<< HEAD
             const AppCoverWidget(nameCover: 'КАССА', isSeller: true),
+=======
+            const AppCoverWidget(
+              nameCover: 'КАССА',
+              isSeller: true,
+            ),
+>>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
             SizedBox(height: 22.h),
             SearchTextFieldWidget(
+              fillColor: ThemeHelper.brown20,
+              hintTextColor: ThemeHelper.brown80,
               hintText: 'DD/MM/YY',
               suffix: ImageIcon(
+<<<<<<< HEAD
                 AssetImage(IconsImages.iconVbrown),
+=======
+                AssetImage(IconsImages.iconV),
+>>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
                 color: ThemeHelper.brown80,
               ),
             ),
@@ -39,7 +52,7 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
                 itemCount: 20,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 20),
+                    padding: EdgeInsets.only(bottom: 20.h),
                     child: HistoryButton(
                       som: 1500,
                       dateTimeBalance: '06.06.22',

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BarItemHelper {
-  BottomNavigationBarItem barItem(String iconImages) {
+  BottomNavigationBarItem barItem(String iconImages, String labelTxt) {
     return BottomNavigationBarItem(
       icon: Image.asset(
         iconImages,
@@ -17,7 +17,7 @@ class BarItemHelper {
         height: 40.h,
         color: ThemeHelper.white,
       ),
-      label: '',
+      label: labelTxt,
     );
   }
 }

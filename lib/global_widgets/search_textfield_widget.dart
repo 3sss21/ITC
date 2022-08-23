@@ -1,13 +1,14 @@
-import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchTextFieldWidget extends StatelessWidget {
+  final Color hintTextColor;
   final TextEditingController? controller;
   final String hintText;
   final Widget? prefix;
   final Widget? suffix;
   final EdgeInsetsGeometry? contentPadding;
+  final Color? fillColor;
   const SearchTextFieldWidget({
     Key? key,
     this.controller,
@@ -15,6 +16,8 @@ class SearchTextFieldWidget extends StatelessWidget {
     this.prefix,
     this.suffix,
     this.contentPadding,
+    required this.hintTextColor,
+    required this.fillColor,
   }) : super(key: key);
 
   @override
@@ -35,12 +38,12 @@ class SearchTextFieldWidget extends StatelessWidget {
             hintText: hintText,
             hintStyle: TextStyle(
               height: 0.5.h,
-              color:Color.fromRGBO(83, 42, 42, 0.8),
+              color: hintTextColor,
               fontSize: 20.sp,
               fontWeight: FontWeight.w500,
             ),
             filled: true,
-            fillColor: const Color.fromRGBO(23, 69, 59, 0.2),
+            fillColor: fillColor,
           ),
         ),
       ),

@@ -48,7 +48,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                   child: Text(
                     productName,
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyleHelper.productName
+                    style: TextStyleHelper.productNameBrown80
                         .copyWith(color: ThemeHelper.white),
                   ),
                 ),

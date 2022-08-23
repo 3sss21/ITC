@@ -12,7 +12,7 @@ class ValueTextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       '$valueTextField:',
-      style: TextStyleHelper.productName.copyWith(
+      style: TextStyleHelper.productNameGreen80.copyWith(
         color: ThemeHelper.white,
       ),
     );
