@@ -6,10 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppCoverWidget extends StatelessWidget {
   final String nameCover;
   final bool isSeller;
-
-  const AppCoverWidget(
-      {Key? key, required this.nameCover, required this.isSeller})
-      : super(key: key);
+  final bool isBackButton;
+  const AppCoverWidget({
+    Key? key,
+    required this.nameCover,
+    required this.isSeller,
+    this.isBackButton = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +26,40 @@ class AppCoverWidget extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: EdgeInsets.only(left: 20.w, right: 20.w),
+        padding: EdgeInsets.only(left: isBackButton ? 0 : 18.w, right: 20.w),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              nameCover.toUpperCase(),
-              style: TextStyle(
-                color: ThemeHelper.white,
-                fontSize: 24.sp,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(width: 137.w),
+            isBackButton
+                ? Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => Navigator.pop(context),
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: ThemeHelper.white,
+                          size: 23,
+                        ),
+                      ),
+                      Text(
+                        nameCover.toUpperCase(),
+                        style: TextStyle(
+                          color: ThemeHelper.white,
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ],
+                  )
+                : Text(
+                    nameCover.toUpperCase(),
+                    style: TextStyle(
+                      color: ThemeHelper.white,
+                      fontSize: 24.sp,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+            SizedBox(width: isBackButton ? 124.w : 137.w),
             SizedBox(
               width: 58.w,
               height: 58.h,

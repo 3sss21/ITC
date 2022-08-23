@@ -22,12 +22,15 @@ class ScannerQRCodeScreen extends StatelessWidget {
           SizedBox(height: 220.h),
           ButtonScannerWidget(
             function: () {},
-            //  AssetImage(IconsImages.iconCamera),
             buttonTxt: 'Сканировать QR-код',
             iconWidget: IconButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => PaymentScreen()));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PaymentScreen(),
+                    ),
+                  );
                 },
                 icon: ImageIcon(
                   AssetImage(IconsImages.iconCamera),

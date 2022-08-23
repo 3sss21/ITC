@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/clients_cashBox.dart';
+import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/total_cost.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/payment_screen.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,31 +18,15 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: AppBar(
-          backgroundColor: ThemeHelper.brown80,
-          title: const Text(
-            'КОРЗИНА',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-          ),
-          centerTitle: false,
-          actions: [
-            Image.asset("assets/images/feliz_logo.png"),
-            SizedBox(
-              width: 20.w,
-            ),
-          ],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.r),
-          ),
-        ),
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const AppCoverWidget(
+              nameCover: 'КОРЗИНА',
+              isSeller: true,
+              isBackButton: true,
+            ),
             Padding(
               padding: EdgeInsets.only(left: 21.w, top: 82.h),
               child: Container(
