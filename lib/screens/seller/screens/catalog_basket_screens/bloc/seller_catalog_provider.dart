@@ -11,7 +11,7 @@ class CatallogSellerProvider {
     try {
       ApiRequester requester = ApiRequester();
 
-      Response response = await requester.toGet('/category/');
+      Response response = await requester.toGet('v1/create/category/');
 
       log('catalog data ==== ${response.data}');
 
