@@ -4,7 +4,6 @@ import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/screens/auth_screen/bloc/auth_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
-import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

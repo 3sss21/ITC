@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthButtonWidget extends StatelessWidget {
   final String txtButton;
   final Function() function;
-  const AuthButtonWidget({
+  const   AuthButtonWidget({
     Key? key,
     required this.txtButton,
     required this.function,
