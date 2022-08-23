@@ -1,3 +1,9 @@
+import 'package:cashback_app/commons/text_style_helper.dart';
+import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_widgets/appCover_widget.dart';
+import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
+import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
+import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/local_widgets/total_cost.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,187 +19,63 @@ class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(100),
-        child: AppBar(
-          backgroundColor: Color.fromRGBO(83, 42, 42, 0.8),
-          title: const Text(
-            '      КОРЗИНА',
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700),
-          ),
-          centerTitle: false,
-          actions: [
-            Image.asset("assets/images/feliz_logo.png"),
-            SizedBox(
-              width: 20.w,
-              child: Text(""),
-            ),
-          ],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        ),
-      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const AppCoverWidget(nameCover: 'Корзина', isSeller: true),
           Padding(
-            padding: const EdgeInsets.only(
-              left: 21,
-              top: 28,
-            ),
+            padding: EdgeInsets.only(left: 21.w, top: 82.h),
             child: Container(
               alignment: Alignment.topCenter,
               width: 334.w,
-              height: 310.h,
+              height: 300.h,
               decoration: BoxDecoration(
-                  color: Color.fromRGBO(83, 42, 42, 0.8),
-                  borderRadius: BorderRadius.circular(20)),
-              child: SingleChildScrollView(
-                child: Row(
-                  children: [
-                    SizedBox(
-                      width: 18.w,
-                      height: 17,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          height: 17.h,
-                        ),
-                        const Text(
-                          "Наименование",
-                          style: TextStyle(
-                              fontSize: 14,
-                              color: Color.fromRGBO(255, 255, 255, 1)),
-                        ),
-                        SizedBox(
-                          height: 14.h,
-                        ),
-                        
-                    Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 150.h,
-                              width: 85.w,
-                              child: ListView.builder(
-                                padding: EdgeInsets.only(bottom: 10),
-                                itemCount: 9,
-                                itemBuilder: (context, index) {
-                                  return ProductName();
-                                },
-                              ),
+                color: ThemeHelper.brown80,
+                borderRadius: BorderRadius.circular(20.r),
+              ),
+              child: Row(
+                children: [
+                  SizedBox(
+                    width: 38.w,
+                    // height: 17.h,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Column(
+                        children: [
+                          const Titles(),
+                          SizedBox(
+                            width: 266.w,
+                            height: 158.h,
+                            child: Column(
+                              children: [
+                                Expanded(
+                                  child: ListView.builder(
+                                    itemCount: 30,
+                                    itemBuilder: (context, index) {
+                                      return const ProductCostCashback(
+                                        product: 'IceTea (зеленый)',
+                                        cost: '90 сом',
+                                        cashback: '9 баллов',
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
-                        ),
-                        const Text(
-                          "Итого",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      width: 19.w,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 17.h,
-                        ),
-                        const Text(
-                          "Смоимость",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(255, 255, 255, 1),
                           ),
-                        ),
-                        SizedBox(
-                          height: 14.h,
-                        ),
-                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 150.h,
-                              width: 85.w,
-                              child: ListView.builder(
-                                padding: EdgeInsets.only(bottom: 10),
-                                itemCount: 9,
-                                itemBuilder: (context, index) {
-                                  return ProductCost();
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                      
-                        const Text(
-                          "450 сом",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      width: 19.w,
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 17.h,
-                        ),
-                        const Text(
-                          "Кэшбек",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Color.fromRGBO(255, 255, 255, 1),
-                          ),
-                        ),
-                       
-                         Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            SizedBox(
-                              height: 150.h,
-                              width: 85.w,
-                              child: ListView.builder(
-                                padding: EdgeInsets.only(bottom: 10),
-                                itemCount: 9,
-                                itemBuilder: (context, index) {
-                                  return ProductCashback();
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 15.h,
-                        ),
-                        const Text(
-                          "36 баллов",
-                          style: TextStyle(
-                              fontSize: 12,
-                              color: Color.fromRGBO(255, 255, 255, 0.8),
-                              fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                  ],
-                ),
+                        ],
+                      ),
+                      ProductCostCashback(
+                        product: 'итого'.toUpperCase(),
+                        cost: '280 сом',
+                        cashback: '+18 баллов',
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ),

@@ -9,8 +9,8 @@ class ProductInfoBoxWidget extends StatelessWidget {
   final String imageUrl;
   final String productName;
   final String productType;
-  final int price;
-  final int cashBack;
+  final String price;
+  final String cashBack;
 
   const ProductInfoBoxWidget({
     Key? key,
@@ -64,7 +64,7 @@ class ProductInfoBoxWidget extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          Text('+ $cashBack', style: TextStyleHelper.f16fw700),
+                          Text('+ $cashBack', style: TextStyleHelper.f16w4000),
                           ImageIcon(
                             const AssetImage('assets/images/coin.png'),
                             color: ThemeHelper.yellow,

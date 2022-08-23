@@ -1,29 +1,30 @@
 
-// class AuthRepository {
-//   createUser({
-//     required String lastName,
-//     required String firstName,
-//     required String patronyMic,
-//     required String userName,
-//     required String password,
-//   }) {
-//     SignUpProvider provider = SignUpProvider();
-//     provider.createUser(
-//       firstName: firstName,
-//       lastName: lastName,
-//       password: password,
-//       patronyMic: patronyMic,
-//       userName: userName,
-//     );
-//     return "";
-//   }
-//   logIN({
-//     required String loggin,
-//     required String userpassword,
-//   }) {
-//     SignUpProvider provider = SignUpProvider();
+import 'package:cashback_app/screens/auth_screen/bloc/auth_provider.dart';
 
-//     return provider.LogIn(login: loggin, userpassword: userpassword);
-//   }
+class AuthRepository {
+  createUser({
+    required String email,
+    required String phoneNumber,
+    required String password,
+    required String repeatPassword,
+  
+  }) {
+    SignUpProvider provider = SignUpProvider();
+    provider.createUser(
+      email: email,
+      phoneNumber: phoneNumber,
+      password: password,
+      repeatPassword: repeatPassword,
+    );
+    return "";
+  }
+  logIN({
+    required String phoneNumber,
+    required String userpassword,
+  }) {
+    SignUpProvider provider = SignUpProvider();
+
+    return provider.LogIn(phoneNumber: phoneNumber, userpassword: userpassword);
+  }
    
-//   }
+  }

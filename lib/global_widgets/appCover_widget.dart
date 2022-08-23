@@ -6,9 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppCoverWidget extends StatelessWidget {
   final String nameCover;
   final bool isSeller;
+<<<<<<< HEAD
   const AppCoverWidget(
       {Key? key, required this.nameCover, required this.isSeller})
       : super(key: key);
+||||||| fa3e7f1
+  const AppCoverWidget({Key? key, required this.nameCover, required this.isSeller}) : super(key: key);
+=======
+
+  const AppCoverWidget(
+      {Key? key, required this.nameCover, required this.isSeller})
+      : super(key: key);
+>>>>>>> a3ffc5629ab3b584d61a2d907e7ea154f1497465
 
   @override
   Widget build(BuildContext context) {

@@ -6,27 +6,26 @@ abstract class AuthEvent {}
 
 class GetSignInEvent extends AuthEvent{
 
-final String username;
-final String password;
+final String phoneNumber;
+final String userpassword;
 
 GetSignInEvent({
-required this.password,
-  required this.username,
+required this.userpassword,
+  required this.phoneNumber,
 });
 }
 
 class GetSignUpEvent extends AuthEvent{
-  final String username;
-final String  password;
-final String lastname;
-final String patronymic;
-final String firstname;
+  final String email;
+final String  phoneNumber;
+final String password;
+final String repeatPassword;
+
 
 GetSignUpEvent({
-required this.lastname,
+required this.email,
+required this.phoneNumber,
 required this.password,
-required this.username,
-required this.patronymic,
-required this.firstname
+required this.repeatPassword,
 
 });}

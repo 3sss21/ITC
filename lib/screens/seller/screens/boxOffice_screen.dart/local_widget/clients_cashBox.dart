@@ -13,41 +13,40 @@ class ClientsCashBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 334.w,
-      height: 130.h,
+      height: 149.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         color: ThemeHelper.brown80,
       ),
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Column(children: const[
-              Titles(),
-              ProductCostCashback(
-                product: 'IceTea (зеленый)',
-                cost: '90 сом',
-                cashback: '9 баллов',
-              ),
-              ProductCostCashback(
-                product: 'IceTea (зеленый)',
-                cost: '90 сом',
-                cashback: '9 баллов',
-              ),
-              ProductCostCashback(
-                product: 'Сендвич',
-                cost: '100 сом',
-                cashback: '0 баллов',
-              ),],),
-              SizedBox(height: 7.h),
-              ProductCostCashback(
-                product: 'итого'.toUpperCase(),
-                cost: '280 сом',
-                cashback: '+18 баллов',
-              ),
-            ],
-          ),
+        child: Column(
+          children: [
+            Column(
+              children: [
+                const Titles(),
+                SizedBox(
+                  height: 70.h,
+                  width: 280.w,
+                  child: ListView.builder(
+                    itemCount: 15,
+                    itemBuilder: (context, index) {
+                      return const ProductCostCashback(
+                        product: 'IceTea (зеленый)',
+                        cost: '90 сом',
+                        cashback: '9 баллов',
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+            ProductCostCashback(
+              product: 'итого'.toUpperCase(),
+              cost: '280 сом',
+              cashback: '+18 баллов',
+            ),
+          ],
         ),
       ),
     );

@@ -115,9 +115,25 @@ abstract class TextStyleHelper {
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
   );
+<<<<<<< HEAD
   static TextStyle labelStyle = TextStyle(
     fontFamily: 'Lato',
     fontSize: 14.sp,
     fontWeight: FontWeight.w500,
   );
+||||||| fa3e7f1
+=======
+   static TextStyle f14w400white = TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.white,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+    static TextStyle f16w4000= TextStyle(
+    fontFamily: 'Lato',
+    color: ThemeHelper.yellow,
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w400,
+  );
+>>>>>>> a3ffc5629ab3b584d61a2d907e7ea154f1497465
 }
