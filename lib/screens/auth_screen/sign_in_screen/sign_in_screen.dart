@@ -33,7 +33,6 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       body: BlocConsumer<AuthBloc, AuthState>(
         bloc: authBloc,
         listener: (context, state) {
@@ -83,42 +82,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: Text(
                         'Забыли пароль?',
                         style: TextStyleHelper.forgotPass,
-=======
-      body: Stack(
-        children: <Widget>[
-          const FelizLogoWidget(),
-          Positioned(
-            top: 231.h,
-            left: 37.w,
-            right: 37.w,
-            child: AuthBoxWidget(
-              functionBox: 'Введите свои данные',
-              listWidgets: [
-                SizedBox(height: 50.h),
-                const AuthTextFieldWidget(
-                  hintext: "Номер телефона",
-                ),
-                SizedBox(height: 23.h),
-                const AuthTextFieldWidget(
-                  hintext: "Пароль",
-                ),
-                SizedBox(height: 5.h),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Забыли пароль?',
-                    style: TextStyleHelper.forgotPass,
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: 28.h, bottom: 31.h),
-                  child: AuthButtonWidget(
-                    txtButton: 'ВОЙТИ',
-                    function: () => Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            const BuyerNavigationWidget(currentIndex: 0),
->>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
                       ),
                     ),
                     Padding(

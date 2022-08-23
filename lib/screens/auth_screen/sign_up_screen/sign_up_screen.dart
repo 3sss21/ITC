@@ -31,7 +31,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
       body: BlocConsumer<AuthBloc, AuthState>(
         bloc: authBloc,
         listener: (context, state) {
@@ -75,45 +74,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AuthTextFieldWidget(
                         controller: passwordController,
                         hintext: "Пароль",
-=======
-      body: SizedBox(
-        width: 1.sw,
-        height: 1.sh,
-        child: Stack(
-          children: <Widget>[
-            const FelizLogoWidget(),
-            Positioned(
-              top: 196.h,
-              left: 37.w,
-              right: 37.w,
-              child: AuthBoxWidget(
-                functionBox: 'Пройдите пожалуйста регистрацию',
-                listWidgets: [
-                  SizedBox(height: 33.h),
-                  const AuthTextFieldWidget(
-                    hintext: "Адрес электронной почты",
-                  ),
-                  SizedBox(height: 23.h),
-                  const AuthTextFieldWidget(
-                    hintext: "Номер телефона",
-                  ),
-                  SizedBox(height: 18.h),
-                  const AuthTextFieldWidget(
-                    hintext: "Пароль",
-                  ),
-                  SizedBox(height: 18.h),
-                  const AuthTextFieldWidget(
-                    hintext: "Повторите пароль",
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
-                    child: AuthButtonWidget(
-                      txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-                      function: () => Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => SignInScreen(),
-                        ),
->>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
                       ),
                       SizedBox(height: 18.h),
                       AuthTextFieldWidget(

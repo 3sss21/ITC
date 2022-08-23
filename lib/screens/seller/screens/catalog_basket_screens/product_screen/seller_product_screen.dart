@@ -43,7 +43,7 @@ class _ProductSellerScreenState extends State<ProductSellerScreen> {
             prefix: ImageIcon(
               AssetImage(IconsImages.searchIcon),
               color: ThemeHelper.green80,
-            ),
+            ), fillColor: null, hintTextColor: Colors.white,
           ),
           BlocConsumer<ProductBloc, ProductState>(
             bloc: productBloc,

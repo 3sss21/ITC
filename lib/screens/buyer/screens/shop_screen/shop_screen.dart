@@ -69,7 +69,6 @@ class _ShopScreenState extends State<ShopScreen> {
 
               if (state is CatalogBuyerFetchedState) {
                 return Expanded(
-<<<<<<< HEAD
                     child: GridView.builder(
                   padding: EdgeInsets.only(top: 57.h),
                   itemCount: state.catalogBuyerModel.length,
@@ -92,7 +91,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         // setState(() {
                         //   ScreensState.isState = false;
                         // });
-                      },
+                      }, borderColor: Colors.red, textStyle: TextStyleHelper.f12w400,
                     ),
                   ),
                 )
@@ -117,55 +116,6 @@ class _ShopScreenState extends State<ShopScreen> {
                     //           },
                     //         ),
                     );
-=======
-                  child: ScreensState.isState
-                      ? GridView.builder(
-                          padding: EdgeInsets.only(top: 57.h),
-                          itemCount: state.catalogProductModelList.length,
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                            mainAxisExtent: 80.w,
-                            mainAxisSpacing: 53.w,
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 54.h,
-                          ),
-                          itemBuilder: (context, index) => Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 21.w),
-                            child: ProductNameWidget(
-                              textStyle: TextStyleHelper.productNameGreen80,
-                              borderColor: ThemeHelper.green50,
-                              productName:
-                                  state.catalogProductModelList[index].name!,
-                              function: () {
-                                setState(() {
-                                  ScreensState.isState = false;
-                                });
-                              },
-                            ),
-                          ),
-                        )
-                      : ListView.separated(
-                          padding: EdgeInsets.only(
-                            left: 20.w,
-                            top: 21.h,
-                            right: 20.w,
-                          ),
-                          itemCount: state.catalogProductModelList.length,
-                          itemBuilder: (context, index) => ProductInfoBoxWidget(
-                            imageUrl:
-                                'https://mykaleidoscope.ru/uploads/posts/2021-09/1632713203_1-mykaleidoscope-ru-p-kapuchino-s-shokoladom-krasivo-foto-1.jpg',
-                            productName: 'Капучино',
-                            productType:
-                                state.catalogProductModelList[index].name!,
-                            price: 999,
-                            cashBack: 999,
-                          ),
-                          separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(height: 21.h);
-                          },
-                        ),
-                );
->>>>>>> d9d046e37d0a194d33bf2659f53c361cb03aacaf
               }
               return const SizedBox();
             },
