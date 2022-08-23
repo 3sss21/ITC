@@ -1,3 +1,5 @@
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,9 +27,9 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const 
-        SplashScreen(),
-       
-        // SellerNavigationWidget(currentIndex: 2)
+        // SplashScreen(),
+        BuyerNavigationWidget(currentIndex: 0)
+        // SellerNavigationWidget(currentIndex: 0),
       ),
     );
   }

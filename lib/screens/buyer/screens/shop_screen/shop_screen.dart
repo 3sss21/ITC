@@ -37,6 +37,7 @@ class _ShopScreenState extends State<ShopScreen> {
           const AppCoverWidget(
             nameCover: 'КАТАЛОГ',
             isSeller: false,
+            isBackButton: true,
           ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
@@ -85,13 +86,17 @@ class _ShopScreenState extends State<ShopScreen> {
                           state.catalogBuyerModel[index].name ?? "ubkwe",
                       function: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => BuyerProductScreen()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const BuyerProductScreen(),
+                          ),
+                        );
                         // setState(() {
                         //   ScreensState.isState = false;
                         // });
-                      }, borderColor: Colors.red, textStyle: TextStyleHelper.f12w400,
+                      },
+                      borderColor: Colors.red,
+                      textStyle: TextStyleHelper.f12w400,
                     ),
                   ),
                 )
