@@ -1,5 +1,7 @@
 import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/bloc/branch_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/local_widget/branch_button.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/shop_screen.dart';
@@ -39,17 +41,15 @@ class _BranchScreenState extends State<BranchScreen> {
               listener: (context, state) {},
               builder: (context, state) {
                 if (state is LoadingBranchState) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return const LoadingIndicatorWidget();
                 }
 
                 if (state is ErrorBranchState) {
-                  return Center(
-                    child: ElevatedButton(
-                      onPressed: () => branchBloc.add(GetBranchEvent()),
-                      child: const Text('Try Again'),
+                  return ButtonTryAgainWidget(
+                    onTabFunction: () => branchBloc.add(
+                      GetBranchEvent(),
                     ),
+                    btnTheme: ThemeHelper.green80,
                   );
                 }
 

@@ -1,3 +1,5 @@
+import 'package:cashback_app/commons/icon_images.dart';
+import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/local_widget/changeInfoTextField_widget.dart';
@@ -19,12 +21,13 @@ class _ProfileSceenState extends State<ProfileSceen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
-            const AppCoverWidget(nameCover: "Profile", isSeller: false,),
+            const AppCoverWidget(
+              nameCover: "Profile",
+              isSeller: false,
+            ),
             SizedBox(height: 79.h),
             Container(
               width: 334.w,
-              // height: 397.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.r),
                 color: ThemeHelper.green80,
@@ -33,10 +36,33 @@ class _ProfileSceenState extends State<ProfileSceen> {
                 padding: EdgeInsets.only(
                   left: 32.w,
                   right: 32.w,
-                  top: 119.h,
+                  top: 70.h,
                 ),
                 child: Column(
                   children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {},
+                          child: Row(
+                            children: [
+                              Text(
+                                'Изменить',
+                                style: TextStyleHelper.changeProfile,
+                              ),
+                              SizedBox(width: 12.w),
+                              ImageIcon(
+                                AssetImage(IconsImages.changeIcon),
+                                size: 19,
+                                color: ThemeHelper.white,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 20.h),
                     ChangeInfoTextFieldWidget(
                       width: 217,
                       valueTextField: 'Имя',
@@ -61,20 +87,10 @@ class _ProfileSceenState extends State<ProfileSceen> {
                       controller: TextEditingController(),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 95.h, bottom: 34.h),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          ProfileChangeButtonWidget(
-                            buttonText: 'Изменить',
-                            onTapFunction: () {},
-                          ),
-                          SizedBox(width: 19.w),
-                          ProfileChangeButtonWidget(
-                            buttonText: 'Сохранить',
-                            onTapFunction: () {},
-                          ),
-                        ],
+                      padding: EdgeInsets.only(top: 94.h, bottom: 30.h),
+                      child: ProfileChangeButtonWidget(
+                        buttonText: 'Сохранить',
+                        onTapFunction: () {},
                       ),
                     ),
                   ],

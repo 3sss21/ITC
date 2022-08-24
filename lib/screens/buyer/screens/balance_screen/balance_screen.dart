@@ -2,6 +2,8 @@ import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_balance_widget.dart';
+import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/balance_screen/balance_history.dart';
 import 'package:cashback_app/screens/buyer/screens/balance_screen/bloc/balance_bloc.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/history_button_widget.dart';
@@ -42,17 +44,15 @@ class _BalanceScreenState extends State<BalanceScreen> {
             listener: (context, state) {},
             builder: (context, state) {
               if (state is LoadingBalanceState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const LoadingIndicatorWidget();
               }
 
               if (state is ErrorBalanceState) {
-                return Center(
-                  child: ElevatedButton(
-                    onPressed: () => balanceBloc.add(GetBalanceEvent()),
-                    child: const Text('Try Again'),
+                return ButtonTryAgainWidget(
+                  onTabFunction: () => balanceBloc.add(
+                    GetBalanceEvent(),
                   ),
+                  btnTheme: ThemeHelper.green80,
                 );
               }
 

@@ -1,12 +1,12 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
+import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/byuer_catalog_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_info_box_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/product_buyer_screen/product_buyer_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,17 +54,15 @@ class _ShopScreenState extends State<ShopScreen> {
             listener: (context, state) {},
             builder: (context, state) {
               if (state is CatalogBuyerLoadingState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
+                return const LoadingIndicatorWidget();
               }
 
               if (state is CatlaogBuyerErrorState) {
-                return Center(
-                  child: ElevatedButton(
-                    onPressed: () => buyerCatalogBloc.add(GetCatalogEvent()),
-                    child: const Text('Try Again'),
+                return ButtonTryAgainWidget(
+                  onTabFunction: () => buyerCatalogBloc.add(
+                    GetCatalogEvent(),
                   ),
+                  btnTheme: ThemeHelper.green80,
                 );
               }
 
