@@ -56,49 +56,55 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   top: 196.h,
                   left: 37.w,
                   right: 37.w,
-                  child: AuthBoxWidget(
-                    functionBox: 'Пройдите пожалуйста регистрацию',
-                    listWidgets: [
-                      SizedBox(height: 33.h),
-                      AuthTextFieldWidget(
-                        controller: emailController,
-                        hintext: "Адрес электронной почты",
-                      ),
-                      SizedBox(height: 23.h),
-                      AuthTextFieldWidget(
-                        controller: phoneNumberController,
-                        hintext: "Номер телефона",
-                      ),
-                      SizedBox(height: 18.h),
-                      AuthTextFieldWidget(
-                        controller: passwordController,
-                        hintext: "Пароль",
-                      ),
-                      SizedBox(height: 18.h),
-                      AuthTextFieldWidget(
-                        controller: repeatPasswordController,
-                        hintext: "Повторите пароль",
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
-                        child: AuthButtonWidget(
-                            width: 170,
-                            txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-                            function: () {
-                              authBloc.add(
-                                GetSignUpEvent(
-                                  email: emailController.text,
-                                  phoneNumber: phoneNumberController.text,
-                                  password: passwordController.text,
-                                  repeatPassword: repeatPasswordController.text,
-                                ),
-                              );
-                              print(emailController.text);
-                              print(phoneNumberController.text);
-                              print(passwordController.text);
-                            }),
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    child: AuthBoxWidget(
+                      functionBox: 'Пройдите пожалуйста регистрацию',
+                      listWidgets: [
+                        SizedBox(height: 33.h),
+                        AuthTextFieldWidget(
+                          controller: emailController,
+                          textInputType: TextInputType.emailAddress,
+                          hintext: "Адрес электронной почты",
+                        ),
+                        SizedBox(height: 23.h),
+                        AuthTextFieldWidget(
+                          controller: phoneNumberController,
+                          textInputType: TextInputType.number,
+                          hintext: "Номер телефона",
+                        ),
+                        SizedBox(height: 18.h),
+                        AuthTextFieldWidget(
+                          controller: passwordController,
+                          textInputType: TextInputType.text,
+                          hintext: "Пароль",
+                        ),
+                        SizedBox(height: 18.h),
+                        AuthTextFieldWidget(
+                          controller: repeatPasswordController,
+                          textInputType: TextInputType.text,
+                          hintext: "Повторите пароль",
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
+                          child: AuthButtonWidget(
+                              width: 170,
+                              txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+                              function: () {
+                                authBloc.add(
+                                  GetSignUpEvent(
+                                    email: emailController.text,
+                                    phoneNumber: phoneNumberController.text,
+                                    password: passwordController.text,
+                                    repeatPassword: repeatPasswordController.text,
+                                  ),
+                                );
+                                print(emailController.text);
+                                print(phoneNumberController.text);
+                                print(passwordController.text);
+                              }),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

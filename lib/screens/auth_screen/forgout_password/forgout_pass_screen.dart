@@ -46,6 +46,7 @@ class ForgoutPasswordScreen extends StatelessWidget {
                         SizedBox(height: 40.w),
                         const AuthTextFieldWidget(
                           hintext: "E-mail",
+                          textInputType: TextInputType.emailAddress,
                         ),
                         SizedBox(height: 30.w),
                         AuthButtonWidget(

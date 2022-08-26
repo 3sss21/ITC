@@ -5,10 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthTextFieldWidget extends StatelessWidget {
   final String hintext;
   final TextEditingController? controller;
+  final TextInputType textInputType;
   const AuthTextFieldWidget({
     Key? key,
     required this.hintext,
     this.controller,
+    required this.textInputType,
   }) : super(key: key);
 
   @override
@@ -19,6 +21,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       child: TextField(
         controller: controller,
         textInputAction: TextInputAction.next,
+        keyboardType: textInputType,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
