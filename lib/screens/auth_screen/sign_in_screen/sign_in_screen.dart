@@ -69,10 +69,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: 50.h),
                     const AuthTextFieldWidget(
                       hintext: "Номер телефона",
+                      textInputType: TextInputType.number,
                     ),
                     SizedBox(height: 23.h),
                     const AuthTextFieldWidget(
                       hintext: "Пароль",
+                      textInputType: TextInputType.text,
                     ),
                     SizedBox(height: 5.h),
                     TextButton(

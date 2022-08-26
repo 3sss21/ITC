@@ -1,4 +1,5 @@
 import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
+import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -25,10 +26,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const 
-        // SplashScreen(),
+        SplashScreen(),
         // ForgoutPasswordScreen()
       //  BuyerNavigationWidget(currentIndex: 3,)
-      SellerNavigationWidget(currentIndex: 0),
+      // SellerNavigationWidget(currentIndex: 0),
       ),
     );
   }
