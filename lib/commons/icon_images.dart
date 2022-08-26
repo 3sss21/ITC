@@ -11,6 +11,6 @@ class IconsImages {
   static String iconBasket = 'assets/images/basket.png';
   static String iconCamera = 'assets/images/camera.png';
   static String iconVbrown = 'assets/images/icon_v_brown.png';
-  
+  static String changeIcon = 'assets/images/changeIcon.png';
   static String coin = 'assets/images/coin.png';
 }

@@ -1,10 +1,7 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/byuer_catalog_bloc.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_info_box_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/product_buyer_screen/bloc/product_buyer_bloc.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +30,11 @@ class _BuyerProductScreenState extends State<BuyerProductScreen> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: 'КАТАЛОГ', isSeller:  false,),
+          const AppCoverWidget(
+            nameCover: 'КАТАЛОГ',
+            isSeller: false,
+            isBackButton: true,
+          ),
           SizedBox(height: 39.h),
           SearchTextFieldWidget(
             hintText: 'Поиск',
@@ -55,7 +56,9 @@ class _BuyerProductScreenState extends State<BuyerProductScreen> {
               if (state is ProductBuyerErrorState) {
                 return Center(
                   child: ElevatedButton(
-                    onPressed: () => productBuyerBloc.add(GetProductBuyerEvent()),
+                    onPressed: () => productBuyerBloc.add(
+                      GetProductBuyerEvent(),
+                    ),
                     child: const Text('Try Again'),
                   ),
                 );
@@ -86,25 +89,28 @@ class _BuyerProductScreenState extends State<BuyerProductScreen> {
                   //           ),
                   //         ),
                   //       )
-                      child: ListView.separated(
-                          padding: EdgeInsets.only(
-                            left: 20.w,
-                            top: 21.h,
-                            right: 20.w,
-                          ),
-                          itemCount: state.productBuyerModel.length,
-                         itemBuilder: (context, index) => ProductInfoBoxWidget(
-                            imageUrl:state.productBuyerModel[index].image ??"img",
-                            productName: state.productBuyerModel[index].typeProduct??"unknowntitle",
-                            productType:
-                                state.productBuyerModel[index].description ?? "unknown",
-                            price: state.productBuyerModel[index].price ??"unknow",
-                            cashBack: state.productBuyerModel[index].percentCashback ??"unk",
-                          ),
-                          separatorBuilder: (BuildContext context, int index) {
-                            return SizedBox(height: 21.h);
-                          },
-                        ),
+                  child: ListView.separated(
+                    padding: EdgeInsets.only(
+                      left: 20.w,
+                      top: 21.h,
+                      right: 20.w,
+                    ),
+                    itemCount: state.productBuyerModel.length,
+                    itemBuilder: (context, index) => ProductInfoBoxWidget(
+                      imageUrl: state.productBuyerModel[index].image ?? "img",
+                      productName: state.productBuyerModel[index].typeProduct ??
+                          "unknowntitle",
+                      productType: state.productBuyerModel[index].description ??
+                          "unknown",
+                      price: state.productBuyerModel[index].price ?? "unknow",
+                      cashBack:
+                          state.productBuyerModel[index].percentCashback ??
+                              "unk",
+                    ),
+                    separatorBuilder: (BuildContext context, int index) {
+                      return SizedBox(height: 21.h);
+                    },
+                  ),
                 );
               }
               return const SizedBox();

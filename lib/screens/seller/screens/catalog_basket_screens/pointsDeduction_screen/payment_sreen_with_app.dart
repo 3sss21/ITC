@@ -1,3 +1,4 @@
+import 'package:cashback_app/commons/box_shadow_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +17,16 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
     return Scaffold(
       body: Column(
         children: [
-          const AppCoverWidget(nameCover: "Корзина", isSeller: true),
+          const AppCoverWidget(
+            nameCover: "Корзина",
+            isSeller: true,
+            isBackButton: true,
+          ),
           SizedBox(height: 82.h),
           Container(
             alignment: Alignment.topCenter,
             width: 334.w,
-            height: 310.h,
+            height: 300.h,
             decoration: BoxDecoration(
               color: ThemeHelper.brown80,
               borderRadius: BorderRadius.circular(20.r),
@@ -34,33 +39,30 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                 Text(
                   "Итого 450 сом",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24.sp,
-                      fontWeight: FontWeight.w700),
+                    color: ThemeHelper.white,
+                    fontSize: 24.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
+                SizedBox(height: 10.h),
                 Text(
                   "Баланс 45 баллов",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700),
+                    color: Colors.white,
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-                SizedBox(
-                  height: 30.h,
-                ),
+                SizedBox(height: 30.h),
                 Text(
                   "Укажите сколько баллов списать:",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w400),
+                    color: Colors.white,
+                    fontSize: 14.sp,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-                SizedBox(
-                  height: 10.h,
-                ),
+                SizedBox(height: 10.h),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -71,9 +73,10 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                         "Баллы: ",
                         textAlign: TextAlign.justify,
                         style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.sp,
-                            fontWeight: FontWeight.w400),
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -91,10 +94,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                       child: Container(
                         decoration: BoxDecoration(
                           boxShadow: [
-                            BoxShadow(
-                              color: const Color.fromRGBO(23, 69, 59, 0.25),
-                              blurRadius: 20.r,
-                            ),
+                            BoxShadowHelper.boxShadow25,
                           ],
                         ),
                         child: ElevatedButton(
@@ -127,7 +127,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 5, top: 23),
+                  padding: EdgeInsets.only(left: 5.w, top: 29.h),
                   child: Container(
                     decoration: BoxDecoration(
                       boxShadow: [

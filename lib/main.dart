@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
         ),
         home: const 
         // SplashScreen(),
-       BuyerNavigationWidget(currentIndex: 0,)
-        // SellerNavigationWidget(currentIndex: 2)
+      //  BuyerNavigationWidget(currentIndex: 3,)
+      SellerNavigationWidget(currentIndex: 0)
       ),
     );
   }

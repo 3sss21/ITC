@@ -1,12 +1,12 @@
 import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/screens_state.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
+import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/bloc/seller_catalog_bloc.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/product_screen/seller_product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,17 +53,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
             listener: (context, state) {},
             builder: (context, state) {
               if (state is CatalogSellerLoadingState) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return const LoadingIndicatorWidget(
+                  isSeller: true,
                 );
               }
 
               if (state is CatlaogSellerErrorState) {
-                return Center(
-                  child: ElevatedButton(
-                    onPressed: () => catallogSellerBloc.add(GetCatalogEvent()),
-                    child: const Text('Try Again'),
+                return ButtonTryAgainWidget(
+                  onTabFunction: () => catallogSellerBloc.add(
+                    GetCatalogEvent(),
                   ),
+                  btnTheme: ThemeHelper.brown50,
                 );
               }
 
@@ -85,13 +85,17 @@ class _CatalogScreenState extends State<CatalogScreen> {
                           state.catalogSellerModel[index].name ?? 'testName',
                       function: () {
                         Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => ProductSellerScreen()));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ProductSellerScreen(),
+                          ),
+                        );
                         // setState(() {
                         //   ScreensState.isState = false;
                         // });
-                      }, borderColor: Colors.white, textStyle: TextStyleHelper.f12fw600,
+                      },
+                      borderColor: Colors.white,
+                      textStyle: TextStyleHelper.f12fw600,
                     ),
                   ),
                 )

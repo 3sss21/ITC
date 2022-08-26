@@ -17,8 +17,8 @@ class ProfileChangeButtonWidget extends StatelessWidget {
     return InkWell(
       onTap: () => onTapFunction(),
       child: Container(
-        width: 98.w,
-        height: 25.h,
+        width: 179.w,
+        height: 30.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.r),
           color: ThemeHelper.white,
