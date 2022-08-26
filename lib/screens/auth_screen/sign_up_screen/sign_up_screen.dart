@@ -1,9 +1,8 @@
-import 'package:cashback_app/commons/text_style_helper.dart';
-import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/screens/auth_screen/bloc/auth_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
+import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -83,16 +82,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Padding(
                         padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
                         child: AuthButtonWidget(
+                            width: 170,
                             txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
                             function: () {
                               authBloc.add(
                                 GetSignUpEvent(
-                                    email: emailController.text,
-                                    phoneNumber: phoneNumberController.text,
-                                    password: passwordController.text,
-                                    repeatPassword:
-                                        repeatPasswordController.text),
-                               
+                                  email: emailController.text,
+                                  phoneNumber: phoneNumberController.text,
+                                  password: passwordController.text,
+                                  repeatPassword: repeatPasswordController.text,
+                                ),
                               );
                               print(emailController.text);
                               print(phoneNumberController.text);
@@ -111,48 +110,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 }
 
-class AuthBoxWidget extends StatelessWidget {
-  final String functionBox;
-  final List<Widget>? listWidgets;
-  const AuthBoxWidget({
-    Key? key,
-    required this.functionBox,
-    required this.listWidgets,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 300.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20.r),
-        color: ThemeHelper.green80,
-      ),
-      child: Column(
-        children: [
-          SizedBox(height: 50.h),
-          SizedBox(
-            width: 270.w,
-            child: Text(
-              "Добро пожаловать в cashback-сервис \n FELIZ",
-              textAlign: TextAlign.center,
-              style: TextStyleHelper.authBox,
-            ),
-          ),
-          SizedBox(height: 29.h),
-          SizedBox(
-            width: 270.w,
-            child: Text(
-              functionBox,
-              textAlign: TextAlign.center,
-              style: TextStyleHelper.functionBox,
-            ),
-          ),
-          Column(
-            children: listWidgets!,
-          ),
-        ],
-      ),
-    );
-  }
-}

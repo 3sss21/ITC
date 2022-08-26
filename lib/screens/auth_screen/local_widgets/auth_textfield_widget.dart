@@ -18,6 +18,7 @@ class AuthTextFieldWidget extends StatelessWidget {
       height: 20.h,
       child: TextField(
         controller: controller,
+        textInputAction: TextInputAction.next,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(

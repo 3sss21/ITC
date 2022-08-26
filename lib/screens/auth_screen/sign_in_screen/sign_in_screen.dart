@@ -1,11 +1,11 @@
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/screens/auth_screen/bloc/auth_bloc.dart';
+import 'package:cashback_app/screens/auth_screen/forgout_password/forgout_pass_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
-import 'package:cashback_app/screens/auth_screen/sign_up_screen/sign_up_screen.dart';
+import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
-import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,7 +26,6 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void initState() {
     authBloc = AuthBloc();
-
     super.initState();
   }
 
@@ -36,7 +35,6 @@ class _SignInScreenState extends State<SignInScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         bloc: authBloc,
         listener: (context, state) {
-          // TODO: implement listener
           if (state is AuthErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -50,7 +48,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: ((context) => BuyerNavigationWidget(
+                builder: ((context) => const BuyerNavigationWidget(
                       currentIndex: 0,
                     )),
               ),
@@ -78,7 +76,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     SizedBox(height: 5.h),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ForgoutPasswordScreen(),
+                        ),
+                      ),
                       child: Text(
                         'Забыли пароль?',
                         style: TextStyleHelper.forgotPass,
@@ -87,12 +90,17 @@ class _SignInScreenState extends State<SignInScreen> {
                     Padding(
                       padding: EdgeInsets.only(top: 28.h, bottom: 31.h),
                       child: AuthButtonWidget(
-                          txtButton: 'ВОЙТИ',
-                          function: () {
-                            authBloc.add(GetSignInEvent(
-                                userpassword: passwordController.text,
-                                phoneNumber: phoneNumberController.text));
-                          }),
+                        width: 98,
+                        txtButton: 'ВОЙТИ',
+                        function: () {
+                          authBloc.add(
+                            GetSignInEvent(
+                              userpassword: passwordController.text,
+                              phoneNumber: phoneNumberController.text,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

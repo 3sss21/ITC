@@ -1,5 +1,6 @@
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,23 +36,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {
-                  function();
-                },
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.keyboard_arrow_left,
-                      color: ThemeHelper.green100,
-                    ),
-                    Text(
-                      "назад",
-                      style: TextStyleHelper.textDate,
-                    ),
-                  ],
-                ),
-              ),
+              TxtBtnBackWidget(function: () => function()),
               Text(
                 datePurchase,
                 style: TextStyleHelper.productNameGreen80,
@@ -80,7 +65,6 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
                             height: 16.h,
                             child: Text(
                               '$value',
-                              // nameProduct.first,
                               style: TextStyleHelper.textDate
                                   .copyWith(color: ThemeHelper.white),
                               overflow: TextOverflow.ellipsis,
