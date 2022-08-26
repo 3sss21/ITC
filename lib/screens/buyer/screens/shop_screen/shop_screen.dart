@@ -91,7 +91,7 @@ class _ShopScreenState extends State<ShopScreen> {
                         // setState(() {
                         //   ScreensState.isState = false;
                         // });
-                      }, borderColor: Colors.red, textStyle: TextStyleHelper.f12w400,
+                      }, borderColor: ThemeHelper.green50, textStyle: TextStyleHelper.productNameGreen80,
                     ),
                   ),
                 )

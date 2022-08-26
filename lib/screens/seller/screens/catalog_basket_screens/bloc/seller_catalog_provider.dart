@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:cashback_app/helper/api_requester.dart';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:cashback_app/models/category_seller_model.dart';
-import 'package:cashback_app/models/seller_catalog.dart';
 import 'package:dio/dio.dart';
 
 class CatallogSellerProvider {
@@ -11,7 +10,7 @@ class CatallogSellerProvider {
     try {
       ApiRequester requester = ApiRequester();
 
-      Response response = await requester.toGet('v1/create/category/');
+      Response response = await requester.toGet('/v1/list/category/');
 
       log('catalog data ==== ${response.data}');
 

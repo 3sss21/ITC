@@ -40,7 +40,7 @@ class _BuyerProductScreenState extends State<BuyerProductScreen> {
             prefix: ImageIcon(
               AssetImage(IconsImages.searchIcon),
               color: ThemeHelper.green80,
-            ), fillColor: null, hintTextColor: Colors.red,
+            ), fillColor: null, hintTextColor: ThemeHelper.green80,
           ),
           BlocConsumer<ProductBuyerBloc, ProductBuyerState>(
             bloc: productBuyerBloc,

@@ -3,15 +3,19 @@ import 'package:cashback_app/helper/catchException.dart';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 class ApiRequester {
-  var box = Hive.box("tokenbox");
-  static String url = 'http://165.22.49.123/api/';
+ 
+  //var box = Hive.box("tokenbox");
+  static String url = 'http://165.22.49.123/api';
   
   Future<Dio> initDio() async {
-    String token = await box.get("token", defaultValue: '');
+    //String token = await box.get("token", defaultValue: '');
 
     return Dio(
       BaseOptions(
-        headers: {'Authorization' : token},
+        headers: {
+           "Authorization": "Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46"
+//               //  Constatns.token == null ? "" : "Token ${Constatns.token}",
+         },
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
