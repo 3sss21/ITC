@@ -6,15 +6,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthButtonWidget extends StatelessWidget {
   final String txtButton;
   final Function() function;
+  final double width;
   const   AuthButtonWidget({
     Key? key,
     required this.txtButton,
     required this.function,
+    required this.width,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      width: width.w,
       height: 25.h,
       child: ElevatedButton(
         onPressed: () => function(),

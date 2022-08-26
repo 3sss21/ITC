@@ -41,7 +41,7 @@ abstract class TextStyleHelper {
     color: ThemeHelper.white,
   );
 
-  static TextStyle authBox = TextStyle(
+  static TextStyle f20w700 = TextStyle(
     fontFamily: "Lato",
     fontSize: 20.sp,
     fontWeight: FontWeight.w700,

@@ -1,20 +1,15 @@
+
 import 'package:cashback_app/commons/images_helper.dart';
 import 'package:cashback_app/commons/text_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
-import 'package:cashback_app/screens/auth_screen/sign_up_screen/sign_up_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/local_widget/branch_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+class ReceivedEmailScreen extends StatelessWidget {
+  const ReceivedEmailScreen({Key? key}) : super(key: key);
 
-  @override
-  State<AuthScreen> createState() => _AuthScreenState();
-}
-
-class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> {
               SizedBox(
                 width: 300.w,
                 child: Text(
-                  TextHelper.authDescription,
+                  TextHelper.receivedDescription,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 22,
@@ -55,18 +50,6 @@ class _AuthScreenState extends State<AuthScreen> {
                 function: () => Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const SignInScreen(),
-                  ),
-                ),
-              ),
-              SizedBox(height: 26.h),
-              BranchButton(
-                fontSize: 20,
-                width: 300,
-                height: 50,
-                titleOfBranch: "ЗАРЕГИСТРИРОВАТЬСЯ",
-                function: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const SignUpScreen(),
                   ),
                 ),
               ),
