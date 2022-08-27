@@ -1,8 +1,8 @@
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/boxCatalogProducts_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/circleButton_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/scannerQRCode_screen/scannerQRCode_screen.dart';
+import 'package:cashback_app/screens/seller/screens/basket_screens/basket_screen/basket_screen.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/local_widgets/boxCatalogProducts_widget.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/local_widgets/circleButton_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -41,7 +41,7 @@ class CatalogProductWidget extends StatelessWidget {
               function: () {},
               iconWidget: Icon(
                 Icons.add,
-                color:Color.fromRGBO(83, 42, 42, 0.8),
+                color: ThemeHelper.brown80,
                 size: 23,
               ),
             ),
@@ -52,14 +52,14 @@ class CatalogProductWidget extends StatelessWidget {
               function: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ScannerQRCodeScreen(),
+                  builder: (context) => const BasketScreen(),
                 ),
               ),
               iconWidget: ImageIcon(
                 AssetImage(
                   IconsImages.iconBasket,
                 ),
-                color: Color.fromRGBO(83, 42, 42, 0.8),
+                color: ThemeHelper.brown80,
                 size: 23,
               ),
             ),

@@ -1,8 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:cashback_app/models/category_seller_model.dart';
-import 'package:cashback_app/models/seller_catalog.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/bloc/seller_catalog_repository.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/bloc/seller_catalog_repository.dart';
 import 'package:meta/meta.dart';
 part 'byuer_catalog_event.dart';
 part 'byuer_catalog_state.dart';
@@ -17,7 +16,7 @@ class BuyerCatalogBloc extends Bloc<BuyerCatalogEvent, BuyerCatalogState> {
 
         try {
           List<CategorySellerModel> catallogBuyerModelList =
-              await CatalogRpepository().getCatallogSeller();
+              await CatalogRepository().getCatallogSeller();
 
           emit(CatalogBuyerFetchedState(
               catalogBuyerModel: catallogBuyerModelList));
