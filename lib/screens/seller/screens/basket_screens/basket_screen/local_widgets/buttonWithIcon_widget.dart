@@ -4,11 +4,11 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ButtonScannerWidget extends StatelessWidget {
+class ButtonWithIconWidget extends StatelessWidget {
   final String buttonTxt;
   final Widget iconWidget;
   final Function() function;
-  const ButtonScannerWidget({
+  const ButtonWithIconWidget({
     Key? key,
     required this.function,
     required this.buttonTxt,

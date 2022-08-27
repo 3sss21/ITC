@@ -1,9 +1,9 @@
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
+import 'package:cashback_app/screens/seller/screens/basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/total_cost.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -99,30 +99,31 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                   ],
                 ),
                 child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.r),
-                      ),
-                      primary: ThemeHelper.white,
-                      maximumSize: Size(150.w, 40.h),
-                      minimumSize: Size(150.w, 40.h),
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.r),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PaymentWithApp(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      "Далее",
-                      style: TextStyle(
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w600,
-                        color: ThemeHelper.brown80,
+                    primary: ThemeHelper.white,
+                    maximumSize: Size(150.w, 40.h),
+                    minimumSize: Size(150.w, 40.h),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const PaymentWithApp(),
                       ),
-                    )),
+                    );
+                  },
+                  child: Text(
+                    "Далее",
+                    style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w600,
+                      color: ThemeHelper.brown80,
+                    ),
+                  ),
+                ),
               ),
             ),
           ],

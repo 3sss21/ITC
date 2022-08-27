@@ -4,8 +4,8 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/catalog_screen/local_widgets/catalogProducts_widget.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/product_screen/bloc/product_bloc.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/local_widgets/catalogProducts_widget.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/product_screen/bloc/product_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -51,7 +51,9 @@ class _ProductSellerScreenState extends State<ProductSellerScreen> {
             listener: (context, state) {},
             builder: (context, state) {
               if (state is ProductSellerLoadingState) {
-                return const LoadingIndicatorWidget(isSeller: true,);
+                return const LoadingIndicatorWidget(
+                  isSeller: true,
+                );
               }
 
               if (state is ProductSellerErrorState) {
