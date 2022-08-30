@@ -3,14 +3,21 @@ import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
-import 'package:cashback_app/screens/auth_screen/forgout_password/receivedEmail_screen.dart';
+import 'package:cashback_app/screens/auth_screen/forgot_password/receivedEmail_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ForgoutPasswordScreen extends StatelessWidget {
-  const ForgoutPasswordScreen({Key? key}) : super(key: key);
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,9 +51,10 @@ class ForgoutPasswordScreen extends StatelessWidget {
                           style: TextStyleHelper.f20w700,
                         ),
                         SizedBox(height: 40.w),
-                        const AuthTextFieldWidget(
+                        AuthTextFieldWidget(
                           hintext: "E-mail",
                           textInputType: TextInputType.emailAddress,
+                          controller: emailController,
                         ),
                         SizedBox(height: 30.w),
                         AuthButtonWidget(

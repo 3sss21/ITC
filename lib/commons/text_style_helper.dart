@@ -50,7 +50,7 @@ abstract class TextStyleHelper {
 
   static TextStyle forgotPass = TextStyle(
     fontFamily: "Lato",
-    fontSize: 10.sp,
+    fontSize: 13.sp,
     fontWeight: FontWeight.w500,
     color: ThemeHelper.white50,
   );

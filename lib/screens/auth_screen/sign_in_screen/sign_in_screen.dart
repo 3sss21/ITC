@@ -1,7 +1,7 @@
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/screens/auth_screen/bloc/auth_bloc.dart';
-import 'package:cashback_app/screens/auth_screen/forgout_password/forgout_pass_screen.dart';
+import 'package:cashback_app/screens/auth_screen/forgot_password/forgot_pass_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
@@ -42,6 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
           }
+
           if (state is AuthSuccessState) {
             var box = Hive.box("userNameBox");
             box.put("username", phoneNumberController.text);
@@ -67,21 +68,28 @@ class _SignInScreenState extends State<SignInScreen> {
                   functionBox: 'Введите свои данные',
                   listWidgets: [
                     SizedBox(height: 50.h),
-                    const AuthTextFieldWidget(
+                    AuthTextFieldWidget(
+                      isObsecuredText: false,
+                      isSuffixIcon: false,
+                      isClosedEye: false,
                       hintext: "Номер телефона",
                       textInputType: TextInputType.number,
+                      controller: phoneNumberController,
                     ),
                     SizedBox(height: 23.h),
-                    const AuthTextFieldWidget(
+                    AuthTextFieldWidget(
+                      isObsecuredText: true,
+                      isSuffixIcon: true,
+                      isClosedEye: true,
                       hintext: "Пароль",
                       textInputType: TextInputType.text,
+                      controller: passwordController,
                     ),
-                    SizedBox(height: 5.h),
-                    TextButton(
+                   TextButton(
                       onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const ForgoutPasswordScreen(),
+                          builder: (context) => const ForgotPasswordScreen(),
                         ),
                       ),
                       child: Text(

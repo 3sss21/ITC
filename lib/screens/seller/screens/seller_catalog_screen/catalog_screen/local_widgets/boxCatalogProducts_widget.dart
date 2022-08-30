@@ -10,6 +10,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
   final String productType;
   final String price;
   final String cashBack;
+  
   const BoxCatalogProductsWidget({
     Key? key,
     required this.imageUrl,
@@ -25,7 +26,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
       width: 260.w,
       height: 98.h,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(83, 42, 42, 0.8),
+        color: ThemeHelper.brown80,
         borderRadius: BorderRadius.circular(20.r),
       ),
       child: Padding(
