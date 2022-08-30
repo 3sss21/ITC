@@ -1,10 +1,7 @@
-import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/local_widgets/total_cost.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +34,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   SizedBox(
                     width: 38.w,
-                    // height: 17.h,
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,12 +99,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     minimumSize: Size(150.w, 40.h),
                   ),
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     "оплатить",
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                      color: Color.fromRGBO(83, 42, 42, 0.8),
+                      color: ThemeHelper.brown80,
                     ),
                   )),
             ),

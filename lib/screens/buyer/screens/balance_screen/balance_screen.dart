@@ -34,7 +34,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const AppCoverBalanceWidget(
-            nameCover: 'БАЛАНС',
+            nameCover: 'БАЛАНC',
             balance: 300,
           ),
           BlocConsumer<BalanceBloc, BalanceState>(

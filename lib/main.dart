@@ -27,8 +27,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const 
-        // SplashScreen(),
-       BuyerNavigationWidget(currentIndex: 0,)
+        SplashScreen(),
+      //  BuyerNavigationWidget(currentIndex: 0,)
         // SellerNavigationWidget(currentIndex: 2)
       ),
     );

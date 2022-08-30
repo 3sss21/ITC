@@ -36,7 +36,6 @@ class _SignInScreenState extends State<SignInScreen> {
       body: BlocConsumer<AuthBloc, AuthState>(
         bloc: authBloc,
         listener: (context, state) {
-          // TODO: implement listener
           if (state is AuthErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -44,13 +43,14 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
             );
           }
+
           if (state is AuthSuccessState) {
             var box = Hive.box("userNameBox");
             box.put("username", phoneNumberController.text);
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: ((context) => BuyerNavigationWidget(
+                builder: ((context) => const BuyerNavigationWidget(
                       currentIndex: 0,
                     )),
               ),
@@ -69,19 +69,29 @@ class _SignInScreenState extends State<SignInScreen> {
                   functionBox: 'Введите свои данные',
                   listWidgets: [
                     SizedBox(height: 50.h),
-                    const AuthTextFieldWidget(
+                    AuthTextFieldWidget(
+                      isObsecuredText: false,
+                      isKeyboardType: true,
+                      isSuffixIcon: false,
+                      isClosedEye: false,
                       hintext: "Номер телефона",
                     ),
                     SizedBox(height: 23.h),
-                    const AuthTextFieldWidget(
+                    AuthTextFieldWidget(
+                      isObsecuredText: true,
+                      isKeyboardType: false,
+                      isSuffixIcon: true,
+                      isClosedEye: true,
                       hintext: "Пароль",
                     ),
-                    SizedBox(height: 5.h),
                     TextButton(
                       onPressed: () {},
-                      child: Text(
-                        'Забыли пароль?',
-                        style: TextStyleHelper.forgotPass,
+                      child: Padding(
+                        padding: EdgeInsets.only(left: 8.w),
+                        child: Text(
+                          'Забыли пароль?',
+                          style: TextStyleHelper.forgotPass,
+                        ),
                       ),
                     ),
                     Padding(

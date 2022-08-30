@@ -10,7 +10,6 @@ part 'seller_catalog_state.dart';
 class SellerCatalogBloc extends Bloc<SellerCatalogEvent, SellerCatalogState> {
   SellerCatalogBloc() : super(SellerCatalogInitial()) {
     on<SellerCatalogEvent>((event, emit) async {
-      // TODO: implement event handler
 
       if (event is GetCatalogEvent) {
         emit(CatalogSellerLoadingState());
@@ -22,7 +21,7 @@ class SellerCatalogBloc extends Bloc<SellerCatalogEvent, SellerCatalogState> {
           emit(CatalogSellerFetchedState(
               catalogSellerModel: catallogSellerModelList));
         } catch (e) {
-          emit(CatlaogSellerErrorState(
+          emit(CatalogSellerErrorState(
               error: CatchException.convertException(e)));
         }
       }

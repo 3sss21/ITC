@@ -1,12 +1,7 @@
-import 'dart:io';
-
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/clients_cashBox.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/total_cost.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/payment_screen/payment_screen.dart';
-import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/bakset_widgets.dart';
 import 'package:cashback_app/screens/seller/screens/catalog_basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

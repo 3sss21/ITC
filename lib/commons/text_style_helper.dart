@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class TextStyleHelper {
-
   static TextStyle medium18 = TextStyle(
     fontSize: 18.sp,
     fontFamily: "Lato",
@@ -51,7 +50,7 @@ abstract class TextStyleHelper {
 
   static TextStyle forgotPass = TextStyle(
     fontFamily: "Lato",
-    fontSize: 10.sp,
+    fontSize: 13.sp,
     fontWeight: FontWeight.w500,
     color: ThemeHelper.white50,
   );
@@ -115,18 +114,18 @@ abstract class TextStyleHelper {
     fontSize: 14.sp,
     fontWeight: FontWeight.w600,
   );
-   static TextStyle f14w400white = TextStyle(
+  static TextStyle f14w400white = TextStyle(
     fontFamily: 'Lato',
     color: ThemeHelper.white,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
   );
-    static TextStyle f16w4000= TextStyle(
+  static TextStyle f16w4000 = TextStyle(
     fontFamily: 'Lato',
     color: ThemeHelper.yellow,
     fontSize: 14.sp,
     fontWeight: FontWeight.w400,
-    );
+  );
   static TextStyle labelStyle = TextStyle(
     fontFamily: 'Lato',
     fontSize: 14.sp,
