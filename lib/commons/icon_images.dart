@@ -13,4 +13,6 @@ class IconsImages {
   static String iconVbrown = 'assets/images/icon_v_brown.png';
   static String changeIcon = 'assets/images/changeIcon.png';
   static String coin = 'assets/images/coin.png';
+  static String flashOn = 'assets/images/flash_on.png';
+  static String flashOff = 'assets/images/flash_off.png';
 }

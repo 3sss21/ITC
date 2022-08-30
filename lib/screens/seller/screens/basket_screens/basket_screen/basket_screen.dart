@@ -24,7 +24,7 @@ class BasketScreen extends StatelessWidget {
             function: () => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const ScannerQRCodeScreen(),
+                builder: (context) => ScannerQRCodeScreen(),
               ),
             ),
             buttonTxt: 'Сканировать QR-код',
