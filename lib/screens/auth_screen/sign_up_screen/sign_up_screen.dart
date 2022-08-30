@@ -87,21 +87,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Padding(
                           padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
                           child: AuthButtonWidget(
-                              width: 170,
-                              txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-                              function: () {
-                                authBloc.add(
-                                  GetSignUpEvent(
-                                    email: emailController.text,
-                                    phoneNumber: phoneNumberController.text,
-                                    password: passwordController.text,
-                                    repeatPassword: repeatPasswordController.text,
-                                  ),
-                                );
-                                print(emailController.text);
-                                print(phoneNumberController.text);
-                                print(passwordController.text);
-                              }),
+                            width: 170,
+                            txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
+                            function: () {
+                              authBloc.add(
+                                GetSignUpEvent(
+                                  email: emailController.text,
+                                  phoneNumber: phoneNumberController.text,
+                                  password: passwordController.text,
+                                  repeatPassword: repeatPasswordController.text,
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -115,4 +113,3 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 }
-
