@@ -8,7 +8,7 @@ void main() async{
   await Hive.initFlutter();
   await Hive.openBox("tokenBox");
   await Hive.openBox("phoneNumberBox");
-
+  
   runApp(const MyApp());
 }
 
