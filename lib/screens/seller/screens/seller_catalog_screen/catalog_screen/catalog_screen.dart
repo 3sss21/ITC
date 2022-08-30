@@ -58,7 +58,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
                 );
               }
 
-              if (state is CatlaogSellerErrorState) {
+              if (state is CatalogSellerErrorState) {
                 return ButtonTryAgainWidget(
                   onTabFunction: () => catallogSellerBloc.add(
                     GetCatalogEvent(),

@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         home: const 
-        // SplashScreen(),
+        SplashScreen(),
         // ForgoutPasswordScreen()
       //  BuyerNavigationWidget(currentIndex: 3,)
-      SellerNavigationWidget(currentIndex: 1),
+      // SellerNavigationWidget(currentIndex: 1),
       ),
     );
   }

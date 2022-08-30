@@ -13,8 +13,8 @@ class CatalogSellerFetchedState extends SellerCatalogState {
 
 class CatalogSellerLoadingState extends SellerCatalogState {}
 
-class CatlaogSellerErrorState extends SellerCatalogState {
+class CatalogSellerErrorState extends SellerCatalogState {
   final CatchException error;
 
-  CatlaogSellerErrorState({required this.error});
+  CatalogSellerErrorState({required this.error});
 }
