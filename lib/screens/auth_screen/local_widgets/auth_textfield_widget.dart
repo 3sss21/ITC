@@ -11,15 +11,15 @@ class AuthTextFieldWidget extends StatefulWidget {
   bool? isSuffixIcon;
   bool? isClosedEye;
 
-  AuthTextFieldWidget(
-      {Key? key,
-      required this.hintext,
-      required this.controller,
-      this.textInputType,
-      this.isObsecuredText,
-      this.isSuffixIcon,
-      this.isClosedEye})
-      : super(key: key);
+  AuthTextFieldWidget({
+    Key? key,
+    required this.hintext,
+    required this.controller,
+    this.textInputType,
+    this.isObsecuredText,
+    this.isSuffixIcon,
+    this.isClosedEye,
+  }) : super(key: key);
 
   @override
   State<AuthTextFieldWidget> createState() => _AuthTextFieldWidgetState();
