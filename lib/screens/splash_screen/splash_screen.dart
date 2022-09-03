@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => AuthScreen(),
+        builder: (context) => const AuthScreen(),
         // const SellerNavigationWidget(currentIndex: 0),
       ),
     );

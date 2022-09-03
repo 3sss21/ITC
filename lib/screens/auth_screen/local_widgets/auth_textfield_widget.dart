@@ -39,6 +39,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
       width: 270.w,
       height: 22.h,
       child: TextField(
+        cursorColor: ThemeHelper.white,
         textInputAction: TextInputAction.next,
         keyboardType: widget.textInputType,
         style: TextStyle(
@@ -49,19 +50,20 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
         obscureText: widget.isObsecuredText!,
         textAlign: TextAlign.center,
         decoration: InputDecoration(
+          focusedBorder: const OutlineInputBorder(borderSide: BorderSide.none),
           contentPadding: EdgeInsets.only(bottom: 20.h, left: 40.w),
           suffixIcon: widget.isSuffixIcon!
-              ? InkWell(
-                  onTap: () {
+              ? IconButton(
+                  onPressed: () {
                     togglePassword();
-                    setState(() {
-                      widget.isObsecuredText = !widget.isObsecuredText!;
-                    });
-                    setState(() {
-                      widget.isClosedEye = !widget.isClosedEye!;
-                    });
+                      setState(() {
+                        widget.isObsecuredText = !widget.isObsecuredText!;
+                      });
+                      setState(() {
+                        widget.isClosedEye = !widget.isClosedEye!;
+                      });
                   },
-                  child: widget.isClosedEye!
+                  icon: widget.isClosedEye!
                       ? Icon(
                           Icons.remove_red_eye_outlined,
                           color: ThemeHelper.white70,
@@ -72,6 +74,31 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
                         ),
                 )
               : const SizedBox(),
+          // suffixIcon: widget.isSuffixIcon!
+          //     ? Padding(
+          //       padding: EdgeInsets.only(bottom: 10.h),
+          //       child: InkWell(
+          //           onTap: () {
+          //             togglePassword();
+          //             setState(() {
+          //               widget.isObsecuredText = !widget.isObsecuredText!;
+          //             });
+          //             setState(() {
+          //               widget.isClosedEye = !widget.isClosedEye!;
+          //             });
+          //           },
+          //           child: widget.isClosedEye!
+          //               ? Icon(
+          //                   Icons.remove_red_eye_outlined,
+          //                   color: ThemeHelper.white70,
+          //                 )
+          //               : Icon(
+          //                   Icons.visibility_off_outlined,
+          //                   color: ThemeHelper.white70,
+          //                 ),
+          //         ),
+          //     )
+          //     : const SizedBox(),
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
               color: ThemeHelper.white50,
