@@ -1,28 +1,30 @@
 import 'dart:developer';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:dio/dio.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive/hive.dart';
+
 class ApiRequester {
- 
-  //var box = Hive.box("tokenbox");
+  var box = Hive.box("tokenbox");
   static String url = 'http://165.22.49.123/api';
-  
+
   Future<Dio> initDio() async {
-    //String token = await box.get("token", defaultValue: '');
+    String token = await box.get("token", defaultValue: '');
 
     return Dio(
       BaseOptions(
-        headers: {
-           "Authorization": "Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46"
-//               //  Constatns.token == null ? "" : "Token ${Constatns.token}",
-         },
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
+        headers: {
+          // "Authorization": "Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46"
+          "Autorization": token
+          //  Constatns.token == null ? "" : "Token ${Constatns.token}",
+        },
         connectTimeout: 30000,
       ),
     );
   }
+
   Future<Response> toGet(String url, {Map<String, dynamic>? param}) async {
     Dio dio = await initDio();
     try {
@@ -39,10 +41,9 @@ class ApiRequester {
     Dio dio = await initDio();
     try {
       return dio.post(url, queryParameters: param, data: body);
-
     } catch (e) {
       log(e.toString());
       throw CatchException.convertException(e);
     }
   }
-  }
+}
