@@ -3,10 +3,12 @@ import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
+import 'package:cashback_app/screens/auth_screen/forgot_password/bloc/forgot_password_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/forgot_password/receivedEmail_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -17,65 +19,77 @@ class ForgotPasswordScreen extends StatefulWidget {
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  late ForgotPasswordBloc forgotPasswordBloc;
   TextEditingController emailController = TextEditingController();
 
   @override
+  void initState() {
+    forgotPasswordBloc = ForgotPasswordBloc();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          const FelizLogoWidget(),
-          Positioned(
-            top: 265.5.h,
-            left: 38.w,
-            right: 38.w,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TxtBtnBackWidget(function: () => Navigator.pop(context)),
-                SizedBox(height: 11.5.w),
-                Container(
-                  width: 300.w,
-                  height: 238.h,
-                  decoration: BoxDecoration(
-                    color: ThemeHelper.green80,
-                    borderRadius: BorderRadius.circular(20.r),
-                    boxShadow: [BoxShadowHelper.boxShadow10],
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(24.w, 40.h, 24.w, 30.h),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Введите E-mail',
-                          style: TextStyleHelper.f20w700,
-                        ),
-                        SizedBox(height: 40.w),
-                        AuthTextFieldWidget(
-                          hintext: "E-mail",
-                          textInputType: TextInputType.emailAddress,
-                          controller: emailController,
-                        ),
-                        SizedBox(height: 30.w),
-                        AuthButtonWidget(
-                          width: 98,
-                          txtButton: 'Далее',
-                          function: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ReceivedEmailScreen(),
+    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+      bloc: forgotPasswordBloc,
+      builder: (context, state) {
+        return Scaffold(
+          body: Stack(
+            children: <Widget>[
+              const FelizLogoWidget(),
+              Positioned(
+                top: 265.5.h,
+                left: 38.w,
+                right: 38.w,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TxtBtnBackWidget(function: () => Navigator.pop(context)),
+                    SizedBox(height: 11.5.w),
+                    Container(
+                      width: 300.w,
+                      height: 238.h,
+                      decoration: BoxDecoration(
+                        color: ThemeHelper.green80,
+                        borderRadius: BorderRadius.circular(20.r),
+                        boxShadow: [BoxShadowHelper.boxShadow10],
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(24.w, 40.h, 24.w, 30.h),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Введите E-mail',
+                              style: TextStyleHelper.f20w700,
                             ),
-                          ),
+                            SizedBox(height: 40.w),
+                            AuthTextFieldWidget(
+                              hintext: "E-mail",
+                              textInputType: TextInputType.emailAddress,
+                              controller: emailController,
+                              isObsecuredText: false,
+                              isClosedEye: false,
+                              isSuffixIcon: false,
+                            ),
+                            SizedBox(height: 30.w),
+                            AuthButtonWidget(
+                              width: 98,
+                              txtButton: 'Далее',
+                              function: () => forgotPasswordBloc.add(
+                                GetForgotPasswordEvent(
+                                    email: emailController.text),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
