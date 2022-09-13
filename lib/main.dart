@@ -1,3 +1,4 @@
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
         home: const 
         SplashScreen(),
         // ForgoutPasswordScreen()
-      //  BuyerNavigationWidget(currentIndex: 3,)
+      //BuyerNavigationWidget(currentIndex: 3,)
       // SellerNavigationWidget(currentIndex: 1),
       ),
     );
