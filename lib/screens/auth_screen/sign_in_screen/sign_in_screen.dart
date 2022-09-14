@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -44,6 +45,12 @@ class _SignInScreenState extends State<SignInScreen> {
     _userIdBloc.add(GetUserIdEvent());
   }
 
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '+996 (###) ###-###',
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy,
+  );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,21 +72,44 @@ class _SignInScreenState extends State<SignInScreen> {
                       listWidgets: [
                         SizedBox(height: 50.h),
                         AuthTextFieldWidget(
+                          contentPadding: EdgeInsets.only(top: 5.r),
+                          inputFormatters: [maskFormatter],
                           isObsecuredText: false,
                           isSuffixIcon: false,
                           isClosedEye: false,
-                          hintext: "Номер телефона",
+                          hintext: "+996 (000) 000-000",
                           textInputType: TextInputType.number,
                           controller: phoneController,
+                          validatorFunc: () {
+                            ((value) {
+                              if (value!.isEmpty ||
+                                  !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
+                                return 'Введите правильный номер телефона';
+                              } else {
+                                return null;
+                              }
+                            });
+                          },
                         ),
-                        SizedBox(height: 23.h),
+                        SizedBox(height: 10.h),
                         AuthTextFieldWidget(
+                          contentPadding: EdgeInsets.only(left: 25.r),
                           isObsecuredText: true,
                           isSuffixIcon: true,
                           isClosedEye: true,
                           hintext: "Пароль",
                           textInputType: TextInputType.text,
                           controller: passwordController,
+                          validatorFunc: () {
+                            ((value) {
+                              if (value!.isEmpty ||
+                                  !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
+                                return 'йцукен';
+                              } else {
+                                return null;
+                              }
+                            });
+                          },
                         ),
                         TextButton(
                           onPressed: () => Navigator.push(
@@ -89,9 +119,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                   const ForgotPasswordScreen(),
                             ),
                           ),
-                          child: Text(
-                            'Забыли пароль?',
-                            style: TextStyleHelper.forgotPass,
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 10.r),
+                            child: Text(
+                              'Забыли пароль?',
+                              style: TextStyleHelper.forgotPass,
+                            ),
                           ),
                         ),
                         Padding(
