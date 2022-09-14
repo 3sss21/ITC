@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:cashback_app/commons/auth_token.dart';
 import 'package:cashback_app/helper/api_requester.dart';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:dio/dio.dart';
@@ -11,8 +10,11 @@ class SignInProvider {
     required String phone,
     required String password,
   }) async {
+    log("signin1");
     try {
       ApiRequester requester = ApiRequester();
+      log("signin2");
+
       Response response =
           await requester.toPost('/auth/token/token/login/', body: {
         'password': password,
@@ -20,10 +22,15 @@ class SignInProvider {
       });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         log(response.data.toString());
-        var box = Hive.box('tokenBox');
-        box.put('token', 'Token ${response.data['auth_token']}');
-        print(box.get('token'));
-        print('sikdjcnsdjk==============${AuthToken.token}');
+        log("signin3");
+
+        Box tokenBox = Hive.box('tokenBox');
+        log("signin4");
+
+        tokenBox.put('token', 'Token ${response.data['auth_token']}');
+        log("signin5");
+
+        log('Token_Box ==== ${tokenBox.get('token')}');
       } else {
         print("!");
         throw CatchException.convertException(response);

@@ -70,13 +70,12 @@ class _BranchScreenState extends State<BranchScreen> {
                           height: 1.sh,
                           width: 1.sw,
                           child: ListView.separated(
-                            itemCount: state.branchModel.length,
+                            itemCount: state.branchModelList.length,
                             itemBuilder: (context, index) => BranchButton(
                               fontSize: 20,
                               width: 300,
                               height: 100,
-                              titleOfBranch:
-                                  state.branchModel[index].branchName!,
+                              titleOfBranch: state.branchModelList[index].name!,
                               function: () {
                                 Navigator.push(
                                   context,

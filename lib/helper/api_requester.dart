@@ -9,7 +9,7 @@ class ApiRequester {
 
   Future<Dio> initDio() async {
     String token = await box.get("token", defaultValue: '');
-
+    log('Token_bloc === ${box.get('token')}');
     return Dio(
       BaseOptions(
         baseUrl: url,
@@ -17,7 +17,7 @@ class ApiRequester {
         receiveTimeout: 30000,
         headers: {
           // "Authorization": "Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46"
-          "Autorization": token
+          "Authorization": token
           //  Constatns.token == null ? "" : "Token ${Constatns.token}",
         },
         connectTimeout: 30000,
@@ -28,10 +28,10 @@ class ApiRequester {
   Future<Response> toGet(String url, {Map<String, dynamic>? param}) async {
     Dio dio = await initDio();
     try {
-      return dio.get(url, queryParameters: {}
-          // data: jsonEncode(params),
-          );
+      // log("message90");
+      return dio.get(url, queryParameters: param);
     } catch (e) {
+      log("$e");
       throw CatchException.convertException(e);
     }
   }
@@ -41,6 +41,17 @@ class ApiRequester {
     Dio dio = await initDio();
     try {
       return dio.post(url, queryParameters: param, data: body);
+    } catch (e) {
+      log(e.toString());
+      throw CatchException.convertException(e);
+    }
+  }
+
+  Future<Response> toPatch(String url,
+      {Map<String, dynamic>? param, required Map<String, dynamic> body}) async {
+    Dio dio = await initDio();
+    try {
+      return dio.patch(url, queryParameters: param, data: body);
     } catch (e) {
       log(e.toString());
       throw CatchException.convertException(e);
