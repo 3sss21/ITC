@@ -15,7 +15,7 @@ class CatchException {
         return 'error: $error';
       }
 
-      print(' qwertyuio ===== $error');
+      print(' Dio_Error ===== $error');
       if (error.type == DioErrorType.connectTimeout) {
         print('CONNECTION_ERROR');
         return CatchException(

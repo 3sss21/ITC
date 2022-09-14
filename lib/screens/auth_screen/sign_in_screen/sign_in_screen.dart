@@ -7,6 +7,7 @@ import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_wi
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/user_id_bloc/bloc/user_id_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,18 +25,24 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   late SignInBloc signInBloc;
+  late UserIdBloc _userIdBloc;
+
+  @override
+  void initState() {
+    _openBox();
+    signInBloc = SignInBloc();
+    super.initState();
+  }
 
   Future _openBox() async {
     await Hive.initFlutter();
     await Hive.openBox('tokenBox');
-    await Hive.openBox('phoneBox');
+    await Hive.openBox('userIdBox');
   }
 
-  @override
-  void initState() {
-    signInBloc = SignInBloc();
-    _openBox();
-    super.initState();
+  void _userIdRequest() {
+    _userIdBloc = UserIdBloc();
+    _userIdBloc.add(GetUserIdEvent());
   }
 
   var maskFormatter = MaskTextInputFormatter(
@@ -136,9 +143,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               }
 
                               if (state is LoadedSignInState) {
-                                var box = Hive.box('phoneBox');
-                                box.put('phone', phoneController.text);
-                                print(box.get('phone'));
+                                _userIdRequest();
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
@@ -182,3 +187,44 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 }
+//0999665900
+
+// BlocConsumer getUserId(UserIdBloc _userIdBloccc) {
+//   return BlocConsumer<UserIdBloc, UserIdState>(
+//     bloc: _userIdBloccc,
+//     listener: (context, state) {
+//       //   if (state is ErrorUserIdState) {
+//       //     ScaffoldMessenger.of(context).showSnackBar(
+//       //       SnackBar(
+//       //         content: Text(
+//       //           state.message.toString(),
+//       //         ),
+//       //       ),
+//       //     );
+//       //   }
+//     },
+//     builder: (context, state) {
+//       // if (state is ErrorUserIdState) {
+//       //   return Center(
+//       //     child: ButtonTryAgainWidget(
+//       //         onTabFunction: () {
+//       //           _userIdBloccc.add(GetUserIdEvent());
+//       //         },
+//       //         btnTheme: Colors.cyan),
+//       //   );
+//       // }
+//       // if (state is LoadingUserIdState) {
+//       //   return const Center(
+//       //     child: LoadingIndicatorWidget(),
+//       //   );
+//       // }
+
+//       if (state is LoadedUserIdState) {
+//         Box box = Hive.box("userIdBox");
+//         box.put('user_id', state.userIdModelList.id);
+//         print('User_Idddddddddd ==== ${box.get('user_id')}');
+//       }
+//       return const SizedBox();
+//     },
+//   );
+// }

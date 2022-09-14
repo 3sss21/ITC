@@ -137,4 +137,10 @@ abstract class TextStyleHelper {
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle f16Green100 = TextStyle(
+    color: ThemeHelper.green100,
+    fontFamily: 'Lato',
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+  );
 }
