@@ -16,3 +16,5 @@ class SignUpAuthEvent extends SignUpEvent {
     required this.password,
   });
 }
+
+

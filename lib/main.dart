@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         home: const SplashScreen(),
         // ForgoutPasswordScreen()
         //  BuyerNavigationWidget(currentIndex: 3,)
-        // SellerNavigationWidget(currentIndex: 1),
+        //SellerNavigationWidget(currentIndex: 1),
 
       ),
     );

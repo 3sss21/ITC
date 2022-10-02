@@ -72,44 +72,27 @@ class _SignInScreenState extends State<SignInScreen> {
                       listWidgets: [
                         SizedBox(height: 50.h),
                         AuthTextFieldWidget(
-                          contentPadding: EdgeInsets.only(top: 5.r),
+                          // contentPadding: EdgeInsets.only(top: 5.r),
                           inputFormatters: [maskFormatter],
                           isObsecuredText: false,
                           isSuffixIcon: false,
                           isClosedEye: false,
-                          hintext: "+996 (000) 000-000",
+                          autofillHints: const [AutofillHints.telephoneNumber],
+                          hintext: "+996 (777) 464-xxx",
                           textInputType: TextInputType.number,
                           controller: phoneController,
-                          validatorFunc: () {
-                            ((value) {
-                              if (value!.isEmpty ||
-                                  !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
-                                return 'Введите правильный номер телефона';
-                              } else {
-                                return null;
-                              }
-                            });
-                          },
+                          // validatorFunc: () => null,
                         ),
                         SizedBox(height: 10.h),
                         AuthTextFieldWidget(
-                          contentPadding: EdgeInsets.only(left: 25.r),
+                          contentPadding: EdgeInsets.only(bottom: 12.h),
                           isObsecuredText: true,
                           isSuffixIcon: true,
                           isClosedEye: true,
-                          hintext: "Пароль",
+                          hintext: "пароль",
                           textInputType: TextInputType.text,
                           controller: passwordController,
-                          validatorFunc: () {
-                            ((value) {
-                              if (value!.isEmpty ||
-                                  !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
-                                return 'йцукен';
-                              } else {
-                                return null;
-                              }
-                            });
-                          },
+                          // validatorFunc: () => null,
                         ),
                         TextButton(
                           onPressed: () => Navigator.push(

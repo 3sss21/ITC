@@ -28,6 +28,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     super.initState();
   }
 
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       bloc: forgotPasswordBloc,
@@ -58,12 +59,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         child: Column(
                           children: [
                             Text(
-                              'Введите E-mail',
+                              'Введите e-mail',
                               style: TextStyleHelper.f20w700,
                             ),
                             SizedBox(height: 40.w),
                             AuthTextFieldWidget(
-                              hintext: "E-mail",
+                              hintext: "felizCoffee@gmail.com",
                               textInputType: TextInputType.emailAddress,
                               controller: emailController,
                               isObsecuredText: false,
