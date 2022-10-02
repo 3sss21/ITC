@@ -5,6 +5,7 @@ import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_wi
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,7 +19,11 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final formKey = GlobalKey<FormState>();
+  final GlobalKey<FormFieldState> emailKey = GlobalKey();
+  final GlobalKey<FormFieldState> usernameKey = GlobalKey();
+  final GlobalKey<FormFieldState> numberKey = GlobalKey();
+  final GlobalKey<FormFieldState> passwordKey = GlobalKey();
+  final GlobalKey<FormFieldState> repeatPasswordKey = GlobalKey();
   TextEditingController emailController = TextEditingController();
   TextEditingController userNameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
@@ -40,7 +45,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -48,167 +52,238 @@ class _SignUpScreenState extends State<SignUpScreen> {
             SizedBox(
               width: 1.sw,
               height: 1.sh,
-              child: Form(
-                key: formKey,
-                child: Stack(
-                  children: <Widget>[
-                    const FelizLogoWidget(),
-                    Positioned(
-                      top: 196.h,
-                      left: 37.w,
-                      right: 37.w,
-                      child: SingleChildScrollView(
-                        child: AuthBoxWidget(
-                          functionBox: 'Пройдите пожалуйста регистрацию',
-                          listWidgets: [
-                            SizedBox(height: 33.h),
-                            AuthTextFieldWidget(
-                              contentPadding: EdgeInsets.only(top: 5.r),
-                              controller: emailController,
-                              textInputType: TextInputType.emailAddress,
-                              hintext: "felizCoffee@gmail.com",
-                              isObsecuredText: false,
-                              isSuffixIcon: false,
-                              isClosedEye: false,
-                              validatorFunc: () {
-                                ((value) {
-                                  if (value!.isEmpty ||
-                                      !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                          .hasMatch(value)) {
-                                    return 'Введите правильный эл. адрес';
-                                  } else {
-                                    return null;
-                                  }
+              child: Stack(
+                children: <Widget>[
+                  const FelizLogoWidget(),
+                  Positioned(
+                    top: 196.h,
+                    left: 37.w,
+                    right: 37.w,
+                    child: SingleChildScrollView(
+                      child: AuthBoxWidget(
+                        functionBox: 'Пройдите пожалуйста регистрацию',
+                        listWidgets: [
+                          SizedBox(height: 33.h),
+                          AuthTextFieldWidget(
+                            onPressed: () {
+                              setState(() {
+                                emailKey.currentState?.reset();
+                              });
+                            },
+                            // contentPadding: EdgeInsets.only(top: 5.r),
+                            controller: emailController,
+                            textInputType: TextInputType.emailAddress,
+                            hintext: "felizCoffee@gmail.com",
+                            isObsecuredText: false,
+                            isSuffixIcon: false,
+                            isClosedEye: false,
+                            autofillHints: const [AutofillHints.email],
+                            formFieldKey: emailKey,
+                            validate: (value) {
+                              // if (value != null ||
+                              //     !EmailValidator.validate(value!)) {
+                              if (value == null ||
+                                  value.isEmpty ||
+                                  !EmailValidator.validate(value)) {
+                                return 'Введите правильный адрес эл. почты';
+                              } 
+                              else {
+                                return null;
+                              }
+                            },
+                          ),
+                          SizedBox(height: 10.h),
+                          AuthTextFieldWidget(
+                            onPressed: () {
+                              setState(() {
+                                usernameKey.currentState?.reset();
+                              });
+                            },
+                            controller: userNameController,
+                            formFieldKey: usernameKey,
+                            textInputType: TextInputType.text,
+                            hintext: "имя",
+                            isObsecuredText: false,
+                            isSuffixIcon: false,
+                            isClosedEye: false,
+                            validate: (value) {
+                              // if (value != null ||
+                              //     !EmailValidator.validate(value!)) {
+                              if (value == null ||
+                                  value.isEmpty ||
+                                  !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
+                                return 'Введите имя, пожалуйста';
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                          SizedBox(height: 10.h),
+                          AuthTextFieldWidget(
+                              onPressed: () {
+                                setState(() {
+                                  numberKey.currentState?.reset();
                                 });
                               },
-                            ),
-                            SizedBox(height: 10.h),
-                            AuthTextFieldWidget(
-                              contentPadding: EdgeInsets.only(top: 5.r),
-                              controller: userNameController,
-                              textInputType: TextInputType.text,
-                              hintext: "Имя",
-                              isObsecuredText: false,
-                              isSuffixIcon: false,
-                              isClosedEye: false,
-                              validatorFunc: () {
-                                ((value) {
-                                  if (value!.isEmpty ||
-                                      !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
-                                    return 'Введите правильное имя';
-                                  } else {
-                                    return null;
-                                  }
-                                });
-                              },
-                            ),
-                            SizedBox(height: 10.h),
-                            AuthTextFieldWidget(
-                              contentPadding: EdgeInsets.only(),
+                              formFieldKey: numberKey,
                               controller: phoneNumberController,
                               textInputType: TextInputType.number,
-                              hintext: "+996 (000) 000-000",
+                              hintext: "+996 (777) 464-xxx",
                               isObsecuredText: false,
                               isSuffixIcon: false,
                               isClosedEye: false,
+                              autofillHints: const [
+                                AutofillHints.telephoneNumber
+                              ],
                               inputFormatters: [maskFormatter],
-                              maxLength: 12,
-                              validatorFunc: () {
-                                ((value) {
-                                  if (value!.isEmpty ||
-                                      !RegExp(r'^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]+$')
-                                          .hasMatch(value)) {
-                                    return 'Введите правильный номер телефона';
-                                  } else {
-                                    return null;
-                                  }
-                                });
-                              },
-                            ),
-                            SizedBox(height: 10.h),
-                            AuthTextFieldWidget(
-                                contentPadding: EdgeInsets.only(left: 33.r),
-                                controller: passwordController,
-                                textInputType: TextInputType.text,
-                                hintext: "Пароль",
-                                isObsecuredText: true,
-                                isSuffixIcon: true,
-                                isClosedEye: true,
-                                maxLength: 16,
-                                validatorFunc: () {
-                                  ((value) {
-                                    value.length < 6
-                                        ? 'Пароль слишком короткий'
-                                        : null;
-                                  });
-                                }),
-                            SizedBox(height: 10.h),
-                            AuthTextFieldWidget(
-                              contentPadding:
-                                  EdgeInsets.only(left: 33.r, bottom: 5),
-                              controller: repeatPasswordController,
-                              textInputType: TextInputType.text,
-                              hintext: "Повторите пароль",
-                              isObsecuredText: true,
-                              isSuffixIcon: true,
-                              isClosedEye: true,
-                              validatorFunc: () {
-                                ((value) {
-                                  if (passwordController !=
-                                      repeatPasswordController) {
-                                    return 'Пароли не совпадают';
-                                  } else {
-                                    return null;
-                                  }
-                                });
-                              },
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
-                              child: BlocConsumer<SignUpBloc, SignUpState>(
-                                bloc: signUpBloc,
-                                listener: (context, state) {
-                                  if (state is ErrorSignUpState) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      SnackBar(
-                                        content: Text(
-                                          state.message.toString(),
-                                        ),
+                              validate: (value) {
+                                if (value!.length < 18 && value.length > 1) {
+                                  return 'Введите правильный номер';
+                                } else if (value.isEmpty || value == null) {
+                                  return 'Это поле не может быть пустым';
+                                } else {
+                                  return null;
+                                }
+                              }
+                              // validatorFunc: () => null,
+                              ),
+                          SizedBox(height: 10.h),
+                          AuthTextFieldWidget(
+                            onPressed: () {
+                              setState(() {
+                                passwordKey.currentState?.reset();
+                              });
+                            },
+                            formFieldKey: passwordKey,
+                            contentPadding: EdgeInsets.only(bottom: 12.h),
+                            controller: passwordController,
+                            textInputType: TextInputType.text,
+                            hintext: "пароль",
+                            isObsecuredText: true,
+                            isSuffixIcon: true,
+                            isClosedEye: true,
+                            maxLength: 16,
+                            validate: (value) {
+                              // value!.length < 6
+                              //     ? 'Пароль слишком короткий'
+                              //     : null;
+                              if (value!.length < 6 && value.length > 1) {
+                                return 'Пароль слишком короткий';
+                              } else if (value.isEmpty || value == null) {
+                                return 'Это поле не может быть пустым';
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                          SizedBox(height: 10.h),
+                          AuthTextFieldWidget(
+                            onPressed: () {
+                              setState(() {
+                                repeatPasswordKey.currentState?.reset();
+                              });
+                            },
+                            formFieldKey: repeatPasswordKey,
+                            contentPadding: EdgeInsets.only(bottom: 12.r),
+                            controller: repeatPasswordController,
+                            textInputType: TextInputType.text,
+                            hintext: "повторите пароль",
+                            isObsecuredText: true,
+                            isSuffixIcon: true,
+                            isClosedEye: true,
+                            validate: (value) {
+                              if (passwordController !=
+                                      repeatPasswordController &&
+                                  value!.length > 1) {
+                                return 'Пароли не совпадают';
+                              } else if (value!.isEmpty || value == null) {
+                                return 'Это поле не может быть пустым';
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 23.h, bottom: 32.h),
+                            child: BlocConsumer<SignUpBloc, SignUpState>(
+                              bloc: signUpBloc,
+                              listener: (context, state) {
+                                print('object');
+                                if (state is ErrorSignUpState) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                        state.message.toString(),
                                       ),
-                                    );
-                                  }
+                                    ),
+                                  );
+                                }
 
-                                  if (state is LoadedSignUpState) {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const SignInScreen(),
-                                      ),
-                                    );
-                                    emailController.clear();
-                                    userNameController.clear();
-                                    phoneNumberController.clear();
-                                    passwordController.clear();
-                                    repeatPasswordController.clear();
-                                  }
-                                  if (formKey.currentState!.validate()) {
-                                    final snackBar = SnackBar(
-                                        content: Text('Submitting form'));
-                                    _scaffoldKey.currentState!
-                                        .showSnackBar(snackBar);
-                                  }
-                                },
-                                builder: (context, state) {
-                                  if (state is LoadingSignUpState) {
-                                    return const Center(
-                                      child: LoadingIndicatorWidget(),
-                                    );
-                                  }
-                                  return AuthButtonWidget(
-                                    width: 170,
-                                    txtButton: 'ЗАРЕГИСТРИРОВАТЬСЯ',
-                                    function: () {
+                                // final form = .currentState!;
+                                // if (form.validate()) {
+                                //   ScaffoldMessenger.of(context)
+                                //     ..removeCurrentSnackBar()
+                                //     ..showSnackBar(
+                                //       const SnackBar(
+                                //         content: Text(
+                                //             'Вы успешно зарегистрированы!'),
+                                //       ),
+                                //     );
+                                // }
+                                if (state is LoadedSignUpState) {
+                                  Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SignInScreen(),
+                                    ),
+                                  );
+                                  emailController.clear();
+                                  userNameController.clear();
+                                  phoneNumberController.clear();
+                                  passwordController.clear();
+                                  repeatPasswordController.clear();
+                                }
+                              },
+                              builder: (context, state) {
+                                // print(response.data.toString());
+                                if (state is LoadingSignUpState) {
+                                  return const Center(
+                                    child: LoadingIndicatorWidget(),
+                                  );
+                                }
+                                return AuthButtonWidget(
+                                  width: 170.w,
+                                  txtButton: 'зарегистрироваться'.toUpperCase(),
+                                  function: () {
+                                    FocusScope.of(context).unfocus();
+                                    emailKey.currentState?.validate();
+                                    usernameKey.currentState?.validate();
+                                    numberKey.currentState?.validate();
+                                    passwordKey.currentState?.validate();
+                                    repeatPasswordKey.currentState?.validate();
+                                    print(
+                                        'email=== ${emailKey.currentState?.validate()}');
+                                    print(
+                                        'username=== ${usernameKey.currentState?.validate()}');
+                                    print(
+                                        'number=== ${numberKey.currentState?.validate()}');
+                                    print(
+                                        'password=== ${passwordKey.currentState?.validate()}');
+                                    print(
+                                        'repassword=== ${repeatPasswordKey.currentState?.validate()}');
+
+                                    if (emailKey.currentState!.validate() ==
+                                            true ||
+                                        usernameKey.currentState!.validate() ==
+                                            true ||
+                                        numberKey.currentState!.validate() ==
+                                            true ||
+                                        passwordKey.currentState!.validate() ==
+                                            true ||
+                                        repeatPasswordKey.currentState!
+                                                .validate() ==
+                                            true) {
                                       signUpBloc.add(
                                         SignUpAuthEvent(
                                           email: emailController.text,
@@ -217,17 +292,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           password: passwordController.text,
                                         ),
                                       );
-                                    },
-                                  );
-                                },
-                              ),
+                                    } else {
+                                      return null;
+                                    }
+                                  },
+                                );
+                              },
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],

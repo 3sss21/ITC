@@ -14,3 +14,7 @@ class ErrorSignUpState extends SignUpState {
 
   ErrorSignUpState({required this.message});
 }
+
+class ValidSignUpState extends SignUpState {}
+
+class InValidSignUpState extends SignUpState {}
