@@ -60,7 +60,7 @@ class _BranchScreenState extends State<BranchScreen> {
                         Text(
                           "Выбирите филиал",
                           style: TextStyle(
-                            fontSize: 28,
+                            fontSize: 28.sp,
                             fontWeight: FontWeight.w700,
                             color: ThemeHelper.green80,
                           ),
@@ -72,17 +72,19 @@ class _BranchScreenState extends State<BranchScreen> {
                           child: ListView.separated(
                             itemCount: state.branchModelList.length,
                             itemBuilder: (context, index) => BranchButton(
-                              fontSize: 20,
-                              width: 300,
-                              height: 100,
+                              fontSize: 20.sp,
+                              width: 300.w,
+                              height: 100.h,
                               titleOfBranch: state.branchModelList[index].name!,
                               function: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const ShopScreen(),
-                                  ),
-                                );
+                                branchBloc.add(GetBranchEvent());
+                                Navigator.pushReplacement(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ShopScreen(),
+                                    ),
+                                  );
                               },
                             ),
                             separatorBuilder:

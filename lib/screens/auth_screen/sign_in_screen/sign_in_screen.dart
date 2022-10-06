@@ -8,11 +8,11 @@ import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_blo
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/user_id_bloc/bloc/user_id_bloc.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -22,8 +22,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormFieldState> emailKey = GlobalKey();
+  final GlobalKey<FormFieldState> passwordKey = GlobalKey();
   late SignInBloc signInBloc;
   late UserIdBloc _userIdBloc;
 
@@ -45,11 +47,11 @@ class _SignInScreenState extends State<SignInScreen> {
     _userIdBloc.add(GetUserIdEvent());
   }
 
-  var maskFormatter = MaskTextInputFormatter(
-    mask: '+996 (###) ###-###',
-    filter: {"#": RegExp(r'[0-9]')},
-    type: MaskAutoCompletionType.lazy,
-  );
+  // var maskFormatter = MaskTextInputFormatter(
+  //   mask: '+996 (###) ###-###',
+  //   filter: {"#": RegExp(r'[0-9]')},
+  //   type: MaskAutoCompletionType.lazy,
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -72,28 +74,59 @@ class _SignInScreenState extends State<SignInScreen> {
                       listWidgets: [
                         SizedBox(height: 50.h),
                         AuthTextFieldWidget(
+                          onPressed: () {
+                            setState(() {
+                              emailKey.currentState?.reset();
+                            });
+                          },
                           // contentPadding: EdgeInsets.only(top: 5.r),
-                          inputFormatters: [maskFormatter],
+                          controller: emailController,
+                          textInputType: TextInputType.emailAddress,
+                          hintext: "felizCoffee@gmail.com",
                           isObsecuredText: false,
                           isSuffixIcon: false,
                           isClosedEye: false,
-                          autofillHints: const [AutofillHints.telephoneNumber],
-                          hintext: "+996 (777) 464-xxx",
-                          textInputType: TextInputType.number,
-                          controller: phoneController,
-                          // validatorFunc: () => null,
+                          autofillHints: const [AutofillHints.email],
+                          formFieldKey: emailKey,
+                          validate: (value) {
+                            // if (value != null ||
+                            //     !EmailValidator.validate(value!)) {
+                            if (value == null ||
+                                value.isEmpty ||
+                                !EmailValidator.validate(value)) {
+                              return 'Введите правильный адрес эл. почты';
+                            } else {
+                              return null;
+                            }
+                          },
                         ),
                         SizedBox(height: 10.h),
                         AuthTextFieldWidget(
-                          contentPadding: EdgeInsets.only(bottom: 12.h),
-                          isObsecuredText: true,
-                          isSuffixIcon: true,
-                          isClosedEye: true,
-                          hintext: "пароль",
-                          textInputType: TextInputType.text,
-                          controller: passwordController,
-                          // validatorFunc: () => null,
-                        ),
+                            onPressed: () {
+                              setState(() {
+                                passwordKey.currentState?.reset();
+                              });
+                            },
+                            formFieldKey: passwordKey,
+                            contentPadding: EdgeInsets.only(bottom: 12.h),
+                            controller: passwordController,
+                            textInputType: TextInputType.text,
+                            hintext: "пароль",
+                            isObsecuredText: true,
+                            isSuffixIcon: true,
+                            isClosedEye: true,
+                            validate: (value) {
+                              if (value!.length < 6 && value.length > 1) {
+                                return 'Пароль слишком короткий';
+                              } else if (value.isEmpty || value == null) {
+                                return 'Это поле не может быть пустым';
+                              }else if (value.length > 16) {
+                                return 'Пароль может быть от 6 до 16 символов';
+                              } else {
+                                return null;
+                              }
+                            },
+                          ),
                         TextButton(
                           onPressed: () => Navigator.push(
                             context,
@@ -135,7 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                             currentIndex: 0),
                                   ),
                                 );
-                                phoneController.clear();
+                                emailController.clear();
                                 passwordController.clear();
                               }
                             },
@@ -146,15 +179,24 @@ class _SignInScreenState extends State<SignInScreen> {
                                 );
                               }
                               return AuthButtonWidget(
-                                width: 98,
-                                txtButton: 'ВОЙТИ',
-                                function: () => signInBloc.add(
-                                  GetSignInEvent(
-                                    phone: phoneController.text,
-                                    password: passwordController.text,
-                                  ),
-                                ),
-                              );
+                                  width: 98,
+                                  txtButton: 'ВОЙТИ',
+                                  function: () {
+                                    FocusScope.of(context).unfocus();
+                                    emailKey.currentState?.validate();
+                                    passwordKey.currentState?.validate();
+                                    if (emailKey.currentState!.validate() &&
+                                        passwordKey.currentState!.validate()) {
+                                      signInBloc.add(
+                                        GetSignInEvent(
+                                          phone: emailController.text,
+                                          password: passwordController.text,
+                                        ),
+                                      );
+                                    } else {
+                                      return null;
+                                    }
+                                  });
                             },
                           ),
                         ),
