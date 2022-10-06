@@ -7,6 +7,8 @@ import 'package:cashback_app/screens/auth_screen/forgot_password/bloc/forgot_pas
 import 'package:cashback_app/screens/auth_screen/forgot_password/receivedEmail_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
+import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +23,7 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   late ForgotPasswordBloc forgotPasswordBloc;
   TextEditingController emailController = TextEditingController();
+  final GlobalKey<FormFieldState> emailKey = GlobalKey();
 
   @override
   void initState() {
@@ -64,21 +67,42 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                             SizedBox(height: 40.w),
                             AuthTextFieldWidget(
+                              onPressed: (){  setState(() {
+                                emailKey.currentState?.reset();
+                              });},
                               hintext: "felizCoffee@gmail.com",
                               textInputType: TextInputType.emailAddress,
                               controller: emailController,
                               isObsecuredText: false,
                               isClosedEye: false,
                               isSuffixIcon: false,
+                              validate: (value) {
+                                if (value == null ||
+                                    value.isEmpty ||
+                                    !EmailValidator.validate(value)) {
+                                  return 'Введите правильный адрес эл. почты';
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                             SizedBox(height: 30.w),
                             AuthButtonWidget(
-                              width: 98,
+                              width: 98.w,
                               txtButton: 'Далее',
-                              function: () => forgotPasswordBloc.add(
-                                GetForgotPasswordEvent(
-                                    email: emailController.text),
-                              ),
+                              function: () {
+                                FocusScope.of(context).unfocus();
+                                emailKey.currentState?.validate();
+                                if (emailKey.currentState!.validate() == true) {
+                                  forgotPasswordBloc.add(
+                                    GetForgotPasswordEvent(
+                                      email: emailController.text,
+                                    ),
+                                  );
+                                } else {
+                                  return null;
+                                }
+                              },
                             ),
                           ],
                         ),

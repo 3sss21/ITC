@@ -37,11 +37,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
   }
 
-  var maskFormatter = MaskTextInputFormatter(
-    mask: '+996 (###) ###-###',
-    filter: {"#": RegExp(r'[0-9]')},
-    type: MaskAutoCompletionType.lazy,
-  );
+  // var maskFormatter = MaskTextInputFormatter(
+  //   mask: '+996 (###) ###-###',
+  //   filter: {"#": RegExp(r'[0-9]')},
+  //   type: MaskAutoCompletionType.lazy,
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -118,35 +118,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               }
                             },
                           ),
-                          SizedBox(height: 10.h),
-                          AuthTextFieldWidget(
-                              onPressed: () {
-                                setState(() {
-                                  numberKey.currentState?.reset();
-                                });
-                              },
-                              formFieldKey: numberKey,
-                              controller: phoneNumberController,
-                              textInputType: TextInputType.number,
-                              hintext: "+996 (777) 464-xxx",
-                              isObsecuredText: false,
-                              isSuffixIcon: false,
-                              isClosedEye: false,
-                              autofillHints: const [
-                                AutofillHints.telephoneNumber
-                              ],
-                              inputFormatters: [maskFormatter],
-                              validate: (value) {
-                                if (value!.length < 18 && value.length > 1) {
-                                  return 'Введите правильный номер';
-                                } else if (value.isEmpty || value == null) {
-                                  return 'Это поле не может быть пустым';
-                                } else {
-                                  return null;
-                                }
-                              }
-                              // validatorFunc: () => null,
-                              ),
+                          //SizedBox(height: 10.h),
+                          // AuthTextFieldWidget(
+                          //     onPressed: () {
+                          //       setState(() {
+                          //         numberKey.currentState?.reset();
+                          //       });
+                          //     },
+                          //     formFieldKey: numberKey,
+                          //     controller: phoneNumberController,
+                          //     textInputType: TextInputType.number,
+                          //     hintext: "+996 (777) 464-xxx",
+                          //     isObsecuredText: false,
+                          //     isSuffixIcon: false,
+                          //     isClosedEye: false,
+                          //     autofillHints: const [
+                          //       AutofillHints.telephoneNumber
+                          //     ],
+                          //     inputFormatters: [maskFormatter],
+                          //     validate: (value) {
+                          //       if (value!.length < 18 && value.length > 1) {
+                          //         return 'Введите правильный номер';
+                          //       } else if (value.isEmpty || value == null) {
+                          //         return 'Это поле не может быть пустым';
+                          //       } else {
+                          //         return null;
+                          //       }
+                          //     }
+                          //     // validatorFunc: () => null,
+                          //     ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
                             onPressed: () {
@@ -162,15 +162,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isObsecuredText: true,
                             isSuffixIcon: true,
                             isClosedEye: true,
-                            maxLength: 16,
                             validate: (value) {
-                              // value!.length < 6
-                              //     ? 'Пароль слишком короткий'
-                              //     : null;
                               if (value!.length < 6 && value.length > 1) {
                                 return 'Пароль слишком короткий';
                               } else if (value.isEmpty || value == null) {
                                 return 'Это поле не может быть пустым';
+                              }else if (value.length > 16) {
+                                return 'Пароль может быть от 6 до 16 символов';
                               } else {
                                 return null;
                               }
@@ -193,8 +191,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isClosedEye: true,
                             validate: (value) {
                               if (passwordController !=
-                                      repeatPasswordController &&
-                                  value!.length > 1) {
+                                      repeatPasswordController) {
                                 return 'Пароли не совпадают';
                               } else if (value!.isEmpty || value == null) {
                                 return 'Это поле не может быть пустым';
@@ -240,7 +237,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   );
                                   emailController.clear();
                                   userNameController.clear();
-                                  phoneNumberController.clear();
+                                  //phoneNumberController.clear();
                                   passwordController.clear();
                                   repeatPasswordController.clear();
                                 }
@@ -259,7 +256,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     FocusScope.of(context).unfocus();
                                     emailKey.currentState?.validate();
                                     usernameKey.currentState?.validate();
-                                    numberKey.currentState?.validate();
+                                    //numberKey.currentState?.validate();
                                     passwordKey.currentState?.validate();
                                     repeatPasswordKey.currentState?.validate();
                                     print(
@@ -274,13 +271,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'repassword=== ${repeatPasswordKey.currentState?.validate()}');
 
                                     if (emailKey.currentState!.validate() ==
-                                            true ||
+                                            true &&
                                         usernameKey.currentState!.validate() ==
-                                            true ||
-                                        numberKey.currentState!.validate() ==
-                                            true ||
+                                            true &&
+                                        // numberKey.currentState!.validate() ==
+                                        //     true &&
                                         passwordKey.currentState!.validate() ==
-                                            true ||
+                                            true &&
                                         repeatPasswordKey.currentState!
                                                 .validate() ==
                                             true) {

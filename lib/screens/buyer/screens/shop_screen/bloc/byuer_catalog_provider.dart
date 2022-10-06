@@ -8,7 +8,7 @@ class CatallogBuyerProvider {
     try {
       ApiRequester requester = ApiRequester();
 
-      Response response = await requester.toGet('v1/create/category/');
+      Response response = await requester.toGet('v1/products/category/');
 
       if (response.statusCode == 200) {
         List<CategorySellerModel> catalogBuyerModelList = response.data
