@@ -9,7 +9,7 @@ class ProductBuyerProvider {
     try {
       ApiRequester requester = ApiRequester();
 
-      Response response = await requester.toGet('/v1/list/product');
+      Response response = await requester.toGet('/v1/storage/');
 
       if (response.statusCode == 200) {
         List<CatalogSeller> catalogSellerModelList = response.data

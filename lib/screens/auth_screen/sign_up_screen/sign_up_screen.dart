@@ -30,6 +30,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController repeatPasswordController = TextEditingController();
   late SignUpBloc signUpBloc;
+  
 
   @override
   void initState() {
@@ -37,11 +38,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
   }
 
-  // var maskFormatter = MaskTextInputFormatter(
-  //   mask: '+996 (###) ###-###',
-  //   filter: {"#": RegExp(r'[0-9]')},
-  //   type: MaskAutoCompletionType.lazy,
-  // );
+  var maskFormatter = MaskTextInputFormatter(
+    mask: '+996 (###) ###-###',
+    filter: {"#": RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.lazy,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -118,35 +119,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               }
                             },
                           ),
-                          //SizedBox(height: 10.h),
-                          // AuthTextFieldWidget(
-                          //     onPressed: () {
-                          //       setState(() {
-                          //         numberKey.currentState?.reset();
-                          //       });
-                          //     },
-                          //     formFieldKey: numberKey,
-                          //     controller: phoneNumberController,
-                          //     textInputType: TextInputType.number,
-                          //     hintext: "+996 (777) 464-xxx",
-                          //     isObsecuredText: false,
-                          //     isSuffixIcon: false,
-                          //     isClosedEye: false,
-                          //     autofillHints: const [
-                          //       AutofillHints.telephoneNumber
-                          //     ],
-                          //     inputFormatters: [maskFormatter],
-                          //     validate: (value) {
-                          //       if (value!.length < 18 && value.length > 1) {
-                          //         return 'Введите правильный номер';
-                          //       } else if (value.isEmpty || value == null) {
-                          //         return 'Это поле не может быть пустым';
-                          //       } else {
-                          //         return null;
-                          //       }
-                          //     }
-                          //     // validatorFunc: () => null,
-                          //     ),
+                           SizedBox(height: 10.h),
+                          AuthTextFieldWidget(
+                              onPressed: () {
+                                setState(() {
+                                  numberKey.currentState?.reset();
+                                });
+                              },
+                              formFieldKey: numberKey,
+                              controller: phoneNumberController,
+                              textInputType: TextInputType.number,
+                              hintext: "+996 (777) 464-xxx",
+                              isObsecuredText: false,
+                              isSuffixIcon: false,
+                              isClosedEye: false,
+                              autofillHints: const [
+                                AutofillHints.telephoneNumber
+                              ],
+                              inputFormatters: [maskFormatter],
+                              // validate: (value) {
+                              //   if (value!.length < 18 && value.length > 1) {
+                              //     return 'Введите правильный номер';
+                              //   } else if (value.isEmpty || value == null) {
+                              //     return 'Это поле не может быть пустым';
+                              //   } else {
+                              //     return null;
+                              //   }
+                              // }
+                              // validatorFunc: () => null,
+                              ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
                             onPressed: () {
@@ -216,17 +217,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   );
                                 }
 
-                                // final form = .currentState!;
-                                // if (form.validate()) {
-                                //   ScaffoldMessenger.of(context)
-                                //     ..removeCurrentSnackBar()
-                                //     ..showSnackBar(
-                                //       const SnackBar(
-                                //         content: Text(
-                                //             'Вы успешно зарегистрированы!'),
-                                //       ),
-                                //     );
-                                // }
                                 if (state is LoadedSignUpState) {
                                   Navigator.pushReplacement(
                                     context,
@@ -237,13 +227,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   );
                                   emailController.clear();
                                   userNameController.clear();
-                                  //phoneNumberController.clear();
                                   passwordController.clear();
                                   repeatPasswordController.clear();
                                 }
                               },
                               builder: (context, state) {
-                                // print(response.data.toString());
                                 if (state is LoadingSignUpState) {
                                   return const Center(
                                     child: LoadingIndicatorWidget(),
@@ -251,12 +239,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 }
                                 return AuthButtonWidget(
                                   width: 170.w,
-                                  txtButton: 'зарегистрироваться'.toUpperCase(),
+                                  txtButton: 'продолжить'.toUpperCase(),
                                   function: () {
                                     FocusScope.of(context).unfocus();
                                     emailKey.currentState?.validate();
                                     usernameKey.currentState?.validate();
-                                    //numberKey.currentState?.validate();
                                     passwordKey.currentState?.validate();
                                     repeatPasswordKey.currentState?.validate();
                                     print(
@@ -270,28 +257,34 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     print(
                                         'repassword=== ${repeatPasswordKey.currentState?.validate()}');
 
-                                    if (emailKey.currentState!.validate() ==
-                                            true &&
-                                        usernameKey.currentState!.validate() ==
-                                            true &&
-                                        // numberKey.currentState!.validate() ==
-                                        //     true &&
-                                        passwordKey.currentState!.validate() ==
-                                            true &&
-                                        repeatPasswordKey.currentState!
-                                                .validate() ==
-                                            true) {
-                                      signUpBloc.add(
-                                        SignUpAuthEvent(
-                                          email: emailController.text,
-                                          username: userNameController.text,
-                                          phone: phoneNumberController.text,
-                                          password: passwordController.text,
-                                        ),
-                                      );
-                                    } else {
-                                      return null;
-                                    }
+                                    // if (emailKey.currentState!.validate() ==
+                                    //         true &&
+                                    //     usernameKey.currentState!.validate() ==
+                                    //         true &&
+                                    //     passwordKey.currentState!.validate() ==
+                                    //         true &&
+                                    //     repeatPasswordKey.currentState!
+                                    //             .validate() ==
+                                    //         true) {
+                                    //   signUpBloc.add(
+                                    //     SignUpAuthEvent(
+                                    //       email: emailController.text,
+                                    //       username: userNameController.text,
+                                    //       phone: phoneNumberController.text,
+                                    //       password: passwordController.text,
+                                    //     ),
+                                    //   );
+                                    //   ScaffoldMessenger.of(context)
+                                    // ..removeCurrentSnackBar()
+                                    // ..showSnackBar(
+                                    //   const SnackBar(
+                                    //     content: Text(
+                                    //         'Вы успешно зарегистрированы!'),
+                                    //   ),
+                                    // );
+                                    // } else {
+                                    //   return null;
+                                    // }
                                   },
                                 );
                               },
