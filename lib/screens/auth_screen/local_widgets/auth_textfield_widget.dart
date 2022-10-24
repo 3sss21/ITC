@@ -61,7 +61,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
         children: [
           SizedBox(
             width: 270.w,
-            height: 37.h,
+            height: 33.h,
             child: TextFormField(
               onTap: widget.onPressed,
               key: widget.formFieldKey,
@@ -81,9 +81,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
               decoration: InputDecoration(
                 helperText: '',
                 errorStyle: const TextStyle(color: Colors.amber),
-                errorBorder: const UnderlineInputBorder(
-                  borderSide: BorderSide(color: Colors.amber),
-                ),
+              
                 focusedErrorBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.amber),
                 ),

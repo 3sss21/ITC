@@ -17,7 +17,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             username: event.username,
             phoneNumber: event.phone,
             password: event.password,
-            // repeatPassword: event.repeatPassword,
           );
           emit(LoadedSignUpState());
         } catch (e) {
