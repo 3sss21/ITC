@@ -189,7 +189,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                         passwordKey.currentState!.validate()) {
                                       signInBloc.add(
                                         GetSignInEvent(
-                                          phone: emailController.text,
+                                          email: emailController.text,
                                           password: passwordController.text,
                                         ),
                                       );

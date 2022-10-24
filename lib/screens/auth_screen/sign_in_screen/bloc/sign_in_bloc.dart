@@ -13,7 +13,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         emit(LoadingSignInState());
         try {
           await SignInRepository().loginUser(
-            phone: event.phone,
+            email: event.email,
             password: event.password,
           );
           emit(LoadedSignInState());

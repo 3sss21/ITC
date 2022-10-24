@@ -15,20 +15,23 @@ class ButtonTryAgainWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        onPressed: () => onTabFunction(),
-        child: Text(
-          'Try Again',
-          style: TextStyleHelper.functionBox,
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(btnTheme),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(17.r),
-            ),
+      child: Padding(
+        padding:  EdgeInsets.only(top: 220.h),
+        child: ElevatedButton(
+          onPressed: () => onTabFunction(),
+          child: Text(
+            'Try Again',
+            style: TextStyleHelper.functionBox,
           ),
-          shadowColor: MaterialStateProperty.all(ThemeHelper.brown80),
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(btnTheme),
+            shape: MaterialStateProperty.all(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(17.r),
+              ),
+            ),
+            shadowColor: MaterialStateProperty.all(ThemeHelper.brown80),
+          ),
         ),
       ),
     );

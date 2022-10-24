@@ -4,6 +4,7 @@ import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widge
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';
+import 'package:cashback_app/screens/confirm_code/confirm_password.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
@@ -66,11 +67,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         listWidgets: [
                           SizedBox(height: 33.h),
                           AuthTextFieldWidget(
-                            onPressed: () {
-                              setState(() {
-                                emailKey.currentState?.reset();
-                              });
-                            },
                             // contentPadding: EdgeInsets.only(top: 5.r),
                             controller: emailController,
                             textInputType: TextInputType.emailAddress,
@@ -78,6 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isObsecuredText: false,
                             isSuffixIcon: false,
                             isClosedEye: false,
+                           
                             autofillHints: const [AutofillHints.email],
                             formFieldKey: emailKey,
                             validate: (value) {
@@ -87,19 +84,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   value.isEmpty ||
                                   !EmailValidator.validate(value)) {
                                 return 'Введите правильный адрес эл. почты';
-                              } 
-                              else {
-                                return null;
                               }
                             },
                           ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
-                            onPressed: () {
-                              setState(() {
-                                usernameKey.currentState?.reset();
-                              });
-                            },
                             controller: userNameController,
                             formFieldKey: usernameKey,
                             textInputType: TextInputType.text,
@@ -114,11 +103,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   value.isEmpty ||
                                   !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
                                 return 'Введите имя, пожалуйста';
-                              } else {
-                                return null;
                               }
                             },
                           ),
+
                            SizedBox(height: 10.h),
                           AuthTextFieldWidget(
                               onPressed: () {
@@ -150,11 +138,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
-                            onPressed: () {
-                              setState(() {
-                                passwordKey.currentState?.reset();
-                              });
-                            },
                             formFieldKey: passwordKey,
                             contentPadding: EdgeInsets.only(bottom: 12.h),
                             controller: passwordController,
@@ -168,20 +151,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 return 'Пароль слишком короткий';
                               } else if (value.isEmpty || value == null) {
                                 return 'Это поле не может быть пустым';
-                              }else if (value.length > 16) {
+                              } else if (value.length > 16) {
                                 return 'Пароль может быть от 6 до 16 символов';
-                              } else {
-                                return null;
                               }
                             },
                           ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
-                            onPressed: () {
-                              setState(() {
-                                repeatPasswordKey.currentState?.reset();
-                              });
-                            },
                             formFieldKey: repeatPasswordKey,
                             contentPadding: EdgeInsets.only(bottom: 12.r),
                             controller: repeatPasswordController,
@@ -191,13 +167,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isSuffixIcon: true,
                             isClosedEye: true,
                             validate: (value) {
-                              if (passwordController !=
-                                      repeatPasswordController) {
+                              if (passwordController.text !=
+                                  repeatPasswordController.text) {
                                 return 'Пароли не совпадают';
                               } else if (value!.isEmpty || value == null) {
                                 return 'Это поле не может быть пустым';
-                              } else {
-                                return null;
                               }
                             },
                           ),
@@ -216,13 +190,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   );
                                 }
-
-                                if (state is LoadedSignUpState) {
+                 if (state is LoadedSignUpState) {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          const SignInScreen(),
+                                          const ConfirmScreen(),
                                     ),
                                   );
                                   emailController.clear();
@@ -256,7 +229,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'password=== ${passwordKey.currentState?.validate()}');
                                     print(
                                         'repassword=== ${repeatPasswordKey.currentState?.validate()}');
-
+                                    if (emailKey.currentState!.validate() ==
+                                            true &&
+                                        usernameKey.currentState!.validate() ==
+                                            true &&
+                                        passwordKey.currentState!.validate() ==
+                                            true &&
+                                        repeatPasswordKey.currentState!
+                                                .validate() ==
+                                            true) {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ConfirmScreen()));
+                                      signUpBloc.add(
+                                        SignUpAuthEvent(
+                                          email: emailController.text,
+                                          username: userNameController.text,
+                                          phone: phoneNumberController.text,
+                                          password: passwordController.text,
+                                        ),
+                                      );
+                                    } else {
+                                      return null;
+                                    }
                                     // if (emailKey.currentState!.validate() ==
                                     //         true &&
                                     //     usernameKey.currentState!.validate() ==

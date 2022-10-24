@@ -12,19 +12,13 @@ part 'user_id_state.dart';
 class UserIdBloc extends Bloc<UserIdEvent, UserIdState> {
   UserIdBloc() : super(UserIdInitial()) {
     on<UserIdEvent>((event, emit) async {
-      log("bloc1");
       if (event is GetUserIdEvent) {
         emit(LoadingUserIdState());
-        log("bloc2");
-
         try {
           UserIdModel userIdModelList = await UserIdRepository().getUserId();
-          log("bloc3");
-
           emit(LoadedUserIdState(userIdModelList: userIdModelList));
-          log("bloc4");
         } catch (e) {
-          print('UserId bloc error=====$e');
+
           emit(
             ErrorUserIdState(
               message: CatchException.convertException(e),
