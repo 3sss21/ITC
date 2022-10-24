@@ -4,11 +4,11 @@ part of 'sign_in_bloc.dart';
 abstract class SignInEvent {}
 
 class GetSignInEvent extends SignInEvent {
-  final String phone;
+  final String email;
   final String password;
 
   GetSignInEvent({
-    required this.phone,
+    required this.email,
     required this.password,
   });
 }

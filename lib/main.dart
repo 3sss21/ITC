@@ -1,6 +1,8 @@
 
 import 'package:cashback_app/screens/auth_screen/forgot_password/forgot_pass_screen.dart';
+import 'package:cashback_app/screens/confirm_code/confirm_password.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/catalog_screen.dart';
 import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +30,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:  const SplashScreen(),
+        home:  const CatalogScreen(),
         //ForgotPasswordScreen()
-        //BuyerNavigationWidget(currentIndex: 0,)
+       // BuyerNavigationWidget(currentIndex: 0,)
         //SellerNavigationWidget(currentIndex: 1),
 
       ),

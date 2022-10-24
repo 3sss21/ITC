@@ -2,11 +2,11 @@ import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_pro
 
 class SignInRepository {
   loginUser({
-    required String phone,
+    required String email,
     required String password,
   }) {
     SignInProvider provider = SignInProvider();
-    provider.loginUser(phone: phone, password: password);
+    provider.loginUser(email: email, password: password);
     return '';
   }
 }
