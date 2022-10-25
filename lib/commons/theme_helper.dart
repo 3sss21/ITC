@@ -16,4 +16,5 @@ abstract class ThemeHelper {
   static Color brown80 = const Color.fromRGBO(83, 42, 42, 0.8);
   static Color brown50 = const Color.fromRGBO(83, 42, 42, 0.5);
   static Color brown20 = const Color.fromRGBO(83, 42, 42, 0.2);
+  static Color cyan = Colors.cyan;
 }

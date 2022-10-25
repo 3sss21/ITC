@@ -1,4 +1,3 @@
-
 import 'package:cashback_app/screens/auth_screen/forgot_password/forgot_pass_screen.dart';
 import 'package:cashback_app/screens/confirm_code/confirm_password.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
@@ -14,6 +13,8 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('tokenBox');
   await Hive.openBox('userIdBox');
+  await Hive.openBox('pincodeBox');
+  await Hive.openBox('emailBox');
   runApp(const MyApp());
 }
 
@@ -30,11 +31,13 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:  const CatalogScreen(),
+        home: const SplashScreen(),
+        // const ConfirmScreen(
+        //   email: 'kaparovkanagat@gmail.com',
+        // ),
         //ForgotPasswordScreen()
-       // BuyerNavigationWidget(currentIndex: 0,)
+        // BuyerNavigationWidget(currentIndex: 0,)
         //SellerNavigationWidget(currentIndex: 1),
-
       ),
     );
   }

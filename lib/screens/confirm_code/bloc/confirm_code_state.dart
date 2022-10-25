@@ -5,18 +5,14 @@ abstract class ConfirmCodeState {}
 
 class ConfirmCodeInitial extends ConfirmCodeState {}
 
-
-
 class LoadingConfirmCodedState extends ConfirmCodeState {}
 
 class LoadedConfirmCodeState extends ConfirmCodeState {
-  final ConfirmModel confirmModel;
-
-  LoadedConfirmCodeState({required this.confirmModel});
+  LoadedConfirmCodeState();
 }
 
 class ErrorConfirmCodeState extends ConfirmCodeState {
   final CatchException message;
 
- ErrorConfirmCodeState({required this.message});
+  ErrorConfirmCodeState({required this.message});
 }

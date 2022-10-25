@@ -69,7 +69,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
               inputFormatters: widget.inputFormatters,
               maxLength: widget.maxLength,
               cursorColor: ThemeHelper.white,
-              //textInputAction: TextInputAction.next,
+              textInputAction: TextInputAction.next,
               keyboardType: widget.textInputType,
               style: TextStyle(
                 color: ThemeHelper.white,
@@ -81,7 +81,6 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
               decoration: InputDecoration(
                 helperText: '',
                 errorStyle: const TextStyle(color: Colors.amber),
-              
                 focusedErrorBorder: const UnderlineInputBorder(
                   borderSide: BorderSide(color: Colors.amber),
                 ),

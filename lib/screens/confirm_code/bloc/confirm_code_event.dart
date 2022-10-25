@@ -3,13 +3,11 @@ part of 'confirm_code_bloc.dart';
 @immutable
 abstract class ConfirmCodeEvent {}
 
+class PostConfirmCodeEvent extends ConfirmCodeEvent {
+  final String code, email;
 
-class GetConfirmCodeEvent extends ConfirmCodeEvent {
-
-  final String code;
-
-  GetConfirmCodeEvent({
-
+  PostConfirmCodeEvent({
     required this.code,
+    required this.email,
   });
 }

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cashback_app/helper/catchException.dart';
+import 'package:cashback_app/models/sign_up_response_model.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -12,13 +13,18 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       if (event is SignUpAuthEvent) {
         emit(LoadingSignUpState());
         try {
-          await SignUpRepository().createUser(
+          SignUpResponseModel responseModel =
+              await SignUpRepository().createUser(
             email: event.email,
             username: event.username,
             phoneNumber: event.phone,
             password: event.password,
           );
-          emit(LoadedSignUpState());
+          responseModel.response == 'Успешно зарегистрирован новый пользователь'
+              ? emit(
+                  LoadedSignUpState(responseModel: responseModel),
+                )
+              : null;
         } catch (e) {
           emit(
             ErrorSignUpState(

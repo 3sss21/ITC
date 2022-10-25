@@ -19,14 +19,8 @@ class SignInProvider {
         'email': email,
       });
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
-   
-
-        Box tokenBox = Hive.box('tokenBox');
- 
-
-        tokenBox.put('token', 'Token ${response.data['auth_token']}');
+        log(response.data.toString());
       } else {
-        print("!");
         throw CatchException.convertException(response);
       }
     } catch (e) {
