@@ -7,7 +7,7 @@ class AuthButtonWidget extends StatelessWidget {
   final String txtButton;
   final Function() function;
   final double width;
-  const   AuthButtonWidget({
+  const AuthButtonWidget({
     Key? key,
     required this.txtButton,
     required this.function,

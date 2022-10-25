@@ -1,3 +1,4 @@
+import 'dart:developer';
 
 import 'package:cashback_app/helper/api_requester.dart';
 import 'package:dio/dio.dart';
@@ -22,23 +23,26 @@ import '../../../models/confirm_model.dart';
 //   }
 // }
 
-class ConfirmProvider{
+class ConfirmProvider {
   Future getConfirm({
     required String code,
-    // required String repeatPassword,
+    required String email,
   }) async {
-    try{
+    try {
+      log('email =============== $email');
       ApiRequester requester = ApiRequester();
-      Response response = await requester.toPost('/register/confirm_code/', body: {
+      Response response =
+          await requester.toPost('/register/confirm_code/', body: {
         'code': code,
+        'email': email,
       });
+      log("Response Confirm ========== ${response.data}");
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
-
-      } else {      
+      } else {
         print("!");
         throw CatchException.convertException(response);
       }
-    } catch (e){
+    } catch (e) {
       throw CatchException.convertException(e);
     }
   }

@@ -9,18 +9,18 @@ part 'confirm_code_event.dart';
 part 'confirm_code_state.dart';
 
 class ConfirmCodeBloc extends Bloc<ConfirmCodeEvent, ConfirmCodeState> {
-  List userIdModelList =  [];
+  List userIdModelList = [];
   ConfirmCodeBloc() : super(ConfirmCodeInitial()) {
     on<ConfirmCodeEvent>((event, emit) async {
-       if (event is GetConfirmCodeEvent) {
+      if (event is PostConfirmCodeEvent) {
         emit(LoadingConfirmCodedState());
         try {
           await ConfirmRepository().confirmCode(
-            code: event.code
+            code: event.code,
+            email: event.email,
           );
-          emit(LoadingConfirmCodedState());
+          emit(LoadedConfirmCodeState());
         } catch (e) {
-
           emit(
             ErrorConfirmCodeState(
               message: CatchException.convertException(e),

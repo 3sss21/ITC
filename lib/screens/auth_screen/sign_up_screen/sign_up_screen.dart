@@ -31,7 +31,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController repeatPasswordController = TextEditingController();
   late SignUpBloc signUpBloc;
-  
 
   @override
   void initState() {
@@ -74,7 +73,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             isObsecuredText: false,
                             isSuffixIcon: false,
                             isClosedEye: false,
-                           
                             autofillHints: const [AutofillHints.email],
                             formFieldKey: emailKey,
                             validate: (value) {
@@ -106,36 +104,35 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               }
                             },
                           ),
-
-                           SizedBox(height: 10.h),
+                          SizedBox(height: 10.h),
                           AuthTextFieldWidget(
-                              onPressed: () {
-                                setState(() {
-                                  numberKey.currentState?.reset();
-                                });
-                              },
-                              formFieldKey: numberKey,
-                              controller: phoneNumberController,
-                              textInputType: TextInputType.number,
-                              hintext: "+996 (777) 464-xxx",
-                              isObsecuredText: false,
-                              isSuffixIcon: false,
-                              isClosedEye: false,
-                              autofillHints: const [
-                                AutofillHints.telephoneNumber
-                              ],
-                              inputFormatters: [maskFormatter],
-                              // validate: (value) {
-                              //   if (value!.length < 18 && value.length > 1) {
-                              //     return 'Введите правильный номер';
-                              //   } else if (value.isEmpty || value == null) {
-                              //     return 'Это поле не может быть пустым';
-                              //   } else {
-                              //     return null;
-                              //   }
-                              // }
-                              // validatorFunc: () => null,
-                              ),
+                            onPressed: () {
+                              setState(() {
+                                numberKey.currentState?.reset();
+                              });
+                            },
+                            formFieldKey: numberKey,
+                            controller: phoneNumberController,
+                            textInputType: TextInputType.number,
+                            hintext: "+996 (777) 464-xxx",
+                            isObsecuredText: false,
+                            isSuffixIcon: false,
+                            isClosedEye: false,
+                            autofillHints: const [
+                              AutofillHints.telephoneNumber
+                            ],
+                            inputFormatters: [maskFormatter],
+                            // validate: (value) {
+                            //   if (value!.length < 18 && value.length > 1) {
+                            //     return 'Введите правильный номер';
+                            //   } else if (value.isEmpty || value == null) {
+                            //     return 'Это поле не может быть пустым';
+                            //   } else {
+                            //     return null;
+                            //   }
+                            // }
+                            // validatorFunc: () => null,
+                          ),
                           SizedBox(height: 10.h),
                           AuthTextFieldWidget(
                             formFieldKey: passwordKey,
@@ -190,12 +187,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   );
                                 }
-                 if (state is LoadedSignUpState) {
+                                if (state is LoadedSignUpState) {
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ConfirmScreen(),
+                                      builder: (context) => ConfirmScreen(
+                                        email: emailController.text,
+                                        pinCode: '',
+                                      ),
                                     ),
                                   );
                                   emailController.clear();
@@ -238,11 +237,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         repeatPasswordKey.currentState!
                                                 .validate() ==
                                             true) {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ConfirmScreen()));
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => ConfirmScreen(
+                                      //       email: emailController.text,
+                                      //       pinCode: '',
+                                      //     ),
+                                      //   ),
+                                      // );
                                       signUpBloc.add(
                                         SignUpAuthEvent(
                                           email: emailController.text,
