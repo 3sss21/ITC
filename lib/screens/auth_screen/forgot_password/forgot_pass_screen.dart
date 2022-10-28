@@ -95,7 +95,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                               function: () {
                                 FocusScope.of(context).unfocus();
                                 emailKey.currentState?.validate();
-                                if (emailKey.currentState!.validate() == true) {
+                                if (emailKey.currentState?.validate() == true) {
                                   forgotPasswordBloc.add(
                                     GetForgotPasswordEvent(
                                       email: emailController.text,

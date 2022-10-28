@@ -1,3 +1,4 @@
+import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -95,36 +96,32 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
                 counterText: '',
                 counterStyle: TextStyle(color: ThemeHelper.white70),
                 contentPadding: widget.contentPadding,
-                suffix: widget.isSuffixIcon!
-                    ? InkWell(
-                        onTap: () {
-                          togglePassword();
-                          setState(() {
-                            widget.isObsecuredText = !widget.isObsecuredText!;
-                          });
-                          setState(() {
-                            widget.isClosedEye = !widget.isClosedEye!;
-                          });
-                        },
-                        child: widget.isClosedEye!
-                            ? Icon(
-                                Icons.remove_red_eye_outlined,
-                                color: ThemeHelper.white70,
-                                size: 27,
-                              )
-                            : Icon(
-                                Icons.visibility_off_outlined,
-                                color: ThemeHelper.white70,
-                                size: 27,
-                              ),
-                      )
-                    : const SizedBox(),
+                // suffix: widget.isSuffixIcon!
+                //     ? InkWell(
+                //         onTap: () {
+                //           togglePassword();
+                //           setState(() {
+                //             widget.isObsecuredText = !widget.isObsecuredText!;
+                //           });
+                //           setState(() {
+                //             widget.isClosedEye = !widget.isClosedEye!;
+                //           });
+                //         },
+                //         child: widget.isClosedEye!
+                //             ? Icon(
+                //                 Icons.remove_red_eye_outlined,
+                //                 color: ThemeHelper.white70,
+                //                 size: 27,
+                //               )
+                //             : Icon(
+                //                 Icons.visibility_off_outlined,
+                //                 color: ThemeHelper.white70,
+                //                 size: 27,
+                //               ),
+                //       )
+                // : const SizedBox(),
                 hintText: widget.hintext,
-                hintStyle: TextStyle(
-                  fontSize: 14.sp,
-                  fontWeight: FontWeight.w500,
-                  color: ThemeHelper.white70,
-                ),
+                hintStyle: TextStyleHelper.hintext,
               ),
               validator: widget.validate,
             ),

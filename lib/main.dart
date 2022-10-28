@@ -30,8 +30,9 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const BuyerNavigationWidget(currentIndex: 3),
-        // const SplashScreen()
+        home: 
+        //const BuyerNavigationWidget(currentIndex: 3),
+        const SplashScreen()
         //     const ConfirmScreen(
         //   email: 'kaparovkanagat@gmail.com',
         //   pinCode: '',

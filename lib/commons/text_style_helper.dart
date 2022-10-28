@@ -143,4 +143,17 @@ abstract class TextStyleHelper {
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle hintext = TextStyle(
+    color: ThemeHelper.white70,
+    fontFamily: 'Lato',
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle authButton = TextStyle(
+    color: ThemeHelper.white,
+    fontFamily: 'Lato',
+    fontSize: 23.sp,
+    fontWeight: FontWeight.w700,
+    height: 29 / 24,
+  );
 }

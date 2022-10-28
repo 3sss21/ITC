@@ -226,16 +226,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         passwordKey.currentState?.validate();
                                         repeatPasswordKey.currentState
                                             ?.validate();
-                                        print(
-                                            'email=== ${emailKey.currentState?.validate()}');
-                                        print(
-                                            'username=== ${usernameKey.currentState?.validate()}');
-                                        print(
-                                            'number=== ${numberKey.currentState?.validate()}');
-                                        print(
-                                            'password=== ${passwordKey.currentState?.validate()}');
-                                        print(
-                                            'repassword=== ${repeatPasswordKey.currentState?.validate()}');
+                                        // print(
+                                        //     'email=== ${emailKey.currentState?.validate()}');
+                                        // print(
+                                        //     'username=== ${usernameKey.currentState?.validate()}');
+                                        // print(
+                                        //     'number=== ${numberKey.currentState?.validate()}');
+                                        // print(
+                                        //     'password=== ${passwordKey.currentState?.validate()}');
+                                        // print(
+                                        //     'repassword=== ${repeatPasswordKey.currentState?.validate()}');
                                         if (emailKey.currentState!
                                                     .validate() ==
                                                 true &&
