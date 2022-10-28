@@ -7,11 +7,16 @@ class AuthButtonWidget extends StatelessWidget {
   final String txtButton;
   final Function() function;
   final double width;
+  final Color themeButton;
+  final Color textColor;
+
   const AuthButtonWidget({
     Key? key,
     required this.txtButton,
     required this.function,
     required this.width,
+    required this.themeButton,
+    required this.textColor,
   }) : super(key: key);
 
   @override
@@ -23,10 +28,10 @@ class AuthButtonWidget extends StatelessWidget {
         onPressed: () => function(),
         child: Text(
           txtButton,
-          style: TextStyleHelper.authButtonText,
+          style: TextStyleHelper.authButtonText.copyWith(color: textColor),
         ),
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(ThemeHelper.white),
+          backgroundColor: MaterialStateProperty.all(themeButton),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10.r),

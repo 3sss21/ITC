@@ -8,7 +8,8 @@ class ConfirmCodeInitial extends ConfirmCodeState {}
 class LoadingConfirmCodedState extends ConfirmCodeState {}
 
 class LoadedConfirmCodeState extends ConfirmCodeState {
-  LoadedConfirmCodeState();
+  ConfirmResponseModel responseModel;
+  LoadedConfirmCodeState({required this.responseModel});
 }
 
 class ErrorConfirmCodeState extends ConfirmCodeState {

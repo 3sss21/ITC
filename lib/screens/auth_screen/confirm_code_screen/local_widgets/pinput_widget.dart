@@ -19,7 +19,7 @@ class PinputWidget extends StatelessWidget {
       height: 50.h,
       textStyle: TextStyle(
         fontSize: 20,
-        color: ThemeHelper.white,
+        color: ThemeHelper.green80,
         fontWeight: FontWeight.w600,
       ),
       decoration: BoxDecoration(
@@ -48,10 +48,12 @@ class PinputWidget extends StatelessWidget {
       validator: (value) {
         if (value?.length != 6) {
           return 'Пин-код не должен быть меньше шести символов';
-        } else if (value != pincodeBox.get('pincode')) {
-          log('Pincode pinput ======= ${pincodeBox.get('pincode')}');
-          return 'Введите правильный пин-код';
-        } else {
+        }
+        // else if (value != pincodeBox.get('pincode')) {
+        //   log('Pincode pinput ======= ${pincodeBox.get('pincode')}');
+        //   return 'Введите правильный пин-код';
+        // }
+        else {
           return '';
         }
       },

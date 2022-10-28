@@ -77,7 +77,7 @@ class _AuthTextFieldWidgetState extends State<AuthTextFieldWidget> {
               ),
               controller: widget.controller,
               obscureText: widget.isObsecuredText!,
-              // textAlign: TextAlign.center,
+              textAlign: TextAlign.center,
               decoration: InputDecoration(
                 helperText: '',
                 errorStyle: const TextStyle(color: Colors.amber),

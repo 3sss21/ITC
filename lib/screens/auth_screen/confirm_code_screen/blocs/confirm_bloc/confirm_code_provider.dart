@@ -1,30 +1,12 @@
 import 'dart:developer';
 
 import 'package:cashback_app/helper/api_requester.dart';
+import 'package:cashback_app/helper/catchException.dart';
+import 'package:cashback_app/models/confirm_response_model.dart';
 import 'package:dio/dio.dart';
 
-import '../../../helper/catchException.dart';
-import '../../../models/confirm_model.dart';
-
-// class ConfirmProvider {
-//   Future<ConfirmModel> getConfirm() async {
-//     try {
-//       ApiRequester requester = ApiRequester();
-//       Response response = await requester.toPost(, body: )
-//       if (response.statusCode == 200) {
-//         ConfirmModel confrimModel = ConfirmModel.fromJson(response.data);
-//         return confrimModel;
-//       } else {
-//         throw CatchException.convertException(response);
-//       }
-//     } catch (e) {
-//       throw CatchException.convertException(e);
-//     }
-//   }
-// }
-
 class ConfirmProvider {
-  Future getConfirm({
+  Future<ConfirmResponseModel> getConfirm({
     required String code,
     required String email,
   }) async {
@@ -38,6 +20,10 @@ class ConfirmProvider {
       });
       log("Response Confirm ========== ${response.data}");
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
+        ConfirmResponseModel responseModel =
+            ConfirmResponseModel.fromJson(response.data);
+
+        return responseModel;
       } else {
         print("!");
         throw CatchException.convertException(response);

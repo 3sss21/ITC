@@ -15,11 +15,7 @@ class ApiRequester {
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
-        headers: {
-          // "Authorization": "Token 8e0cb2730a4eb0c04d19bc3df76901a0ccaccd46"
-          "Authorization": token
-          //  Constatns.token == null ? "" : "Token ${Constatns.token}",
-        },
+        headers: {"Authorization": token},
         connectTimeout: 30000,
       ),
     );

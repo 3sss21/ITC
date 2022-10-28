@@ -4,10 +4,8 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
 import 'package:cashback_app/screens/auth_screen/forgot_password/bloc/forgot_password_bloc.dart';
-import 'package:cashback_app/screens/auth_screen/forgot_password/receivedEmail_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
-import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,9 +65,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             ),
                             SizedBox(height: 40.w),
                             AuthTextFieldWidget(
-                              onPressed: (){  setState(() {
-                                emailKey.currentState?.reset();
-                              });},
+                              onPressed: () {
+                                setState(() {
+                                  emailKey.currentState?.reset();
+                                });
+                              },
                               hintext: "felizCoffee@gmail.com",
                               textInputType: TextInputType.emailAddress,
                               controller: emailController,
@@ -90,6 +90,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             AuthButtonWidget(
                               width: 98.w,
                               txtButton: 'Далее',
+                              textColor: ThemeHelper.green80,
+                              themeButton: ThemeHelper.white,
                               function: () {
                                 FocusScope.of(context).unfocus();
                                 emailKey.currentState?.validate();

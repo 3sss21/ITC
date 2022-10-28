@@ -9,6 +9,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 class SignUpProvider {
   Box tokenBox = Hive.box('tokenBox');
   Box pincodeBox = Hive.box('pincodeBox');
+  Box userIdBox = Hive.box('userIdBox');
   Future<SignUpResponseModel> createUser({
     required String email,
     required String username,
@@ -28,14 +29,15 @@ class SignUpProvider {
             SignUpResponseModel.fromJson(response.data);
         tokenBox.put('token', response.data['token']);
         pincodeBox.put('pincode', response.data['code']);
+        userIdBox.put('userId', response.data['id']);
         log('Pincode ====== ${pincodeBox.get('pincode')}');
         log('Token ====== ${tokenBox.get('token')}');
+        log('User Id ====== ${userIdBox.get('userId')}');
 
         log(response.data.toString());
 
         return responseModel;
       } else {
-        print("!");
         throw CatchException.convertException(response);
       }
     } catch (e) {

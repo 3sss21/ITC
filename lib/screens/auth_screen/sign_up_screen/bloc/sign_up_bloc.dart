@@ -20,7 +20,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             phoneNumber: event.phone,
             password: event.password,
           );
-          responseModel.response == 'Успешно зарегистрирован новый пользователь'
+          responseModel.response!.isNotEmpty
               ? emit(
                   LoadedSignUpState(responseModel: responseModel),
                 )

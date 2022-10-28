@@ -4,32 +4,49 @@
 
 import 'dart:convert';
 
+// @HiveType(typeId: 0)
 class ProfileModel {
-    ProfileModel({
-        this.id,
-        this.email,
-        this.username,
-        this.phone,
-        this.qrCode,
-        this.absoluteUrl,
-        this.isSeller,
-        this.cashbackAll,
-    });
+  ProfileModel({
+    this.id,
+    this.email,
+    this.username,
+    this.phone,
+    this.qrCode,
+    this.absoluteUrl,
+    this.isSeller,
+    this.cashbackAll,
+  });
+  int? id;
+  String? email;
+  String? username;
+  String? phone;
+  String? qrCode;
+  String? absoluteUrl;
+  bool? isSeller;
+  String? cashbackAll;
+  // @HiveField(0)
+  // int? id;
+  // @HiveField(1)
+  // String? email;
+  // @HiveField(2)
+  // String? username;
+  // @HiveField(3)
+  // String? phone;
+  // @HiveField(4)
+  // String? qrCode;
+  // @HiveField(5)
+  // String? absoluteUrl;
+  // @HiveField(6)
+  // bool? isSeller;
+  // @HiveField(7)
+  // String? cashbackAll;
 
-    int? id;
-    String? email;
-    String? username;
-    String? phone;
-    String? qrCode;
-    String? absoluteUrl;
-    bool? isSeller;
-    String? cashbackAll;
+  factory ProfileModel.fromRawJson(String str) =>
+      ProfileModel.fromJson(json.decode(str));
 
-    factory ProfileModel.fromRawJson(String str) => ProfileModel.fromJson(json.decode(str));
+  String toRawJson() => json.encode(toJson());
 
-    String toRawJson() => json.encode(toJson());
-
-    factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
+  factory ProfileModel.fromJson(Map<String, dynamic> json) => ProfileModel(
         id: json["id"] == null ? null : json["id"],
         email: json["email"] == null ? null : json["email"],
         username: json["username"] == null ? null : json["username"],
@@ -38,9 +55,9 @@ class ProfileModel {
         absoluteUrl: json["absolute_url"] == null ? null : json["absolute_url"],
         isSeller: json["is_seller"] == null ? null : json["is_seller"],
         cashbackAll: json["cashback_all"] == null ? null : json["cashback_all"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
         "email": email == null ? null : email,
         "username": username == null ? null : username,
@@ -49,5 +66,5 @@ class ProfileModel {
         "absolute_url": absoluteUrl == null ? null : absoluteUrl,
         "is_seller": isSeller == null ? null : isSeller,
         "cashback_all": cashbackAll == null ? null : cashbackAll,
-    };
+      };
 }

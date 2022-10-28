@@ -2,26 +2,30 @@ import 'dart:developer';
 
 import 'package:cashback_app/helper/api_requester.dart';
 import 'package:cashback_app/helper/catchException.dart';
+import 'package:cashback_app/hive_models/user_data.dart';
 import 'package:cashback_app/models/profile_model.dart';
 import 'package:dio/dio.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class ProfileProvider {
+  Box userId = Hive.box('userIdBox');
+  Box userData = Hive.box('userDataBox');
   Future<ProfileModel> getProfile() async {
-    log("message1");
     try {
       ApiRequester requester = ApiRequester();
-      log("message2");
-      Box userId= Hive.box('userIdBox');
-      Response response =await requester.toGet('/register/${userId.get('user_id')}/');
-      // Response response = await requester.toGet('/register/15/');
+      Response response =
+          await requester.toGet('/register/${userId.get('userId')}/');
       log("${response.statusCode}");
-      log("message3");
-      log("Pro_id ==== ${userId.get('user_id')}");
       if (response.statusCode == 200) {
-        log(response.data.toString());
-        log("message4");
         ProfileModel profileModel = ProfileModel.fromJson(response.data);
+
+        await userData.put('email', response.data['email']);
+        await userData.put('username', response.data['username']);
+        await userData.put('phone', response.data['phone']);
+        await userData.put('qrCode', response.data['qr_code']);
+        await userData.put('cashbackAll', response.data['cashback_all']);
+        await userData.put('isSeller', response.data['is_seller']);
+        log("ProfileData ==== ${userData.get('phone')}");
         return profileModel;
       } else {
         throw CatchException.convertException(response);

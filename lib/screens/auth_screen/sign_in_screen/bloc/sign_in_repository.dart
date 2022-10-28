@@ -1,12 +1,12 @@
+import 'package:cashback_app/models/sign_in_response_model.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_provider.dart';
 
 class SignInRepository {
-  loginUser({
+  Future<SignInResponseModel> loginUser({
     required String email,
     required String password,
   }) {
     SignInProvider provider = SignInProvider();
-    provider.loginUser(email: email, password: password);
-    return '';
+    return provider.loginUser(email: email, password: password);
   }
 }
