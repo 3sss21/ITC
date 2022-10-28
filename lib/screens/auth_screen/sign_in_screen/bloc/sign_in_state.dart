@@ -7,7 +7,11 @@ class SignInInitial extends SignInState {}
 
 class LoadingSignInState extends SignInState {}
 
-class LoadedSignInState extends SignInState {}
+class LoadedSignInState extends SignInState {
+  SignInResponseModel responseModel;
+
+  LoadedSignInState({required this.responseModel});
+}
 
 class ErrorSignInState extends SignInState {
   final CatchException message;

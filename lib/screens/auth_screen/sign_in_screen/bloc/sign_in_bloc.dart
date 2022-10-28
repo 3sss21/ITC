@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cashback_app/helper/catchException.dart';
+import 'package:cashback_app/models/sign_in_response_model.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -12,11 +13,17 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       if (event is GetSignInEvent) {
         emit(LoadingSignInState());
         try {
-          await SignInRepository().loginUser(
+          SignInResponseModel responseModel =
+              await SignInRepository().loginUser(
             email: event.email,
             password: event.password,
           );
-          emit(LoadedSignInState());
+
+          responseModel.authToken!.isNotEmpty
+              ? emit(
+                  LoadedSignInState(responseModel: responseModel),
+                )
+              : null;
         } catch (e) {
           emit(
             ErrorSignInState(

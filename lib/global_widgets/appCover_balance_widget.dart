@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppCoverBalanceWidget extends StatelessWidget {
   final String nameCover;
-  final double balance;
+  final String balance;
   const AppCoverBalanceWidget({
     Key? key,
     required this.nameCover,

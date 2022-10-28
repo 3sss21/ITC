@@ -23,15 +23,17 @@ class ChangeInfoTextFieldWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<ChangeInfoTextFieldWidget> createState() => _ChangeInfoTextFieldWidgetState();
+  State<ChangeInfoTextFieldWidget> createState() =>
+      _ChangeInfoTextFieldWidgetState();
 }
 
 class _ChangeInfoTextFieldWidgetState extends State<ChangeInfoTextFieldWidget> {
   @override
   void initState() {
-    widget.controller?.text = widget.value ?? '';
+    widget.controller?.text = widget.value ?? 'unknown';
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Row(

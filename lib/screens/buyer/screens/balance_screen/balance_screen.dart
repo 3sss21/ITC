@@ -10,6 +10,7 @@ import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class BalanceScreen extends StatefulWidget {
   const BalanceScreen({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class BalanceScreen extends StatefulWidget {
 
 class _BalanceScreenState extends State<BalanceScreen> {
   late BalanceBloc balanceBloc;
+  Box cashbackAll = Hive.box('userDataBox');
 
   @override
   void initState() {
@@ -35,9 +37,9 @@ class _BalanceScreenState extends State<BalanceScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const AppCoverBalanceWidget(
+          AppCoverBalanceWidget(
             nameCover: 'БАЛАНC',
-            balance: 300,
+            balance: cashbackAll.get('cashbackAll'),
           ),
           BlocConsumer<BalanceBloc, BalanceState>(
             bloc: balanceBloc,

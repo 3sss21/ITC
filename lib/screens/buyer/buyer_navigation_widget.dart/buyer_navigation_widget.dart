@@ -5,6 +5,7 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/buyer/screens/QR_code_screen/QR_code_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/balance_screen/balance_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/branch_screen.dart';
+import 'package:cashback_app/screens/buyer/screens/profile_screen/bloc/profile_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,6 +21,7 @@ class BuyerNavigationWidget extends StatefulWidget {
 
 class _BuyerNavigationWidgetState extends State<BuyerNavigationWidget> {
   late int _selectedIndex;
+  late ProfileBloc _profileBloc;
 
   final List<Widget> _widgetOptions = <Widget>[
     const BranchScreen(),
@@ -36,6 +38,8 @@ class _BuyerNavigationWidgetState extends State<BuyerNavigationWidget> {
 
   @override
   void initState() {
+    _profileBloc = ProfileBloc();
+    _profileBloc.add(GetProfileEvent());
     _selectedIndex = widget.currentIndex;
     super.initState();
   }

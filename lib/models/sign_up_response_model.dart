@@ -1,15 +1,6 @@
 // To parse this JSON data, do
 //
 //     final SignUpResponseModel = SignUpResponseModelFromJson(jsonString);
-
-import 'dart:convert';
-
-SignUpResponseModel SignUpResponseModelFromJson(String str) =>
-    SignUpResponseModel.fromJson(json.decode(str));
-
-String SignUpResponseModelToJson(SignUpResponseModel data) =>
-    json.encode(data.toJson());
-
 class SignUpResponseModel {
   SignUpResponseModel({
     this.id,

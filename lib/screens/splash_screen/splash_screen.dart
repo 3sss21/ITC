@@ -1,6 +1,9 @@
+import 'dart:developer';
+
 import 'package:cashback_app/screens/auth_screen/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -10,8 +13,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  Box tokenBox = Hive.box('tokenBox');
+  Box pincodeBox = Hive.box('pincodeBox');
+  Box userIdBox = Hive.box('userIdBox');
   @override
   void initState() {
+    log('TokenSplash ====== ${tokenBox.get('token')}');
+    log('PincodeSplash ====== ${tokenBox.get('pincode')}');
+    log('UserIDSplash ====== ${tokenBox.get('userId')}');
+
     navigate();
     super.initState();
   }
