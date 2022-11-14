@@ -12,6 +12,9 @@ class CashBoxScreen extends StatefulWidget {
   @override
   State<CashBoxScreen> createState() => _CashBoxScreenState();
 }
+class CashBoxScreenState extends State<CashBoxScreen>{
+  DateTimeRange
+}
 
 class _CashBoxScreenState extends State<CashBoxScreen> {
   @override
