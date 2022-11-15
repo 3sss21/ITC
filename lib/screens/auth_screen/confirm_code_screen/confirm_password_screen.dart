@@ -2,7 +2,6 @@ import 'dart:developer';
 
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/show_dialog_widget.dart';
