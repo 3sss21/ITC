@@ -1,3 +1,4 @@
+import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,31 +23,42 @@ class SearchTextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20.r),
-      child: SizedBox(
-        width: 334.w,
-        height: 38.h,
-        child: TextField(
-          controller: controller,
-          keyboardType: TextInputType.text,
-          decoration: InputDecoration(
-            contentPadding: contentPadding,
-            border: InputBorder.none,
-            prefixIcon: prefix,
-            suffixIcon: suffix,
-            hintText: hintText,
-            hintStyle: TextStyle(
-              height: 0.5.h,
-              color: hintTextColor,
-              fontSize: 20.sp,
-              fontWeight: FontWeight.w500,
+    return SizedBox(
+      width: 334.w,
+      height: 46.h,
+      child: TextField(
+        readOnly: true,
+        controller: controller,
+        keyboardType: TextInputType.text,
+        cursorColor: ThemeHelper.brown20,
+        decoration: InputDecoration(
+          contentPadding: contentPadding,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(20.r),
+            borderSide: const BorderSide(
+              width: 0,
+              style: BorderStyle.none,
             ),
-            filled: true,
-            fillColor: fillColor,
           ),
+          prefixIcon: prefix,
+          suffixIcon: suffix,
+          hintText: hintText,
+          hintStyle: TextStyle(
+            height: 0.5.h,
+            color: hintTextColor,
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w500,
+          ),
+          filled: true,
+          fillColor: fillColor,
+        ),
+        style: TextStyle(
+          color: ThemeHelper.brown80,
+          fontWeight: FontWeight.w500,
+          fontSize: 20.sp,
         ),
       ),
     );
   }
+  
 }

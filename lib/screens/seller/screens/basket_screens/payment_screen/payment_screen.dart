@@ -26,11 +26,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
             isBackButton: true,
           ),
           Padding(
-            padding: EdgeInsets.only(left: 21.w, top: 82.h),
+            padding: EdgeInsets.only(
+              left: 21.w,
+              top: 82.h,
+            ),
             child: Container(
               alignment: Alignment.topCenter,
-              width: 334.w,
-              height: 300.h,
+              width: 334.r,
+              height: 300.r,
               decoration: BoxDecoration(
                 color: ThemeHelper.brown80,
                 borderRadius: BorderRadius.circular(20.r),
@@ -49,8 +52,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         children: [
                           const Titles(),
                           SizedBox(
-                            width: 266.w,
-                            height: 158.h,
+                            width: 266.r,
+                            height: 158.r,
                             child: Column(
                               children: [
                                 Expanded(
@@ -60,7 +63,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                       return const ProductCostCashback(
                                         product: 'IceTea (зеленый)',
                                         cost: '90 сом',
-                                        cashback: '9 баллов',
+                                        cashback: 9,
                                       );
                                     },
                                   ),
@@ -73,7 +76,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ProductCostCashback(
                         product: 'итого'.toUpperCase(),
                         cost: '280 сом',
-                        cashback: '+18 баллов',
+                        cashback: 18,
+                        isHasPlus: true,
                       ),
                     ],
                   ),
@@ -85,7 +89,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             height: 29,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 113),
+            padding: EdgeInsets.only(left: 113.w),
             child: Container(
               decoration: const BoxDecoration(
                 boxShadow: [

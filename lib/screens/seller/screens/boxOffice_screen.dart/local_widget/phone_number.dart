@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PhoneNumber extends StatelessWidget {
-  final String phoneNumber;
+  final int phoneNumber;
 
   const PhoneNumber({
     Key? key,
@@ -14,10 +14,18 @@ class PhoneNumber extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 170.w, bottom: 8.h, top: 8.h),
+      padding: EdgeInsets.only(
+        right: 170.w,
+        bottom: 8.h,
+        top: 16.h,
+      ),
       child: Text(
-        phoneNumber,
-        style: TextStyle(color: ThemeHelper.brown80, fontSize: 16.sp),
+        '+996' + '$phoneNumber',
+        style: TextStyle(
+          color: ThemeHelper.brown80,
+          fontSize: 16.sp,
+          letterSpacing: 2,
+        ),
       ),
     );
   }

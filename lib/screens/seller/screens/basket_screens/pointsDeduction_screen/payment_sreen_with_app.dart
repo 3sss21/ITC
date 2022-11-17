@@ -12,6 +12,8 @@ class PaymentWithApp extends StatefulWidget {
 }
 
 class _PaymentWithAppState extends State<PaymentWithApp> {
+  late int finalPrice;
+  late int balance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,8 +27,8 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
           SizedBox(height: 82.h),
           Container(
             alignment: Alignment.topCenter,
-            width: 334.w,
-            height: 300.h,
+            width: 334.r,
+            height: 300.r,
             decoration: BoxDecoration(
               color: ThemeHelper.brown80,
               borderRadius: BorderRadius.circular(20.r),
@@ -37,7 +39,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                   height: 30.h,
                 ),
                 Text(
-                  "Итого 450 сом",
+                  "Итого $finalPrice сом",
                   style: TextStyle(
                     color: ThemeHelper.white,
                     fontSize: 24.sp,
@@ -46,7 +48,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  "Баланс 45 баллов",
+                  "Баланс $balance баллов",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.sp,
@@ -67,100 +69,92 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      height: 20.h,
-                      child: Text(
-                        "Баллы: ",
-                        textAlign: TextAlign.justify,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w400,
-                        ),
+                    Text(
+                      "Баллы: ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     SizedBox(
-                      width: 50.w,
+                      width: 60.r,
+                      height: 26.r,
                       child: TextFormField(
-                        decoration: const InputDecoration(
-                          border: UnderlineInputBorder(),
-                          fillColor: Colors.white,
-                          labelText: ' ',
+                        textInputAction: TextInputAction.done,
+                        keyboardType: TextInputType.number,
+                        cursorColor: ThemeHelper.white,
+                        style: TextStyle(color: ThemeHelper.white),
+                        decoration: InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: ThemeHelper.white),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: ThemeHelper.white),
+                          ),
+                          focusColor: ThemeHelper.white,
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(left: 11.w, top: 23.h),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadowHelper.boxShadow25,
-                          ],
+                    Container(
+                      padding: EdgeInsets.only(left: 11.w),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.r),
+                          ),
+                          backgroundColor: ThemeHelper.white,
+                          maximumSize: Size(80.w, 32.h),
+                          minimumSize: Size(80.w, 32.h),
                         ),
-                        child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20.r),
-                              ),
-                              primary: ThemeHelper.white,
-                              maximumSize: Size(80.w, 32.h),
-                              minimumSize: Size(80.w, 32.h),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => PaymentWithApp(),
                             ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const PaymentWithApp(),
-                                ),
-                              );
-                            },
-                            child: Text(
-                              "OK",
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.w600,
-                                color: ThemeHelper.brown80,
-                              ),
-                            )),
+                          );
+                        },
+                        child: Text(
+                          "OK",
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w600,
+                            color: ThemeHelper.brown80,
+                          ),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 5.w, top: 29.h),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromRGBO(23, 69, 59, 0.25),
-                          blurRadius: 20.r,
-                        ),
-                      ],
-                    ),
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.r),
-                        ),
-                        primary: ThemeHelper.white,
-                        maximumSize: Size(150.w, 40.h),
-                        minimumSize: Size(150.w, 40.h),
+                Container(
+                  padding: EdgeInsets.only(
+                    left: 5.w,
+                    top: 29.h,
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.r),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const PaymentWithApp(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        "Оплатить",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w600,
-                          color: ThemeHelper.brown80,
+                      backgroundColor: ThemeHelper.white,
+                      maximumSize: Size(150.w, 40.h),
+                      minimumSize: Size(150.w, 40.h),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PaymentWithApp(),
                         ),
+                      );
+                    },
+                    child: Text(
+                      "Оплатить",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w600,
+                        color: ThemeHelper.brown80,
                       ),
                     ),
                   ),

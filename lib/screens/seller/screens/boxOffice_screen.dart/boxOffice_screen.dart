@@ -6,6 +6,7 @@ import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/cashBo
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/history_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class BoxOfficeScreen extends StatefulWidget {
   const BoxOfficeScreen({Key? key}) : super(key: key);
@@ -15,28 +16,40 @@ class BoxOfficeScreen extends StatefulWidget {
 }
 
 class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
+  late DateTime _selectedDate = DateTime.now();
+
+  final TextEditingController _textEditingController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const AppCoverWidget(nameCover: 'КАССА', isSeller: true),
+            const AppCoverWidget(
+              nameCover: 'КАССА',
+              isSeller: true,
+            ),
             SizedBox(height: 22.h),
             SearchTextFieldWidget(
+              controller: _textEditingController,
+              hintText: 'DD/MM/YY',
+              suffix: GestureDetector(
+                onTap: () => _selectDate(context),
+                child: Image.asset(IconsImages.iconVbrown),
+              ),
               fillColor: ThemeHelper.brown20,
               hintTextColor: ThemeHelper.brown80,
-              hintText: 'DD/MM/YY',
-              suffix: ImageIcon(
-                AssetImage(IconsImages.iconVbrown),
-                color: ThemeHelper.brown80,
-              ),
             ),
+            SizedBox(height: 20.h),
             SizedBox(
               width: 1.sw,
               height: 1.sh,
               child: ListView.builder(
-                padding: EdgeInsets.only(left: 21.w, top: 51.h, right: 21.w),
+                padding: EdgeInsets.only(
+                  left: 21.w,
+                  top: 30.h,
+                  right: 21.w,
+                ),
                 itemCount: 20,
                 itemBuilder: (context, index) {
                   return Padding(
@@ -62,5 +75,27 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
         ),
       ),
     );
+  }
+
+  _selectDate(
+    BuildContext context,
+  ) async {
+    DateTime? newSelectedDate = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2022),
+      lastDate: DateTime(2030),
+    );
+    if (newSelectedDate != null) {
+      _selectedDate = newSelectedDate;
+      _textEditingController
+        ..text = DateFormat('dd/MM/y').format(_selectedDate)
+        ..selection = TextSelection.fromPosition(
+          TextPosition(
+            offset: _textEditingController.text.length,
+            affinity: TextAffinity.upstream,
+          ),
+        );
+    }
   }
 }

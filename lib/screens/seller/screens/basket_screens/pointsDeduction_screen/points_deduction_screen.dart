@@ -28,11 +28,14 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
               isBackButton: true,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 21.w, top: 82.h),
+              padding: EdgeInsets.only(
+                left: 21.w,
+                top: 82.h,
+              ),
               child: Container(
                 alignment: Alignment.topCenter,
-                width: 334.w,
-                height: 300.h,
+                width: 334.r,
+                height: 300.r,
                 decoration: BoxDecoration(
                   color: ThemeHelper.brown80,
                   borderRadius: BorderRadius.circular(20.r),
@@ -40,8 +43,8 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 38.w,
-                      height: 17.h,
+                      width: 38.r,
+                      height: 17.r,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +53,7 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                         Column(
                           children: [
                             const Titles(),
-                            SizedBox(height: 14.63.h),
+                            SizedBox(height: 14.h),
                             SizedBox(
                               width: 266.w,
                               height: 158.h,
@@ -58,12 +61,13 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                                 children: [
                                   Expanded(
                                     child: ListView.builder(
+                                      padding: const EdgeInsets.only(top: 0),
                                       itemCount: 30,
                                       itemBuilder: (context, index) {
                                         return const ProductCostCashback(
                                           product: 'IceTea (зеленый)',
                                           cost: '90 сом',
-                                          cashback: '9 баллов',
+                                          cashback: 9,
                                         );
                                       },
                                     ),
@@ -73,10 +77,11 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                             ),
                           ],
                         ),
-                        TotalCost(
+                        ProductCostCashback(
                           product: 'итого'.toUpperCase(),
                           cost: '280 сом',
-                          cashback: '+18 баллов',
+                          cashback: 18,
+                          isHasPlus: true,
                         ),
                       ],
                     ),
@@ -88,7 +93,10 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
               height: 29,
             ),
             Padding(
-              padding: EdgeInsets.only(left: 113.w, top: 23.h),
+              padding: EdgeInsets.only(
+                left: 113.w,
+                top: 23.h,
+              ),
               child: Container(
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -100,8 +108,10 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.r),
+                      
                     ),
                     primary: ThemeHelper.white,
                     maximumSize: Size(150.w, 40.h),
@@ -111,7 +121,7 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const PaymentWithApp(),
+                        builder: (context) => PaymentWithApp(),
                       ),
                     );
                   },

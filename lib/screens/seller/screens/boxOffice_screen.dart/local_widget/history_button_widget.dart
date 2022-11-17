@@ -31,11 +31,15 @@ class HistoryButton extends StatelessWidget {
         width: 334.w,
         height: 61.h,
         decoration: BoxDecoration(
-            color: ThemeHelper.white,
-            borderRadius: BorderRadius.circular(20.r),
-            boxShadow: [BoxShadowHelper.boxShadow50]),
+          color: ThemeHelper.white,
+          borderRadius: BorderRadius.circular(20.r),
+          boxShadow: [BoxShadowHelper.boxShadow50],
+        ),
         child: Padding(
-          padding: EdgeInsets.only(left: 33.w, right: 18.w),
+          padding: EdgeInsets.only(
+            left: 33.w,
+            right: 18.w,
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

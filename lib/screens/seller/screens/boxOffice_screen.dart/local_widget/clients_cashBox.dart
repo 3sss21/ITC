@@ -13,13 +13,16 @@ class ClientsCashBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 334.w,
-      height: 149.h,
+      height: 157.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         color: ThemeHelper.brown80,
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),
+        padding: EdgeInsets.symmetric(
+          horizontal: 30.w,
+          vertical: 15.h,
+        ),
         child: Column(
           children: [
             Column(
@@ -29,22 +32,24 @@ class ClientsCashBox extends StatelessWidget {
                   height: 70.h,
                   width: 280.w,
                   child: ListView.builder(
+                    padding: EdgeInsets.only(top: 0.h),
                     itemCount: 15,
                     itemBuilder: (context, index) {
                       return const ProductCostCashback(
                         product: 'IceTea (зеленый)',
                         cost: '90 сом',
-                        cashback: '9 баллов',
+                        cashback: 288,
                       );
                     },
                   ),
                 ),
               ],
             ),
+            SizedBox(height: 8.h),
             ProductCostCashback(
               product: 'итого'.toUpperCase(),
               cost: '280 сом',
-              cashback: '+18 баллов',
+              cashback: 182222,
             ),
           ],
         ),
