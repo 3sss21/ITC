@@ -24,17 +24,22 @@ class ProductCostCashback extends StatelessWidget {
         children: [
           SizedBox(
             width: 107.w,
-            child: Text(product, style: TextStyleHelper.f12w400),
+            child: Text(
+              product,
+              style: TextStyleHelper.f12w400,
+            ),
           ),
           SizedBox(
-            width: 76.w,
-            child: Text(cost, style: TextStyleHelper.f12w400),
+            width: 80.w,
+            child: Text(
+              cost,
+              style: TextStyleHelper.f12w400,
+            ),
           ),
-          // const Spacer(),
           SizedBox(
             width: 52.w,
             child: Text(
-              isHasPlus ? '+ $cashback ' + 'баллов' : '$cashback баллов',
+              isHasPlus ? '+ $cashback баллов' : '$cashback баллов',
               style: TextStyleHelper.f12w400,
             ),
           ),

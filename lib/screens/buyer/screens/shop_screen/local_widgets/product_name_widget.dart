@@ -22,8 +22,8 @@ class ProductNameWidget extends StatelessWidget {
     return InkWell(
       onTap: () => function(),
       child: Container(
-        width: 140.w,
-        height: 80.h,
+        width: 140.r,
+        height: 80.r,
         decoration: BoxDecoration(
           color: ThemeHelper.white,
           border: Border.all(

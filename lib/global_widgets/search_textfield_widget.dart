@@ -24,8 +24,8 @@ class SearchTextFieldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 334.w,
-      height: 46.h,
+      width: 336.r,
+      height: 38.r,
       child: TextField(
         readOnly: true,
         controller: controller,
@@ -60,5 +60,4 @@ class SearchTextFieldWidget extends StatelessWidget {
       ),
     );
   }
-  
 }

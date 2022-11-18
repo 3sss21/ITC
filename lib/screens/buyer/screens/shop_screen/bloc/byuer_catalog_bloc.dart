@@ -9,7 +9,6 @@ part 'byuer_catalog_state.dart';
 class BuyerCatalogBloc extends Bloc<BuyerCatalogEvent, BuyerCatalogState> {
   BuyerCatalogBloc() : super(BuyerCatalogInitial()) {
     on<BuyerCatalogEvent>((event, emit) async {
-      // TODO: implement event handler
 
       if (event is GetCatalogEvent) {
         emit(CatalogBuyerLoadingState());

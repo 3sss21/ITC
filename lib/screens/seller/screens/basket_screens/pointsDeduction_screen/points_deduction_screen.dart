@@ -3,7 +3,6 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/basket_screens/pointsDeduction_screen/payment_sreen_with_app.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
-import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/total_cost.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -51,12 +50,13 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Titles(),
                             SizedBox(height: 14.h),
                             SizedBox(
-                              width: 266.w,
-                              height: 158.h,
+                              width: 266.r,
+                              height: 158.r,
                               child: Column(
                                 children: [
                                   Expanded(
@@ -108,10 +108,8 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.r),
-                      
                     ),
                     primary: ThemeHelper.white,
                     maximumSize: Size(150.w, 40.h),

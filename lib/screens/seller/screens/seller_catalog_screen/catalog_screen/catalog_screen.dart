@@ -24,160 +24,66 @@ class _CatalogScreenState extends State<CatalogScreen> {
 
   late SellerCatalogBloc catallogSellerBloc;
 
-  @override
-  void initState() {
-    catallogSellerBloc = SellerCatalogBloc();
-    catallogSellerBloc.add(GetCatalogEvent());
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  // catallogSellerBloc = SellerCatalogBloc();
+  // catallogSellerBloc.add(GetCatalogEvent());
+  // super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        const AppCoverWidget(
-          nameCover: 'КАТАЛОГ',
-          isSeller: true,
-        ),
-        SizedBox(
-          height: 39.h,
-        ),
-        TextField(
-          style: TextStyleHelper.f14fw500,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Color.fromRGBO(83, 42, 42, 0.2),
-            hintText: "Поиск",
-            prefixIcon: Icon(Icons.search_sharp),
-            prefixIconColor: ThemeHelper.brown80,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none),
+      body: Column(
+        children: [
+          const AppCoverWidget(
+            nameCover: 'КАТАЛОГ',
+            isSeller: true,
           ),
-        ),
-        Expanded(
-          child: GridView.builder(
-            padding: EdgeInsets.only(top: 57.h),
-            itemCount: 4,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 80.w,
-              mainAxisSpacing: 53.w,
-              crossAxisCount: 2,
-              crossAxisSpacing: 54.h,
+          SizedBox(height: 39.h),
+          SearchTextFieldWidget(
+            hintText: 'Поиск',
+            hintTextColor: ThemeHelper.brown80,
+            fillColor: ThemeHelper.brown20,
+            prefix: Icon(
+              Icons.search_outlined,
+              size: 25.r,
+              color: ThemeHelper.brown80,
             ),
-            itemBuilder: (context, index) => Padding(
+          ),
+          SizedBox(height: 20.h),
+          Expanded(
+            child: GridView.builder(
+              padding: EdgeInsets.only(top: 30.h),
+              itemCount: 8,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                mainAxisExtent: 80.w,
+                mainAxisSpacing: 53.w,
+                crossAxisCount: 2,
+                crossAxisSpacing: 30.h,
+              ),
+              itemBuilder: (context, index) => Padding(
                 padding: EdgeInsets.symmetric(horizontal: 21.w),
                 child: ProductNameWidget(
                   textStyle: TextStyleHelper.productNameGreen80,
                   borderColor: ThemeHelper.brown80,
-                    productName:
-                        // state.catalogSellerModel[index].name ??
-                        'testName',
-                    function: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductSellerScreen(),
-                        ),
-                      );
-                    })),
+                  productName:
+                      // state.catalogSellerModel[index].name ??
+                      'testName',
+                  function: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ProductSellerScreen(),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }
-   
-    //     body: SizedBox(
-    //       width: 1.sw,
-    //       height: 1.sh,
-    //       child: Center(
-    //         child: Stack(children: <Widget>[
-    //           Container(
-    //             child: Column(
-    //               children: [
-    //                 const AppCoverWidget(
-    //                   nameCover: 'КАТАЛОГ',
-    //                   isSeller: true,
-    //                 ),
-    //                 SizedBox(height: 39.h),
-    //                 BlocConsumer<SellerCatalogBloc, SellerCatalogState>(
-    //                   bloc: catallogSellerBloc,
-    //                   listener: (context, state) {},
-    //                   builder: (context, state) {
-    //                     if (state is CatalogSellerLoadingState) {
-    //                       return const LoadingIndicatorWidget(
-    //                         isSeller: true,
-    //                       );
-    //                     }
-
-    //                     if (state is CatalogSellerErrorState) {
-    //                       return Center(
-    //                         child: ButtonTryAgainWidget(
-    //                           onTabFunction: () => catallogSellerBloc.add(
-    //                             GetCatalogEvent(),
-    //                           ),
-    //                           btnTheme: ThemeHelper.brown50,
-    //                         ),
-    //                       );
-    //                     }
-
-    //                     if (state is CatalogSellerFetchedState) {
-    //                       return Expanded(
-    //                           child: GridView.builder(
-    //                         padding: EdgeInsets.only(top: 57.h),
-    //                         itemCount: state.catalogSellerModel.length,
-    //                         gridDelegate:
-    //                             SliverGridDelegateWithFixedCrossAxisCount(
-    //                           mainAxisExtent: 80.w,
-    //                           mainAxisSpacing: 53.w,
-    //                           crossAxisCount: 2,
-    //                           crossAxisSpacing: 54.h,
-    //                         ),
-    //                         itemBuilder: (context, index) => Padding(
-    //                           padding: EdgeInsets.symmetric(horizontal: 21.w),
-    //                           child: ProductNameWidget(
-    //                             productName:
-    //                                 state.catalogSellerModel[index].name ??
-    //                                     'testName',
-    //                             function: () {
-    //                               Navigator.push(
-    //                                 context,
-    //                                 MaterialPageRoute(
-    //                                   builder: (context) =>
-    //                                       const ProductSellerScreen(),
-    //                                 ),
-    //                               );
-    //                             },
-    //                             borderColor: Colors.white,
-    //                             textStyle: TextStyleHelper.f12fw600,
-    //                           ),
-    //                         ),
-    //                       ));
-    //                     }
-    //                     return const SizedBox();
-    //                   },
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: EdgeInsets.only(top: 178.h, left: 20.w, right: 20.w),
-    //             child: Container(
-    //               child: SearchTextFieldWidget(
-    //                 fillColor: ThemeHelper.brown20,
-    //                 hintTextColor: ThemeHelper.brown80,
-    //                 hintText: 'Поиск',
-    //                 prefix: ImageIcon(
-    //                   AssetImage(IconsImages.searchIcon),
-    //                   color: ThemeHelper.brown80,
-    //                 ),
-    //               ),
-    //             ),
-    //           )
-    //         ]),
-    //       ),
-    //     ),
-    //   );
-    // }
-  

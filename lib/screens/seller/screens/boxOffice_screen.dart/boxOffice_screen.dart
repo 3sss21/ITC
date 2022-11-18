@@ -1,3 +1,4 @@
+import 'package:cashback_app/commons/date_time_extensions.dart';
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
@@ -16,7 +17,7 @@ class BoxOfficeScreen extends StatefulWidget {
 }
 
 class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
-  late DateTime _selectedDate = DateTime.now();
+  DateTime? _selectedDate;
 
   final TextEditingController _textEditingController = TextEditingController();
   @override
@@ -35,7 +36,11 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
               hintText: 'DD/MM/YY',
               suffix: GestureDetector(
                 onTap: () => _selectDate(context),
-                child: Image.asset(IconsImages.iconVbrown),
+                child: Icon(
+                  Icons.keyboard_arrow_down,
+                  size: 30,
+                  color: ThemeHelper.brown80,
+                ),
               ),
               fillColor: ThemeHelper.brown20,
               hintTextColor: ThemeHelper.brown80,
@@ -77,25 +82,24 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
     );
   }
 
-  _selectDate(
+  void _selectDate(
     BuildContext context,
   ) async {
-    DateTime? newSelectedDate = await showDatePicker(
+    _selectedDate = await showDatePicker(
       context: context,
-      initialDate: _selectedDate,
+      initialDate: _selectedDate ?? DateTime.now(),
       firstDate: DateTime(2022),
       lastDate: DateTime(2030),
     );
-    if (newSelectedDate != null) {
-      _selectedDate = newSelectedDate;
-      _textEditingController
-        ..text = DateFormat('dd/MM/y').format(_selectedDate)
-        ..selection = TextSelection.fromPosition(
-          TextPosition(
-            offset: _textEditingController.text.length,
-            affinity: TextAffinity.upstream,
-          ),
-        );
-    }
+    if (_selectedDate == null) return;
+
+    _textEditingController
+      ..text = _selectedDate!.ddMMy
+      ..selection = TextSelection.fromPosition(
+        TextPosition(
+          offset: _textEditingController.text.length,
+          affinity: TextAffinity.upstream,
+        ),
+      );
   }
 }

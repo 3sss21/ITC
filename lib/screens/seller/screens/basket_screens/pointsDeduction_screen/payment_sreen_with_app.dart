@@ -1,4 +1,3 @@
-import 'package:cashback_app/commons/box_shadow_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +11,6 @@ class PaymentWithApp extends StatefulWidget {
 }
 
 class _PaymentWithAppState extends State<PaymentWithApp> {
-  late int finalPrice;
-  late int balance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +36,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                   height: 30.h,
                 ),
                 Text(
-                  "Итого $finalPrice сом",
+                  "Итого 333 сом",
                   style: TextStyle(
                     color: ThemeHelper.white,
                     fontSize: 24.sp,
@@ -48,7 +45,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                 ),
                 SizedBox(height: 10.h),
                 Text(
-                  "Баланс $balance баллов",
+                  "Баланс 12 баллов",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 16.sp,
@@ -111,7 +108,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PaymentWithApp(),
+                              builder: (context) => const PaymentWithApp(),
                             ),
                           );
                         },

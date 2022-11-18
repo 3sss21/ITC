@@ -12,8 +12,8 @@ class ClientsCashBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 334.w,
-      height: 157.h,
+      width: 334.r,
+      height: 156.r,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
         color: ThemeHelper.brown80,
@@ -29,8 +29,8 @@ class ClientsCashBox extends StatelessWidget {
               children: [
                 const Titles(),
                 SizedBox(
-                  height: 70.h,
-                  width: 280.w,
+                  height: 70.r,
+                  width: 280.r,
                   child: ListView.builder(
                     padding: EdgeInsets.only(top: 0.h),
                     itemCount: 15,

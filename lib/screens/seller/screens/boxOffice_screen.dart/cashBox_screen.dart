@@ -1,12 +1,8 @@
-import 'package:cashback_app/commons/icon_images.dart';
-import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
-import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/clients_cashBox.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/phone_number.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:intl/intl.dart';
 
 class CashBoxScreen extends StatefulWidget {
   const CashBoxScreen({Key? key}) : super(key: key);

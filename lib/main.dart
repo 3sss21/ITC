@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
         home:
             //const BuyerNavigationWidget(currentIndex: 3),
-            //const SplashScreen()
+           // const SplashScreen()
             //     const ConfirmScreen(
             //   email: 'kaparovkanagat@gmail.com',
             //   pinCode: '',
