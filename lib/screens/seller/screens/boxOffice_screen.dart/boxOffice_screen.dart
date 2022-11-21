@@ -5,6 +5,7 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/cashBox_screen.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/history_button_widget.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -79,6 +80,7 @@ class _BoxOfficeScreenState extends State<BoxOfficeScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 

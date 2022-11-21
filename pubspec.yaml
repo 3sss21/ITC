@@ -27,6 +27,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_route: ^5.0.2
   cached_network_image: ^3.2.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
@@ -45,6 +46,7 @@ dependencies:
   path_provider: ^2.0.11
   pinput: ^2.2.16
   r_dotted_line_border: ^0.1.1
+  stack_router: ^1.5.0
 
 dev_dependencies:
   # The "flutter_lints" package below contains a set of recommended lints to

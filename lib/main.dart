@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.brown,
         ),
-        home:
+        home:CustomBottomNavigator(currentPage: 0,)
             //const BuyerNavigationWidget(currentIndex: 3),
            // const SplashScreen()
             //     const ConfirmScreen(
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
             //    const  BuyerNavigationWidget(
             //   currentIndex: 3,
             // )
-            SellerNavigationWidget(currentIndex: 2),
+            
       ),
     );
   }

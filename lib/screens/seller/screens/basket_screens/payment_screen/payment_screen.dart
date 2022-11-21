@@ -3,6 +3,7 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/product_cost_cashback.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_widget/titles.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,8 +33,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
             child: Container(
               alignment: Alignment.topCenter,
-              width: 334.r,
-              height: 300.r,
+              width: 334.w,
+              height: 300.h,
               decoration: BoxDecoration(
                 color: ThemeHelper.brown80,
                 borderRadius: BorderRadius.circular(20.r),
@@ -52,8 +53,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         children: [
                           const Titles(),
                           SizedBox(
-                            width: 266.r,
-                            height: 158.r,
+                            width: 266.w,
+                            height: 158.h,
                             child: Column(
                               children: [
                                 Expanded(
@@ -121,6 +122,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 2),
     );
   }
 }

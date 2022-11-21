@@ -1,5 +1,6 @@
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -24,8 +25,8 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
           SizedBox(height: 82.h),
           Container(
             alignment: Alignment.topCenter,
-            width: 334.r,
-            height: 300.r,
+            width: 334.w,
+            height: 305.h,
             decoration: BoxDecoration(
               color: ThemeHelper.brown80,
               borderRadius: BorderRadius.circular(20.r),
@@ -75,8 +76,8 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
                       ),
                     ),
                     SizedBox(
-                      width: 60.r,
-                      height: 26.r,
+                      width: 60.w,
+                      height: 26.h,
                       child: TextFormField(
                         textInputAction: TextInputAction.done,
                         keyboardType: TextInputType.number,
@@ -161,6 +162,7 @@ class _PaymentWithAppState extends State<PaymentWithApp> {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 1),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/screens/seller/screens/basket_screens/basket_screen/local_widgets/buttonWithIcon_widget.dart';
 import 'package:cashback_app/screens/seller/screens/basket_screens/pointsDeduction_screen/points_deduction_screen.dart';
 import 'package:cashback_app/screens/seller/screens/basket_screens/scannerQRCode_screen/scannerQRCode_screen.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -51,6 +52,7 @@ class BasketScreen extends StatelessWidget {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 1),
     );
   }
 }

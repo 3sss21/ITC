@@ -6,6 +6,8 @@ import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/local_
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../seller_navigation/seller_navigation_widget.dart';
+
 class PointsDeductionScreen extends StatefulWidget {
   const PointsDeductionScreen({Key? key}) : super(key: key);
 
@@ -33,8 +35,8 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
               ),
               child: Container(
                 alignment: Alignment.topCenter,
-                width: 334.r,
-                height: 300.r,
+                width: 334.w,
+                height: 300.h,
                 decoration: BoxDecoration(
                   color: ThemeHelper.brown80,
                   borderRadius: BorderRadius.circular(20.r),
@@ -42,8 +44,8 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                 child: Row(
                   children: [
                     SizedBox(
-                      width: 38.r,
-                      height: 17.r,
+                      width: 38.w,
+                      height: 17.h,
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,8 +57,8 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                             const Titles(),
                             SizedBox(height: 14.h),
                             SizedBox(
-                              width: 266.r,
-                              height: 158.r,
+                              width: 266.w,
+                              height: 158.h,
                               child: Column(
                                 children: [
                                   Expanded(
@@ -135,9 +137,11 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
               ),
             ),
           ],
+        
         ),
+        
       ),
-      // bottomNavigationBar: SellerNavigationWidget(currentIndex: 1),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 1),
     );
   }
 }

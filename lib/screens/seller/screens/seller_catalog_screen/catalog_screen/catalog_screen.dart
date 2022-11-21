@@ -12,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../seller_navigation/seller_navigation_widget.dart';
+
 class CatalogScreen extends StatefulWidget {
   const CatalogScreen({Key? key}) : super(key: key);
 
@@ -84,6 +86,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: CustomBottomNavigator(currentPage: 0),
     );
   }
 }
