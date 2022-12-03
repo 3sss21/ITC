@@ -1,6 +1,7 @@
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/catalog_screen.dart';
 import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.brown,
         ),
-        home:CustomBottomNavigator(currentPage: 0,)
+        home:const CatalogScreen()
             //const BuyerNavigationWidget(currentIndex: 3),
            // const SplashScreen()
             //     const ConfirmScreen(
