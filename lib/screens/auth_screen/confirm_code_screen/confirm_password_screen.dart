@@ -13,6 +13,7 @@ import 'package:cashback_app/screens/auth_screen/confirm_code_screen/local_widge
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/buyer/screens/branch_screen/branch_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -104,8 +105,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                      const BuyerNavigationWidget(
-                                          currentIndex: 0),
+                                      const BranchScreen()
                                 ),
                               );
                             }

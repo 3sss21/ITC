@@ -10,7 +10,7 @@ class ChangeInfoTextFieldWidget extends StatefulWidget {
   final TextEditingController? controller;
   final TextInputType? keyboardType;
   final bool isObscureText;
-  final String? value;
+  final dynamic  value;
 
   const ChangeInfoTextFieldWidget({
     Key? key,

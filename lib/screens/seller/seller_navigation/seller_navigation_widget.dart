@@ -9,9 +9,6 @@ import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalo
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../screens/boxOffice_screen.dart/cashBox_screen.dart';
-import '../screens/seller_catalog_screen/product_screen/seller_product_screen.dart';
-
 class CustomBottomNavigator extends StatelessWidget {
   final int currentPage;
 

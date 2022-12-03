@@ -104,6 +104,7 @@ class BoxPurchaseHistoryWidget extends StatelessWidget {
           ),
         ],
       ),
+      
     );
   }
 }

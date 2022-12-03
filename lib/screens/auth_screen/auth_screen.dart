@@ -20,7 +20,7 @@ class _AuthScreenState extends State<AuthScreen> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.only(left: 37, right: 37),
+          padding:  EdgeInsets.only(left: 37.w, right: 37.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -40,7 +40,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   TextHelper.authDescription,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 22.sp,
                     fontWeight: FontWeight.w500,
                     color: ThemeHelper.green80,
                   ),
@@ -48,9 +48,9 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               SizedBox(height: 36.h),
               BranchButton(
-                fontSize: 20,
-                width: 300,
-                height: 50,
+                fontSize: 20.sp,
+                width: 300.w,
+                height: 50.h,
                 titleOfBranch: "ВХОД",
                 function: () => Navigator.of(context).push(
                   MaterialPageRoute(
@@ -60,9 +60,9 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               SizedBox(height: 26.h),
               BranchButton(
-                fontSize: 20,
-                width: 300,
-                height: 50,
+                fontSize: 20.sp,
+                width: 300.w,
+                height: 50.h,
                 titleOfBranch: "ЗАРЕГИСТРИРОВАТЬСЯ",
                 function: () => Navigator.of(context).push(
                   MaterialPageRoute(

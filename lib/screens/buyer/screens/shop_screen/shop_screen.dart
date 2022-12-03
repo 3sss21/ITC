@@ -5,6 +5,7 @@ import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/byuer_catalog_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/product_buyer_screen/product_buyer_screen.dart';
@@ -125,6 +126,7 @@ class _ShopScreenState extends State<ShopScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 0,),
     );
   }
 }

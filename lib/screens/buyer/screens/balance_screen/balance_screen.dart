@@ -12,6 +12,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../../buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+
 class BalanceScreen extends StatefulWidget {
   const BalanceScreen({Key? key}) : super(key: key);
 
@@ -112,6 +114,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 1,),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/bloc/branch_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/local_widget/branch_button.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/shop_screen.dart';
@@ -103,6 +104,7 @@ class _BranchScreenState extends State<BranchScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 0),
     );
   }
 }

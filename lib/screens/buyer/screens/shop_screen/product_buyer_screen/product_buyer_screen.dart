@@ -2,6 +2,7 @@ import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_info_box_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/product_buyer_screen/bloc/product_buyer_bloc.dart';
 import 'package:flutter/material.dart';
@@ -118,6 +119,7 @@ class _BuyerProductScreenState extends State<BuyerProductScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 0,),
     );
   }
 }

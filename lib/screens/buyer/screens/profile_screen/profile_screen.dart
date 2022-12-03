@@ -11,6 +11,7 @@ import 'package:cashback_app/screens/auth_screen/auth_screen.dart';
 import 'package:cashback_app/screens/auth_screen/confirm_code_screen/blocs/confirm_bloc/confirm_code_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/sign_in_screen.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/bloc/profile_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/local_widget/changeInfoTextField_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/local_widget/profileChangeButton_widget.dart';
@@ -47,7 +48,7 @@ class _ProfileSceenState extends State<ProfileSceen> {
     Box tokenBox = Hive.box('tokenBox');
     await Hive.box('tokenBox').delete('token');
     log('${tokenBox.get('token')}');
-    tokenBox.isNotEmpty
+    tokenBox.isEmpty
         ? Navigator.pushReplacement(
             context,
             MaterialPageRoute(
@@ -240,6 +241,7 @@ class _ProfileSceenState extends State<ProfileSceen> {
           ],
         ),
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 3),
     );
   }
 }

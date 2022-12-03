@@ -10,71 +10,131 @@ import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BuyerNavigationWidget extends StatefulWidget {
-  final int currentIndex;
-  const BuyerNavigationWidget({Key? key, required this.currentIndex})
-      : super(key: key);
+import '../screens/shop_screen/shop_screen.dart';
 
-  @override
-  State<BuyerNavigationWidget> createState() => _BuyerNavigationWidgetState();
-}
+class SellerNavigator extends StatelessWidget {
+  final int currentPage;
 
-class _BuyerNavigationWidgetState extends State<BuyerNavigationWidget> {
-  late int _selectedIndex;
-  late ProfileBloc _profileBloc;
+  SellerNavigator({this.currentPage = 0});
 
-  final List<Widget> _widgetOptions = <Widget>[
-    const BranchScreen(),
-    const BalanceScreen(),
-    const QrCodeScreen(),
-    const ProfileSceen(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
-  void initState() {
-    _profileBloc = ProfileBloc();
-    _profileBloc.add(GetProfileEvent());
-    _selectedIndex = widget.currentIndex;
-    super.initState();
+  List<BottomNavigationBarItem> _generateItemList() {
+    
+    var items = <BottomNavigationBarItem>[
+     BottomNavigationBarItem(
+      icon: Image.asset(
+        IconsImages.shopIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white50,
+      ),
+      activeIcon: Image.asset(
+       IconsImages.shopIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white,
+      ),
+      label: 'Каталог',
+    ),
+      BottomNavigationBarItem(
+      icon: Image.asset(
+        IconsImages.balanceIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white50,
+      ),
+      activeIcon: Image.asset(
+       IconsImages.balanceIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white,
+      ),
+      label: "Баланс",
+    ),
+      BottomNavigationBarItem(
+      icon: Image.asset(
+       IconsImages.qrCodeIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white50,
+      ),
+      activeIcon: Image.asset(
+         IconsImages.qrCodeIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white,
+      ),
+      label: "Qr-code",
+    ),
+      
+      BottomNavigationBarItem(
+      icon: Image.asset(
+       IconsImages.profileIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white50,
+      ),
+      activeIcon: Image.asset(
+         IconsImages.profileIcon,
+        width: 40.w,
+        height: 40.h,
+        color: ThemeHelper.white,
+      ),
+      label: "Прфиль",
+    ),
+    ];
+    return items;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _widgetOptions.elementAt(_selectedIndex),
-      bottomNavigationBar: ClipRRect(
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20.r),
-        ),
-        child: Theme(
-          data: Theme.of(context).copyWith(
-            canvasColor: ThemeHelper.green80,
-          ),
-          child: BottomNavigationBar(
-            showUnselectedLabels: true,
-            showSelectedLabels: true,
-            selectedItemColor: ThemeHelper.white,
-            unselectedItemColor: ThemeHelper.white50,
-            selectedLabelStyle: TextStyleHelper.labelStyle,
-            unselectedLabelStyle: TextStyleHelper.labelStyle,
-            items: [
-              BarItemHelper().barItem(IconsImages.shopIcon, 'Каталог'),
-              BarItemHelper().barItem(IconsImages.balanceIcon, 'Баланс'),
-              BarItemHelper().barItem(IconsImages.qrCodeIcon, 'QR-code'),
-              BarItemHelper().barItem(IconsImages.profileIcon, 'Профиль'),
-            ],
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
-        ),
-      ),
+    return BottomNavigationBar(
+      items: _generateItemList(),
+      selectedItemColor: ThemeHelper.white,
+      unselectedItemColor: ThemeHelper.white50,
+      selectedLabelStyle: TextStyleHelper.labelStyle,
+      unselectedLabelStyle: TextStyleHelper.labelStyle,
+      showUnselectedLabels: true,
+      backgroundColor: ThemeHelper.green80,
+      iconSize: 24,
+      unselectedFontSize: 14,
+      onTap: (index) async {
+        switch (index) {
+          case 0:
+            {
+              if (currentPage != index) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ShopScreen()));
+              }
+              break;
+            }
+          case 1:
+            {
+              if (currentPage != index) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => BalanceScreen()));
+              }
+              break;
+            }
+          case 2:
+            {
+              if (currentPage != index) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QrCodeScreen()));
+              }
+              break;
+            }
+            case 3:{
+                if (currentPage != index) {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProfileSceen()));
+              }
+              break;
+            }
+        }
+      },
+      currentIndex: currentPage,
+      type: BottomNavigationBarType.fixed,
     );
   }
 }
+

@@ -4,6 +4,7 @@ import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/cashed_network_image.dart.dart';
+import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -58,6 +59,7 @@ class _QrCodeScreenState extends State<QrCodeScreen> {
           ),
         ],
       ),
+      bottomNavigationBar: SellerNavigator(currentPage: 2),
     );
   }
 }

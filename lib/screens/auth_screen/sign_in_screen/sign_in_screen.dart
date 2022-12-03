@@ -9,6 +9,9 @@ import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_wi
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/buyer/screens/QR_code_screen/QR_code_screen.dart';
+import 'package:cashback_app/screens/buyer/screens/branch_screen/branch_screen.dart';
+import 'package:cashback_app/screens/buyer/screens/shop_screen/shop_screen.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -165,8 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       context,
                                       MaterialPageRoute(
                                         builder: (context) =>
-                                            const BuyerNavigationWidget(
-                                                currentIndex: 0),
+                                            const ShopScreen(),
                                       ),
                                     );
                                     emailController.clear();
