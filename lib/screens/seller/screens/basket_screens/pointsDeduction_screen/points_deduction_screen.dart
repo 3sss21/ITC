@@ -100,10 +100,11 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
                 ),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
+                    backgroundColor: ThemeHelper.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.r),
                     ),
-                    primary: ThemeHelper.white,
+                    // primary: ThemeHelper.white,
                     maximumSize: Size(150.w, 40.h),
                     minimumSize: Size(150.w, 40.h),
                   ),
@@ -129,7 +130,6 @@ class _PointsDeductionScreenState extends State<PointsDeductionScreen> {
           ],
         ),
       ),
-      // bottomNavigationBar: SellerNavigationWidget(currentIndex: 1),
     );
   }
 }

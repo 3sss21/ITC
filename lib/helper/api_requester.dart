@@ -9,25 +9,23 @@ class ApiRequester {
 
   Future<Dio> initDio() async {
     String token = await box.get("token", defaultValue: '');
-    log('Token_bloc === ${box.get('token')}');
+    log('Token_apiRequester === ${box.get('token')}');
     return Dio(
       BaseOptions(
         baseUrl: url,
         responseType: ResponseType.json,
         receiveTimeout: 30000,
-        headers: {"Authorization": token},
+        headers: {"Authorization": 'Token $token'},
         connectTimeout: 30000,
       ),
     );
   }
 
-  Future<Response> toGet(String url, {Map<String, dynamic>? param}) async {
+  Future<Response> toGet(String url, {Map<String, dynamic>? queryParam}) async {
     Dio dio = await initDio();
     try {
-      // log("message90");
-      return dio.get(url, queryParameters: param);
+      return dio.get(url, queryParameters: queryParam);
     } catch (e) {
-      log("$e");
       throw CatchException.convertException(e);
     }
   }
@@ -38,7 +36,6 @@ class ApiRequester {
     try {
       return dio.post(url, queryParameters: param, data: body);
     } catch (e) {
-      log(e.toString());
       throw CatchException.convertException(e);
     }
   }
@@ -49,7 +46,6 @@ class ApiRequester {
     try {
       return dio.patch(url, queryParameters: param, data: body);
     } catch (e) {
-      log(e.toString());
       throw CatchException.convertException(e);
     }
   }

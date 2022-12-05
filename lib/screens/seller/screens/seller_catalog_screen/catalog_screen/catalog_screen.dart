@@ -4,10 +4,11 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
+import 'package:cashback_app/global_widgets/refresh_indicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/bloc/seller_catalog_bloc.dart';
-import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/product_screen/seller_product_screen.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/bloc/category_bloc.dart';
+import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/product_screen/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,164 +21,122 @@ class CatalogScreen extends StatefulWidget {
 }
 
 class _CatalogScreenState extends State<CatalogScreen> {
-  void updateList(String value) {}
-
-  late SellerCatalogBloc catallogSellerBloc;
+  late CategoryBloc _categoryBloc;
 
   @override
   void initState() {
-    catallogSellerBloc = SellerCatalogBloc();
-    catallogSellerBloc.add(GetCatalogEvent());
+    _categoryBloc = CategoryBloc();
+    _categoryBloc.add(
+      GetCategoryEvent(),
+    );
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        const AppCoverWidget(
-          nameCover: 'КАТАЛОГ',
-          isSeller: true,
-        ),
-        SizedBox(
-          height: 39.h,
-        ),
-        TextField(
-          style: TextStyleHelper.f14fw500,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: Color.fromRGBO(83, 42, 42, 0.2),
-            hintText: "Поиск",
-            prefixIcon: Icon(Icons.search_sharp),
-            prefixIconColor: ThemeHelper.brown80,
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-                borderSide: BorderSide.none),
-          ),
-        ),
-        Expanded(
-          child: GridView.builder(
-            padding: EdgeInsets.only(top: 57.h),
-            itemCount: 4,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 80.w,
-              mainAxisSpacing: 53.w,
-              crossAxisCount: 2,
-              crossAxisSpacing: 54.h,
+      drawer: const AppCoverWidget(
+        nameCover: 'КАТАЛОГ',
+        isSeller: true,
+      ),
+      body: SizedBox(
+        width: 1.sw,
+        height: 1.sh,
+        child: Column(
+          children: [
+            const AppCoverWidget(
+              nameCover: 'КАТАЛОГ',
+              isSeller: true,
             ),
-            itemBuilder: (context, index) => Padding(
-                padding: EdgeInsets.symmetric(horizontal: 21.w),
-                child: ProductNameWidget(
-                  textStyle: TextStyleHelper.productNameGreen80,
-                  borderColor: ThemeHelper.brown80,
-                    productName:
-                        // state.catalogSellerModel[index].name ??
-                        'testName',
-                    function: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const ProductSellerScreen(),
+            RefreshIndicatorWidget(
+              onRefresh: () async => _categoryBloc.add(
+                GetCategoryEvent(),
+              ),
+              color: ThemeHelper.brown80,
+              child: Center(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 39.h),
+                  child: BlocConsumer<CategoryBloc, CategoryState>(
+                    bloc: _categoryBloc,
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      if (state is LoadingCategoryState) {
+                        return LoadingIndicatorWidget(
+                          width: 50.w,
+                          height: 50.h,
+                          color: ThemeHelper.brown80,
+                        );
+                      }
+                      if (state is LoadedCategoryState) {
+                        return Column(
+                          children: [
+                            SearchTextFieldWidget(
+                              hintText: 'Поиск',
+                              prefix: ImageIcon(
+                                AssetImage(IconsImages.searchIcon),
+                                color: ThemeHelper.brown80,
+                              ),
+                              fillColor: ThemeHelper.brown20,
+                              hintTextColor: ThemeHelper.brown80,
+                            ),
+                            SizedBox(
+                              width: 1.sw,
+                              height: 490.h,
+                              child: GridView.builder(
+                                padding: EdgeInsets.only(top: 57.h),
+                                itemCount: state
+                                    .categorySellerModel.listCategories!.length,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  mainAxisExtent: 80.w,
+                                  mainAxisSpacing: 53.w,
+                                  crossAxisCount: 2,
+                                  crossAxisSpacing: 54.h,
+                                ),
+                                itemBuilder: (context, index) {
+                                  var category = state.categorySellerModel
+                                      .listCategories![index];
+                                  return Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 21.w),
+                                    child: ProductNameWidget(
+                                      textStyle:
+                                          TextStyleHelper.productNameGreen80,
+                                      borderColor: ThemeHelper.brown80,
+                                      productName: category.name,
+                                      function: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProductSellerScreen(
+                                              categoryId: category.id!,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
+                        );
+                      }
+                      return ButtonTryAgainWidget(
+                        onPressed: () => _categoryBloc.add(
+                          GetCategoryEvent(),
                         ),
+                        btnTheme: ThemeHelper.brown80,
                       );
-                    })),
-          ),
+                    },
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-      ]),
+      ),
     );
   }
 }
-   
-    //     body: SizedBox(
-    //       width: 1.sw,
-    //       height: 1.sh,
-    //       child: Center(
-    //         child: Stack(children: <Widget>[
-    //           Container(
-    //             child: Column(
-    //               children: [
-    //                 const AppCoverWidget(
-    //                   nameCover: 'КАТАЛОГ',
-    //                   isSeller: true,
-    //                 ),
-    //                 SizedBox(height: 39.h),
-    //                 BlocConsumer<SellerCatalogBloc, SellerCatalogState>(
-    //                   bloc: catallogSellerBloc,
-    //                   listener: (context, state) {},
-    //                   builder: (context, state) {
-    //                     if (state is CatalogSellerLoadingState) {
-    //                       return const LoadingIndicatorWidget(
-    //                         isSeller: true,
-    //                       );
-    //                     }
-
-    //                     if (state is CatalogSellerErrorState) {
-    //                       return Center(
-    //                         child: ButtonTryAgainWidget(
-    //                           onTabFunction: () => catallogSellerBloc.add(
-    //                             GetCatalogEvent(),
-    //                           ),
-    //                           btnTheme: ThemeHelper.brown50,
-    //                         ),
-    //                       );
-    //                     }
-
-    //                     if (state is CatalogSellerFetchedState) {
-    //                       return Expanded(
-    //                           child: GridView.builder(
-    //                         padding: EdgeInsets.only(top: 57.h),
-    //                         itemCount: state.catalogSellerModel.length,
-    //                         gridDelegate:
-    //                             SliverGridDelegateWithFixedCrossAxisCount(
-    //                           mainAxisExtent: 80.w,
-    //                           mainAxisSpacing: 53.w,
-    //                           crossAxisCount: 2,
-    //                           crossAxisSpacing: 54.h,
-    //                         ),
-    //                         itemBuilder: (context, index) => Padding(
-    //                           padding: EdgeInsets.symmetric(horizontal: 21.w),
-    //                           child: ProductNameWidget(
-    //                             productName:
-    //                                 state.catalogSellerModel[index].name ??
-    //                                     'testName',
-    //                             function: () {
-    //                               Navigator.push(
-    //                                 context,
-    //                                 MaterialPageRoute(
-    //                                   builder: (context) =>
-    //                                       const ProductSellerScreen(),
-    //                                 ),
-    //                               );
-    //                             },
-    //                             borderColor: Colors.white,
-    //                             textStyle: TextStyleHelper.f12fw600,
-    //                           ),
-    //                         ),
-    //                       ));
-    //                     }
-    //                     return const SizedBox();
-    //                   },
-    //                 ),
-    //               ],
-    //             ),
-    //           ),
-    //           Padding(
-    //             padding: EdgeInsets.only(top: 178.h, left: 20.w, right: 20.w),
-    //             child: Container(
-    //               child: SearchTextFieldWidget(
-    //                 fillColor: ThemeHelper.brown20,
-    //                 hintTextColor: ThemeHelper.brown80,
-    //                 hintText: 'Поиск',
-    //                 prefix: ImageIcon(
-    //                   AssetImage(IconsImages.searchIcon),
-    //                   color: ThemeHelper.brown80,
-    //                 ),
-    //               ),
-    //             ),
-    //           )
-    //         ]),
-    //       ),
-    //     ),
-    //   );
-    // }
-  

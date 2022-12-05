@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:cashback_app/models/resend_response_model.dart';
@@ -13,6 +15,7 @@ class ResendCodeBloc extends Bloc<ResendCodeEvent, ResendCodeState> {
       (event, emit) async {
         emit(LoadingResendCodeState());
         try {
+          log('Event.email ================ ${event.email}');
           ResendResponseModel responseModel =
               await ResendCodeRepository().resendCode(email: event.email);
 

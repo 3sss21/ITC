@@ -2,30 +2,24 @@ import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
-import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
-import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/bloc/byuer_catalog_bloc.dart';
+import 'package:cashback_app/models/branch_model.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/local_widgets/product_name_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/shop_screen/product_buyer_screen/product_buyer_screen.dart';
+import 'package:cashback_app/screens/buyer/screens/product_buyer_screen/product_buyer_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShopScreen extends StatefulWidget {
-  const ShopScreen({Key? key}) : super(key: key);
+  final List<ListCategory> listOfCategory;
+  const ShopScreen({Key? key, required this.listOfCategory}) : super(key: key);
 
   @override
   State<ShopScreen> createState() => _ShopScreenState();
 }
 
 class _ShopScreenState extends State<ShopScreen> {
-  late BuyerCatalogBloc buyerCatalogBloc;
-
   @override
   void initState() {
-    buyerCatalogBloc = BuyerCatalogBloc();
-    buyerCatalogBloc.add(GetCatalogEvent());
     super.initState();
   }
 
@@ -49,79 +43,37 @@ class _ShopScreenState extends State<ShopScreen> {
               color: ThemeHelper.green80,
             ),
           ),
-          BlocConsumer<BuyerCatalogBloc, BuyerCatalogState>(
-            bloc: buyerCatalogBloc,
-            listener: (context, state) {},
-            builder: (context, state) {
-              if (state is CatalogBuyerLoadingState) {
-                return const LoadingIndicatorWidget();
-              }
-
-              if (state is CatlaogBuyerErrorState) {
-                return ButtonTryAgainWidget(
-                  onTabFunction: () => buyerCatalogBloc.add(
-                    GetCatalogEvent(),
-                  ),
-                  btnTheme: ThemeHelper.green80,
-                );
-              }
-
-              if (state is CatalogBuyerFetchedState) {
-                return Expanded(
-                    child: GridView.builder(
-                  padding: EdgeInsets.only(top: 57.h),
-                  itemCount: state.catalogBuyerModel.length,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisExtent: 80.w,
-                    mainAxisSpacing: 53.w,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 54.h,
-                  ),
-                  itemBuilder: (context, index) => Padding(
+          Expanded(
+            child: GridView.builder(
+                padding: EdgeInsets.only(top: 57.h),
+                itemCount: widget.listOfCategory.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisExtent: 80.w,
+                  mainAxisSpacing: 53.w,
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 54.h,
+                ),
+                itemBuilder: (context, index) {
+                  dynamic categoryModel = widget.listOfCategory[index];
+                  return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 21.w),
                     child: ProductNameWidget(
-                      productName:
-                          state.catalogBuyerModel[index].name ?? "ubkwe",
+                      productName: widget.listOfCategory[index].name,
                       function: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const BuyerProductScreen(),
+                            builder: (context) => BuyerProductScreen(
+                              categoryId: categoryModel.id!,
+                            ),
                           ),
                         );
-                        // setState(() {
-                        //   ScreensState.isState = false;
-                        // });
                       },
                       borderColor: ThemeHelper.green50,
                       textStyle: TextStyleHelper.productNameGreen80,
                     ),
-                  ),
-                )
-                    //       : ListView.separated(
-                    //           padding: EdgeInsets.only(
-                    //             left: 20.w,
-                    //             top: 21.h,
-                    //             right: 20.w,
-                    //           ),
-                    //           itemCount: state.catalogBuyerModel.length,
-                    //          itemBuilder: (context, index) => ProductInfoBoxWidget(
-                    //             imageUrl:
-                    //                 'https://mykaleidoscope.ru/uploads/posts/2021-09/1632713203_1-mykaleidoscope-ru-p-kapuchino-s-shokoladom-krasivo-foto-1.jpg',
-                    //             productName: 'Капучино',
-                    //             productType:
-                    //                 state.catalogBuyerModel[index].name??"unknown",
-                    //             price: 999,
-                    //             cashBack: 999,
-                    //           ),
-                    //           separatorBuilder: (BuildContext context, int index) {
-                    //             return SizedBox(height: 21.h);
-                    //           },
-                    //         ),
-                    );
-              }
-              return const SizedBox();
-            },
+                  );
+                }),
           ),
         ],
       ),

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppCoverBalanceWidget extends StatelessWidget {
   final String nameCover;
-  final String balance;
+  final String? balance;
   const AppCoverBalanceWidget({
     Key? key,
     required this.nameCover,
@@ -41,7 +41,7 @@ class AppCoverBalanceWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    '${balance}0',
+                    '${balance ?? 00}0',
                     style: TextStyle(
                       color: ThemeHelper.yellow,
                       fontSize: 36.sp,

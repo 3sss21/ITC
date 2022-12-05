@@ -1,14 +1,17 @@
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
+import 'package:cashback_app/global_blocs/user_data_bloc/profile_bloc.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
+import 'package:cashback_app/global_widgets/loading_overlay_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
-import 'package:cashback_app/global_widgets/white_loading_indicator_widget.dart';
 import 'package:cashback_app/screens/auth_screen/forgot_password/forgot_pass_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_in_screen/bloc/sign_in_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/local_widgets/authBox_widget.dart';
 import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,11 +31,15 @@ class _SignInScreenState extends State<SignInScreen> {
   final GlobalKey<FormFieldState> emailKey = GlobalKey();
   final GlobalKey<FormFieldState> passwordKey = GlobalKey();
   late SignInBloc signInBloc;
+  late ProfileBloc _profileBloc;
+  Box userId = Hive.box('userIdBox');
 
   @override
   void initState() {
     _openBox();
     signInBloc = SignInBloc();
+    _profileBloc = ProfileBloc();
+
     super.initState();
   }
 
@@ -81,7 +88,6 @@ class _SignInScreenState extends State<SignInScreen> {
                                   emailKey.currentState?.reset();
                                 });
                               },
-                              // contentPadding: EdgeInsets.only(top: 5.r),
                               controller: emailController,
                               textInputType: TextInputType.emailAddress,
                               hintext: "felizCoffee@gmail.com",
@@ -91,8 +97,6 @@ class _SignInScreenState extends State<SignInScreen> {
                               autofillHints: const [AutofillHints.email],
                               formFieldKey: emailKey,
                               validate: (value) {
-                                // if (value != null ||
-                                //     !EmailValidator.validate(value!)) {
                                 if (value == null ||
                                     value.isEmpty ||
                                     !EmailValidator.validate(value)) {
@@ -161,12 +165,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   }
 
                                   if (state is LoadedSignInState) {
-                                    Navigator.pushReplacement(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const BuyerNavigationWidget(
-                                                currentIndex: 0),
+                                    _profileBloc.add(
+                                      GetProfileEvent(
+                                        userId: userId.get('userId'),
                                       ),
                                     );
                                     emailController.clear();
@@ -175,12 +176,17 @@ class _SignInScreenState extends State<SignInScreen> {
                                 },
                                 builder: (context, state) {
                                   if (state is LoadingSignInState) {
-                                    const Center(
-                                      child: WhiteLoadingIndicatorWidget(),
+                                    return Center(
+                                      child: LoadingIndicatorWidget(
+                                        width: 30.w,
+                                        height: 30.h,
+                                        color: ThemeHelper.white,
+                                      ),
                                     );
                                   }
                                   return AuthButtonWidget(
                                     width: 98,
+                                    height: 25,
                                     txtButton: 'ВОЙТИ',
                                     themeButton: ThemeHelper.white,
                                     textColor: ThemeHelper.green100,
@@ -209,6 +215,46 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ],
                     ),
+                  ),
+                  BlocConsumer<ProfileBloc, ProfileState>(
+                    bloc: _profileBloc,
+                    listener: (context, state) {
+                      if (state is ErrorProfileState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              state.message.toString(),
+                            ),
+                          ),
+                        );
+                      }
+                      if (state is LoadedProfileState) {
+                        state.userDataModel.isSeller!
+                            ? Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SellerNavigationWidget(
+                                    currentIndex: 0,
+                                  ),
+                                ),
+                              )
+                            : Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      const BuyerNavigationWidget(
+                                          currentIndex: 0),
+                                ),
+                              );
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is LoadingProfileState) {
+                        return const LoadingOverlayWidget();
+                      }
+                      return const SizedBox();
+                    },
                   ),
                 ],
               ),

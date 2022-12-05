@@ -19,11 +19,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
             password: event.password,
           );
 
-          responseModel.authToken!.isNotEmpty
-              ? emit(
-                  LoadedSignInState(responseModel: responseModel),
-                )
-              : null;
+          emit(LoadedSignInState(responseModel: responseModel));
         } catch (e) {
           emit(
             ErrorSignInState(

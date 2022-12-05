@@ -14,7 +14,8 @@ class BranchBloc extends Bloc<BranchEvent, BranchState> {
         if (event is GetBranchEvent) {
           emit(LoadingBranchState());
           try {
-            List<BranchModel> branchModelList  = await BranchRepository().getBranch();
+            List<BranchModel> branchModelList = await BranchRepository()
+                .getBranch(branchName: event.branchName);
 
             emit(
               LoadedBranchState(branchModelList: branchModelList),

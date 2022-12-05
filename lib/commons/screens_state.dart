@@ -1,3 +1,5 @@
-class ScreensState{
-  static bool isState = true;
+class DeleteBoxIsSuccess {
+  final bool isSuccess;
+
+  DeleteBoxIsSuccess({this.isSuccess = false});
 }

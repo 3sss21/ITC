@@ -8,7 +8,6 @@ part 'confirm_code_event.dart';
 part 'confirm_code_state.dart';
 
 class ConfirmCodeBloc extends Bloc<ConfirmCodeEvent, ConfirmCodeState> {
-  List userIdModelList = [];
   ConfirmCodeBloc() : super(ConfirmCodeInitial()) {
     on<ConfirmCodeEvent>(
       (event, emit) async {
@@ -20,11 +19,9 @@ class ConfirmCodeBloc extends Bloc<ConfirmCodeEvent, ConfirmCodeState> {
               code: event.code,
               email: event.email,
             );
-            responseModel.message!.isNotEmpty
-                ? emit(
-                    LoadedConfirmCodeState(responseModel: responseModel),
-                  )
-                : null;
+            emit(
+              LoadedConfirmCodeState(responseModel: responseModel),
+            );
           } catch (e) {
             emit(
               ErrorConfirmCodeState(

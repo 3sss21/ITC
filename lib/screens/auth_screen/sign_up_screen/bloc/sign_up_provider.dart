@@ -17,7 +17,9 @@ class SignUpProvider {
     required String password,
   }) async {
     try {
+      await tokenBox.clear();
       ApiRequester requester = ApiRequester();
+      log('$email,$username,$phoneNumber, $password');
       Response response = await requester.toPost('/register/', body: {
         'email': email,
         'username': username,
@@ -30,15 +32,12 @@ class SignUpProvider {
         tokenBox.put('token', response.data['token']);
         pincodeBox.put('pincode', response.data['code']);
         userIdBox.put('userId', response.data['id']);
-        log('Pincode ====== ${pincodeBox.get('pincode')}');
-        log('Token ====== ${tokenBox.get('token')}');
-        log('User Id ====== ${userIdBox.get('userId')}');
+        log('User ID Sign Up ========= ${userIdBox.get('userId')}');
 
         log(response.data.toString());
-
         return responseModel;
       } else {
-        throw CatchException.convertException(response);
+        throw CatchException.convertException(response.statusCode);
       }
     } catch (e) {
       throw CatchException.convertException(e);

@@ -1,10 +1,10 @@
-import 'package:cashback_app/screens/buyer/buyer_navigation_widget.dart/buyer_navigation_widget.dart';
-import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen.dart';
-import 'package:cashback_app/screens/splash_screen/splash_screen.dart';
+import 'package:cashback_app/models/user_data_model.dart';
+import 'package:cashback_app/screens/seller/seller_navigation/seller_navigation_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'screens/auth_screen/confirm_code_screen/confirm_password_screen.dart';
+
+import 'screens/splash_screen/splash_screen.dart';
 //Bismillah
 
 void main() async {
@@ -30,8 +30,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const BuyerNavigationWidget(currentIndex: 3),
-        // const SplashScreen()
+        home: const SplashScreen(),
         //     const ConfirmScreen(
         //   email: 'kaparovkanagat@gmail.com',
         //   pinCode: '',
@@ -40,7 +39,6 @@ class MyApp extends StatelessWidget {
         //    const  BuyerNavigationWidget(
         //   currentIndex: 3,
         // )
-        //SellerNavigationWidget(currentIndex: 1),
       ),
     );
   }

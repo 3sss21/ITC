@@ -89,6 +89,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             SizedBox(height: 30.w),
                             AuthButtonWidget(
                               width: 98.w,
+                              height: 25.h,
                               txtButton: 'Далее',
                               textColor: ThemeHelper.green80,
                               themeButton: ThemeHelper.white,

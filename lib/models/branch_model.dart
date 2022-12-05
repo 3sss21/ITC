@@ -1,77 +1,72 @@
 // To parse this JSON data, do
 //
-//     final branchModel = branchModelFromJson(jsonString);
+//     final BranchModel = BranchModelFromJson(jsonString);
 
 import 'dart:convert';
 
 class BranchModel {
-    BranchModel({
-        this.id,
-        this.branchStorage,
-        this.user,
-        this.name,
-        this.address,
-        this.slug,
-    });
+  BranchModel({
+    this.id,
+    this.listCategories,
+    this.name,
+    this.address,
+    this.user,
+  });
 
-    int? id;
-    List<BranchStorage>? branchStorage;
-    String? user;
-    String? name;
-    String? address;
-    String? slug;
+  int? id;
+  List<ListCategory>? listCategories;
+  String? name;
+  String? address;
+  int? user;
 
-    factory BranchModel.fromRawJson(String str) => BranchModel.fromJson(json.decode(str));
+  factory BranchModel.fromRawJson(String str) =>
+      BranchModel.fromJson(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+  String toRawJson() => json.encode(toJson());
 
-    factory BranchModel.fromJson(Map<String, dynamic> json) => BranchModel(
+  factory BranchModel.fromJson(Map<String, dynamic> json) => BranchModel(
         id: json["id"] == null ? null : json["id"],
-        branchStorage: json["branch_storage"] == null ? null : List<BranchStorage>.from(json["branch_storage"].map((x) => BranchStorage.fromJson(x))),
-        user: json["user"] == null ? null : json["user"],
+        listCategories: json["list_categories"] == null
+            ? null
+            : List<ListCategory>.from(
+                json["list_categories"].map((x) => ListCategory.fromJson(x))),
         name: json["name"] == null ? null : json["name"],
         address: json["address"] == null ? null : json["address"],
-        slug: json["slug"] == null ? null : json["slug"],
-    );
+        user: json["user"] == null ? null : json["user"],
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
-        "branch_storage": branchStorage == null ? null : List<dynamic>.from(branchStorage!.map((x) => x.toJson())),
-        "user": user == null ? null : user,
+        "list_categories": listCategories == null
+            ? null
+            : List<dynamic>.from(listCategories!.map((x) => x.toJson())),
         "name": name == null ? null : name,
         "address": address == null ? null : address,
-        "slug": slug == null ? null : slug,
-    };
+        "user": user == null ? null : user,
+      };
 }
 
-class BranchStorage {
-    BranchStorage({
-        this.id,
-        this.product,
-        this.amount,
-        this.branch,
-    });
+class ListCategory {
+  ListCategory({
+    this.id,
+    this.name,
+  });
 
-    int? id;
-    int? product;
-    int? amount;
-    int? branch;
+  int? id;
+  String? name;
 
-    factory BranchStorage.fromRawJson(String str) => BranchStorage.fromJson(json.decode(str));
+  factory ListCategory.fromRawJson(String str) =>
+      ListCategory.fromJson(json.decode(str));
 
-    String toRawJson() => json.encode(toJson());
+  String toRawJson() => json.encode(toJson());
 
-    factory BranchStorage.fromJson(Map<String, dynamic> json) => BranchStorage(
+  factory ListCategory.fromJson(Map<String, dynamic> json) => ListCategory(
         id: json["id"] == null ? null : json["id"],
-        product: json["product"] == null ? null : json["product"],
-        amount: json["amount"] == null ? null : json["amount"],
-        branch: json["branch"] == null ? null : json["branch"],
-    );
+        name: json["name"] == null ? null : json["name"],
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id == null ? null : id,
-        "product": product == null ? null : product,
-        "amount": amount == null ? null : amount,
-        "branch": branch == null ? null : branch,
-    };
+        "name": name == null ? null : name,
+      };
 }

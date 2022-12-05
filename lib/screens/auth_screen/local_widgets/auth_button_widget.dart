@@ -7,6 +7,7 @@ class AuthButtonWidget extends StatelessWidget {
   final String txtButton;
   final Function() function;
   final double width;
+  final double height;
   final Color themeButton;
   final Color textColor;
 
@@ -17,13 +18,14 @@ class AuthButtonWidget extends StatelessWidget {
     required this.width,
     required this.themeButton,
     required this.textColor,
+    required this.height,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: width.w,
-      height: 25.h,
+      height: height.h,
       child: ElevatedButton(
         onPressed: () => function(),
         child: Text(

@@ -17,7 +17,6 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: Column(
         children: [
           const AppCoverWidget(
@@ -33,7 +32,9 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
                 children: [
                   SearchTextFieldWidget(
                     hintText: 'DD/MM/YY',
-                    suffix: Image.asset(IconsImages.iconVbrown), fillColor: null, hintTextColor: Colors.red,
+                    suffix: Image.asset(IconsImages.iconVbrown),
+                    fillColor: null,
+                    hintTextColor: Colors.red,
                   ),
                   SizedBox(
                     width: 1.sw,
@@ -56,7 +57,6 @@ class _CashBoxScreenState extends State<CashBoxScreen> {
           ),
         ],
       ),
-      // bottomNavigationBar: const SellerNavigationWidget(currentIndex: 2),
     );
   }
 }

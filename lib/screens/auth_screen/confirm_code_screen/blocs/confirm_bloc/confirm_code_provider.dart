@@ -12,6 +12,7 @@ class ConfirmProvider {
   }) async {
     try {
       log('email =============== $email');
+      log('code ============ $code');
       ApiRequester requester = ApiRequester();
       Response response =
           await requester.toPost('/register/confirm_code/', body: {
@@ -25,7 +26,6 @@ class ConfirmProvider {
 
         return responseModel;
       } else {
-        print("!");
         throw CatchException.convertException(response);
       }
     } catch (e) {

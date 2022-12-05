@@ -4,35 +4,32 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonTryAgainWidget extends StatelessWidget {
-  final Function() onTabFunction;
+  final Function() onPressed;
   final Color btnTheme;
   const ButtonTryAgainWidget({
     Key? key,
-    required this.onTabFunction,
+    required this.onPressed,
     required this.btnTheme,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding:  EdgeInsets.only(top: 220.h),
-        child: ElevatedButton(
-          onPressed: () => onTabFunction(),
-          child: Text(
-            'Try Again',
-            style: TextStyleHelper.functionBox,
-          ),
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(btnTheme),
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(17.r),
-              ),
-            ),
-            shadowColor: MaterialStateProperty.all(ThemeHelper.brown80),
-          ),
+    return ElevatedButton(
+      onPressed: () => onPressed(),
+      child: Text(
+        'Повторить',
+        style: TextStyleHelper.functionBox,
+      ),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(
+          horizontal: 30.w,
+          vertical: 7.h,
         ),
+        backgroundColor: btnTheme,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.r),
+        ),
+        shadowColor: ThemeHelper.brown80,
       ),
     );
   }

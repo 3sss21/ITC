@@ -2,6 +2,7 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
+import 'package:cashback_app/global_widgets/refresh_indicator_widget.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/bloc/branch_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/local_widget/branch_button.dart';
 import 'package:cashback_app/screens/buyer/screens/shop_screen/shop_screen.dart';
@@ -17,12 +18,12 @@ class BranchScreen extends StatefulWidget {
 }
 
 class _BranchScreenState extends State<BranchScreen> {
-  late BranchBloc branchBloc;
+  late BranchBloc _branchBloc;
 
   @override
   void initState() {
-    branchBloc = BranchBloc();
-    branchBloc.add(GetBranchEvent());
+    _branchBloc = BranchBloc();
+    _branchBloc.add(GetBranchEvent());
     super.initState();
   }
 
@@ -37,16 +38,20 @@ class _BranchScreenState extends State<BranchScreen> {
             left: 37.w,
             right: 37.w,
             child: BlocConsumer<BranchBloc, BranchState>(
-              bloc: branchBloc,
+              bloc: _branchBloc,
               listener: (context, state) {},
               builder: (context, state) {
                 if (state is LoadingBranchState) {
-                  return const LoadingIndicatorWidget();
+                  return LoadingIndicatorWidget(
+                    width: 50.w,
+                    height: 50.h,
+                    color: ThemeHelper.green80,
+                  );
                 }
 
                 if (state is ErrorBranchState) {
                   return ButtonTryAgainWidget(
-                    onTabFunction: () => branchBloc.add(
+                    onPressed: () => _branchBloc.add(
                       GetBranchEvent(),
                     ),
                     btnTheme: ThemeHelper.green80,
@@ -69,28 +74,37 @@ class _BranchScreenState extends State<BranchScreen> {
                         SizedBox(
                           height: 1.sh,
                           width: 1.sw,
-                          child: ListView.separated(
-                            itemCount: state.branchModelList.length,
-                            itemBuilder: (context, index) => BranchButton(
-                              fontSize: 20.sp,
-                              width: 300.w,
-                              height: 100.h,
-                              titleOfBranch: state.branchModelList[index].name!,
-                              function: () {
-                                branchBloc.add(GetBranchEvent());
-                                Navigator.pushReplacement(
+                          child: RefreshIndicatorWidget(
+                            onRefresh: () async => _branchBloc.add(
+                              GetBranchEvent(),
+                            ),
+                            color: ThemeHelper.green80,
+                            child: ListView.separated(
+                              itemCount: state.branchModelList.length,
+                              itemBuilder: (context, index) => BranchButton(
+                                fontSize: 20.sp,
+                                width: 300.w,
+                                height: 100.h,
+                                titleOfBranch:
+                                    state.branchModelList[index].name!,
+                                function: () {
+                                  Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ShopScreen(),
+                                      builder: (context) => ShopScreen(
+                                        listOfCategory: state
+                                            .branchModelList[index]
+                                            .listCategories!,
+                                      ),
                                     ),
                                   );
+                                },
+                              ),
+                              separatorBuilder:
+                                  (BuildContext context, int index) {
+                                return SizedBox(height: 43.h);
                               },
                             ),
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(height: 43.h);
-                            },
                           ),
                         ),
                       ],

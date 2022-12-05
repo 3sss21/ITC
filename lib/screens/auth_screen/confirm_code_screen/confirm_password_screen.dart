@@ -2,12 +2,10 @@ import 'dart:developer';
 
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/show_dialog_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
-import 'package:cashback_app/global_widgets/white_loading_indicator_widget.dart';
 import 'package:cashback_app/screens/auth_screen/confirm_code_screen/blocs/confirm_bloc/confirm_code_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/confirm_code_screen/blocs/resend_code/resend_code_bloc.dart';
 import 'package:cashback_app/screens/auth_screen/confirm_code_screen/local_widgets/pinput_widget.dart';
@@ -113,7 +111,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                           },
                           builder: (context, state) {
                             if (state is LoadedConfirmCodeState) {
-                              return const WhiteLoadingIndicatorWidget();
+                              return LoadingIndicatorWidget(
+                                width: 30.w,
+                                height: 30.h,
+                                color: ThemeHelper.green80,
+                              );
                             }
                             return SizedBox(
                               width: 300.w,
@@ -128,6 +130,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                                 txtButton: 'Подтвердить',
                                 textColor: ThemeHelper.white,
                                 width: 230.w,
+                                height: 25.h,
                                 themeButton: ThemeHelper.green80,
                               ),
                             );
@@ -167,7 +170,11 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                           },
                           builder: (context, state) {
                             if (state is LoadingResendCodeState) {
-                              return const LoadingIndicatorWidget();
+                              return LoadingIndicatorWidget(
+                                width: 30.w,
+                                height: 30.h,
+                                color: ThemeHelper.green80,
+                              );
                             }
                             return Align(
                               alignment: Alignment.center,

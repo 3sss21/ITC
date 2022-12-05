@@ -7,11 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CatalogProductWidget extends StatelessWidget {
-  final String imageUrl;
-  final String productName;
-  final String productType;
-  final String price;
-  final String cashBack;
+  final String? imageUrl;
+  final String? productName;
+  final String? productType;
+  final String? price;
+  final String? cashBack;
   const CatalogProductWidget({
     Key? key,
     required this.imageUrl,

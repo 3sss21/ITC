@@ -1,9 +1,7 @@
-import 'dart:developer';
-
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
+import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
-import 'package:cashback_app/global_widgets/white_loading_indicator_widget.dart';
 import 'package:cashback_app/screens/auth_screen/confirm_code_screen/confirm_password_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
@@ -76,7 +74,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             listWidgets: [
                               SizedBox(height: 33.h),
                               AuthTextFieldWidget(
-                                // contentPadding: EdgeInsets.only(top: 5.r),
                                 controller: emailController,
                                 textInputType: TextInputType.emailAddress,
                                 hintext: "felizCoffee@gmail.com",
@@ -86,8 +83,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 autofillHints: const [AutofillHints.email],
                                 formFieldKey: emailKey,
                                 validate: (value) {
-                                  // if (value != null ||
-                                  //     !EmailValidator.validate(value!)) {
                                   if (value == null ||
                                       value.isEmpty ||
                                       !EmailValidator.validate(value)) {
@@ -105,8 +100,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 isSuffixIcon: false,
                                 isClosedEye: false,
                                 validate: (value) {
-                                  // if (value != null ||
-                                  //     !EmailValidator.validate(value!)) {
                                   if (value == null ||
                                       value.isEmpty ||
                                       !RegExp(r'^[a-z A-Z]').hasMatch(value)) {
@@ -180,7 +173,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: BlocConsumer<SignUpBloc, SignUpState>(
                                   bloc: signUpBloc,
                                   listener: (context, state) {
-                                    print('object');
                                     if (state is ErrorSignUpState) {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(
@@ -192,8 +184,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       );
                                     }
                                     if (state is LoadedSignUpState) {
-                                      log(emailController.text.toString());
-                                      Navigator.pushReplacement(
+                                      Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) => ConfirmScreen(
@@ -210,12 +201,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   },
                                   builder: (context, state) {
                                     if (state is LoadingSignUpState) {
-                                      return const Center(
-                                        child: WhiteLoadingIndicatorWidget(),
+                                      return Center(
+                                        child: LoadingIndicatorWidget(
+                                          width: 30.w,
+                                          height: 30.h,
+                                          color: ThemeHelper.white,
+                                        ),
                                       );
                                     }
                                     return AuthButtonWidget(
                                       width: 170.w,
+                                      height: 25.h,
                                       themeButton: ThemeHelper.white,
                                       textColor: ThemeHelper.green80,
                                       txtButton: 'продолжить'.toUpperCase(),
@@ -226,16 +222,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         passwordKey.currentState?.validate();
                                         repeatPasswordKey.currentState
                                             ?.validate();
-                                        print(
-                                            'email=== ${emailKey.currentState?.validate()}');
-                                        print(
-                                            'username=== ${usernameKey.currentState?.validate()}');
-                                        print(
-                                            'number=== ${numberKey.currentState?.validate()}');
-                                        print(
-                                            'password=== ${passwordKey.currentState?.validate()}');
-                                        print(
-                                            'repassword=== ${repeatPasswordKey.currentState?.validate()}');
                                         if (emailKey.currentState!
                                                     .validate() ==
                                                 true &&

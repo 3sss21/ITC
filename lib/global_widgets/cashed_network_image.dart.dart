@@ -21,7 +21,8 @@ class CustomCachedNetworkImageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: imageUrl!,
+      imageUrl: imageUrl ??
+          'https://pbs.twimg.com/profile_images/932599989964099584/GKV4NGiU_400x400.jpg',
       imageBuilder: (context, imageProvider) => Container(
         width: width!,
         height: height!,

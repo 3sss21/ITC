@@ -5,12 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BoxCatalogProductsWidget extends StatelessWidget {
-  final String imageUrl;
-  final String productName;
-  final String productType;
-  final String price;
-  final String cashBack;
-  
+  final String? imageUrl;
+  final String? productName;
+  final String? productType;
+  final String? price;
+  final String? cashBack;
+
   const BoxCatalogProductsWidget({
     Key? key,
     required this.imageUrl,
@@ -47,7 +47,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                 SizedBox(
                   width: 150.w,
                   child: Text(
-                    productName,
+                    productName ?? 'unknown',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyleHelper.productNameBrown80
                         .copyWith(color: ThemeHelper.white),
@@ -56,19 +56,21 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                 SizedBox(
                   width: 90.w,
                   child: Text(
-                    productType,
+                    productType ?? 'unknown',
                     overflow: TextOverflow.ellipsis,
                     style: TextStyleHelper.f14fw500
                         .copyWith(color: ThemeHelper.white),
                   ),
                 ),
-                SizedBox(width: 50.w,),
+                SizedBox(
+                  width: 50.w,
+                ),
                 Padding(
                   padding: EdgeInsets.only(left: 7.w),
                   child: Row(
                     children: [
                       Text(
-                        '$price сом/ ',
+                        '${price ?? 00.0} сом/ ',
                         style: TextStyleHelper.f12fw600
                             .copyWith(color: ThemeHelper.white),
                       ),
@@ -76,7 +78,7 @@ class BoxCatalogProductsWidget extends StatelessWidget {
                         padding: EdgeInsets.only(left: 7.w),
                         child: Row(
                           children: [
-                            Text('+ $cashBack',
+                            Text('+ ${cashBack ?? 0}',
                                 style: TextStyleHelper.f16fw700),
                             ImageIcon(
                               const AssetImage('assets/images/coin.png'),

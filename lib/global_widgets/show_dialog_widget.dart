@@ -30,8 +30,8 @@ class ShowDialogWidget extends StatelessWidget {
       content: Text(
         contentText,
         textAlign: TextAlign.center,
-        style: TextStyleHelper.f16Green100,
       ),
+      contentTextStyle: TextStyleHelper.f16Green100,
       actionsAlignment: MainAxisAlignment.center,
       actions: <Widget>[
         Padding(
@@ -39,7 +39,8 @@ class ShowDialogWidget extends StatelessWidget {
           child: AuthButtonWidget(
             txtButton: buttonText,
             function: () => onPressed(),
-            width: 180.w,
+            width: 200.w,
+            height: 30.h,
             themeButton: ThemeHelper.green80,
             textColor: ThemeHelper.white,
           ),

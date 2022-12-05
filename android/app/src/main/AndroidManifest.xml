@@ -2,7 +2,7 @@
     package="com.example.cashback_app">
     <uses-permission android:name="android.permission.CAMERA"/>
    <application
-        android:label="cashback_app"
+        android:label="Feliz Logo"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

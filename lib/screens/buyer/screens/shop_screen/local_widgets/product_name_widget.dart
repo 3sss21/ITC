@@ -1,11 +1,10 @@
 import 'package:cashback_app/commons/box_shadow_helper.dart';
-import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductNameWidget extends StatelessWidget {
-  final String productName;
+  final String? productName;
   final Function() function;
   final TextStyle textStyle;
   final Color borderColor;
@@ -37,7 +36,7 @@ class ProductNameWidget extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            productName,
+            productName ?? 'unknown',
             overflow: TextOverflow.ellipsis,
             textAlign: TextAlign.center,
             style: textStyle,
