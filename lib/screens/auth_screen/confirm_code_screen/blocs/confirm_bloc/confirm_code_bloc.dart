@@ -12,7 +12,7 @@ class ConfirmCodeBloc extends Bloc<ConfirmCodeEvent, ConfirmCodeState> {
     on<ConfirmCodeEvent>(
       (event, emit) async {
         if (event is PostConfirmCodeEvent) {
-          emit(LoadingConfirmCodedState());
+          emit(LoadingConfirmCodeState());
           try {
             ConfirmResponseModel responseModel =
                 await ConfirmRepository().confirmCode(

@@ -11,8 +11,8 @@ class ResendCodeProvider {
   }) async {
     try {
       ApiRequester requester = ApiRequester();
-      Response response =
-          await requester.toPost('/register/resend_code/', body: {
+      Response response = await requester
+          .toPost('/register/resend_code/', isToken: false, body: {
         'email': email,
       });
       log(response.data.toString());

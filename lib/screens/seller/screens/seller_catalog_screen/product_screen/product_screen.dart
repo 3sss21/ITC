@@ -4,6 +4,7 @@ import 'package:cashback_app/global_blocs/product_bloc/product_bloc.dart';
 import 'package:cashback_app/global_widgets/appCover_widget.dart';
 import 'package:cashback_app/global_widgets/btnTryAgain_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
+import 'package:cashback_app/global_widgets/refresh_indicator_widget.dart';
 import 'package:cashback_app/global_widgets/search_textfield_widget.dart';
 import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/local_widgets/catalogProducts_widget.dart';
 import 'package:flutter/material.dart';
@@ -39,63 +40,77 @@ class _ProductSellerScreenState extends State<ProductSellerScreen> {
             isSeller: true,
             isBackButton: true,
           ),
-          SizedBox(height: 39.h),
-          SearchTextFieldWidget(
-            hintText: 'Поиск',
-            prefix: ImageIcon(
-              AssetImage(IconsImages.searchIcon),
+          Expanded(
+            child: RefreshIndicatorWidget(
               color: ThemeHelper.brown80,
-            ),
-            fillColor: ThemeHelper.brown20,
-            hintTextColor: ThemeHelper.brown80,
-          ),
-          BlocConsumer<ProductBloc, ProductState>(
-            bloc: _productBloc,
-            listener: (context, state) {},
-            builder: (context, state) {
-              // if (state is ProductLoadingState) {
-              //   return const LoadingIndicatorWidget(
-              //     isSeller: true,
-              //   );
-              // }
-
-              if (state is ProductErrorState) {
-                return ButtonTryAgainWidget(
-                  onPressed: () => _productBloc.add(
-                    GetProductEvent(categoryId: widget.categoryId),
-                  ),
-                  btnTheme: ThemeHelper.brown80,
-                );
-              }
-
-              if (state is ProductFetchedState) {
-                return Expanded(
-                  child: ListView.separated(
-                    padding: EdgeInsets.only(
-                      left: 20.w,
-                      top: 21.h,
-                      right: 20.w,
+              onRefresh: () async => _productBloc
+                  .add(GetProductEvent(categoryId: widget.categoryId)),
+              child: Column(
+                children: [
+                  SizedBox(height: 39.h),
+                  SearchTextFieldWidget(
+                    hintText: 'Поиск',
+                    prefix: ImageIcon(
+                      AssetImage(IconsImages.searchIcon),
+                      color: ThemeHelper.brown80,
                     ),
-                    itemCount: state.listOfProduct.length,
-                    itemBuilder: (context, index) {
-                      var product = state.listOfProduct[index];
-                      return CatalogProductWidget(
-                        imageUrl: product.image,
-                        productName: product.title,
-                        productType: product.category!.name,
-                        price: product.price,
-                        cashBack: product.percentCashback.toString(),
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return SizedBox(height: 28.h);
+                    fillColor: ThemeHelper.brown20,
+                    hintTextColor: ThemeHelper.brown80,
+                  ),
+                  BlocConsumer<ProductBloc, ProductState>(
+                    bloc: _productBloc,
+                    listener: (context, state) {},
+                    builder: (context, state) {
+                      if (state is ProductLoadingState) {
+                        return LoadingIndicatorWidget(
+                          height: 40.h,
+                          width: 40.w,
+                          color: ThemeHelper.brown80,
+                        );
+                      }
+
+                      if (state is ProductErrorState) {
+                        return ButtonTryAgainWidget(
+                          onPressed: () => _productBloc.add(
+                            GetProductEvent(categoryId: widget.categoryId),
+                          ),
+                          btnTheme: ThemeHelper.brown80,
+                        );
+                      }
+
+                      if (state is ProductFetchedState) {
+                        return Expanded(
+                          child: ListView.separated(
+                            padding: EdgeInsets.only(
+                              left: 20.w,
+                              top: 21.h,
+                              right: 20.w,
+                            ),
+                            itemCount: state.listOfProduct.length,
+                            itemBuilder: (context, index) {
+                              var product = state.listOfProduct[index];
+                              return CatalogProductWidget(
+                                imageUrl: product.image,
+                                productName: product.title,
+                                productType: product.category!.name,
+                                price: product.price,
+                                cashBack: product.percentCashback.toString(),
+                              );
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return SizedBox(height: 28.h);
+                            },
+                          ),
+                        );
+                      }
+                      return const SizedBox();
                     },
                   ),
-                );
-              }
-              return const SizedBox();
-            },
-          ),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );

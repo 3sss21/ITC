@@ -38,7 +38,6 @@ class AppCoverBalanceWidget extends StatelessWidget {
             SizedBox(
               height: 44.h,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
                     '${balance ?? 00}0',
@@ -48,6 +47,7 @@ class AppCoverBalanceWidget extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
+                  SizedBox(width: 3.w),
                   SizedBox(
                     width: 22.w,
                     height: 19.h,

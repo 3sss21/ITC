@@ -1,6 +1,7 @@
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_blocs/user_data_bloc/profile_bloc.dart';
+import 'package:cashback_app/global_blocs/user_id_bloc/user_id_bloc.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/loading_overlay_widget.dart';
@@ -31,6 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final GlobalKey<FormFieldState> emailKey = GlobalKey();
   final GlobalKey<FormFieldState> passwordKey = GlobalKey();
   late SignInBloc signInBloc;
+  late UserIdBloc _userIdBloc;
   late ProfileBloc _profileBloc;
   Box userId = Hive.box('userIdBox');
 
@@ -38,6 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void initState() {
     _openBox();
     signInBloc = SignInBloc();
+    _userIdBloc = UserIdBloc();
     _profileBloc = ProfileBloc();
 
     super.initState();
@@ -165,11 +168,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   }
 
                                   if (state is LoadedSignInState) {
-                                    _profileBloc.add(
-                                      GetProfileEvent(
-                                        userId: userId.get('userId'),
-                                      ),
-                                    );
+                                    _userIdBloc.add(GetUserIdEvent());
                                     emailController.clear();
                                     passwordController.clear();
                                   }
@@ -215,6 +214,35 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ],
                     ),
+                  ),
+                  BlocConsumer<UserIdBloc, UserIdState>(
+                    bloc: _userIdBloc,
+                    listener: (context, state) {
+                      if (state is ErrorUserIdState) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              state.message.toString(),
+                            ),
+                          ),
+                        );
+                      }
+
+                      if (state is LoadedUserIdState) {
+                        state.userIdModel.id;
+                        _profileBloc.add(
+                          GetProfileEvent(
+                              // userId: userId.get('userId'),
+                              userId: state.userIdModel.id!),
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is LoadingUserIdState) {
+                        return const LoadingOverlayWidget();
+                      }
+                      return const SizedBox();
+                    },
                   ),
                   BlocConsumer<ProfileBloc, ProfileState>(
                     bloc: _profileBloc,

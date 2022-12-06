@@ -5,7 +5,7 @@ abstract class ConfirmCodeState {}
 
 class ConfirmCodeInitial extends ConfirmCodeState {}
 
-class LoadingConfirmCodedState extends ConfirmCodeState {}
+class LoadingConfirmCodeState extends ConfirmCodeState {}
 
 class LoadedConfirmCodeState extends ConfirmCodeState {
   ConfirmResponseModel responseModel;

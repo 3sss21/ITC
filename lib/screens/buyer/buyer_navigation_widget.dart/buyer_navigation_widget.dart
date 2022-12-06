@@ -2,14 +2,12 @@ import 'package:cashback_app/commons/barItem_helper.dart';
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/global_blocs/user_data_bloc/profile_bloc.dart';
 import 'package:cashback_app/screens/buyer/screens/QR_code_screen/QR_code_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/balance_screen/balance_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/branch_screen/branch_screen.dart';
 import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class BuyerNavigationWidget extends StatefulWidget {
   final int currentIndex;

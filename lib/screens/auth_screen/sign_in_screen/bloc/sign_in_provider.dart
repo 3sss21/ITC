@@ -15,8 +15,8 @@ class SignInProvider {
     try {
       ApiRequester requester = ApiRequester();
 
-      Response response =
-          await requester.toPost('/auth/token/token/login/', body: {
+      Response response = await requester
+          .toPost('/auth/token/token/login/', isToken: false, body: {
         'password': password,
         'email': email,
       });

@@ -62,9 +62,7 @@ class _BalanceScreenState extends State<BalanceScreen> {
                 }
 
                 if (state is LoadedBalanceState) {
-                  return SizedBox(
-                    width: 1.sw,
-                    height: 0.726.sh,
+                  return Expanded(
                     child: ListView.separated(
                       padding: EdgeInsets.only(
                         left: 20.w,
@@ -86,19 +84,6 @@ class _BalanceScreenState extends State<BalanceScreen> {
                             function: () {},
                           ),
                         );
-                        // : BoxPurchaseHistoryWidget(
-                        //     datePurchase:
-                        //         state.balanceModel[index].dateTime!,
-                        //     listOfProduct:
-                        //         state.balanceModel[index].listOfProducts!,
-                        //     listOfPoints:
-                        //         state.balanceModel[index].listOfPoints!,
-                        //     function: () {
-                        //       setState(() {
-                        //         ScreensState.isState = true;
-                        //       });
-                        //     },
-                        //   );
                       },
                       separatorBuilder: (BuildContext context, int index) {
                         return SizedBox(height: 16.h);

@@ -54,7 +54,7 @@ class HistoryButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '+${som} сом',
+                    '+$som сом',
                     style: TextStyleHelper.f14w400white
                         .copyWith(color: ThemeHelper.green100),
                   ),

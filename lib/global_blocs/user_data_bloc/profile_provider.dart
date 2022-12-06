@@ -11,7 +11,6 @@ class ProfileProvider {
   Box userIdBox = Hive.box('userIdBox');
   Future<UserDataModel> getProfile({required int userId}) async {
     try {
-      log('User ID ========= ${userData.get('userId')}');
       ApiRequester requester = ApiRequester();
       Response response =
           await requester.toGet('/register/${userIdBox.get('userId')}/');
@@ -32,7 +31,6 @@ class ProfileProvider {
         throw CatchException.convertException(response);
       }
     } catch (e) {
-      print('Profile provider error========$e');
       throw CatchException.convertException(e);
     }
   }

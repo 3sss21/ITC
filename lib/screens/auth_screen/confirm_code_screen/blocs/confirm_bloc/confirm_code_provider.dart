@@ -14,8 +14,8 @@ class ConfirmProvider {
       log('email =============== $email');
       log('code ============ $code');
       ApiRequester requester = ApiRequester();
-      Response response =
-          await requester.toPost('/register/confirm_code/', body: {
+      Response response = await requester
+          .toPost('/register/confirm_code/', isToken: false, body: {
         'code': code,
         'email': email,
       });

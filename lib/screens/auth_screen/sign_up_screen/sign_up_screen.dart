@@ -2,7 +2,7 @@ import 'package:cashback_app/commons/theme_helper.dart';
 import 'package:cashback_app/global_widgets/feliz_logo_widget.dart';
 import 'package:cashback_app/global_widgets/loadingIndicator_widget.dart';
 import 'package:cashback_app/global_widgets/txtBtnBack_widget.dart';
-import 'package:cashback_app/screens/auth_screen/confirm_code_screen/confirm_password_screen.dart';
+import 'package:cashback_app/screens/auth_screen/confirm_code_screen/confirm_code_screen.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_button_widget.dart';
 import 'package:cashback_app/screens/auth_screen/local_widgets/auth_textfield_widget.dart';
 import 'package:cashback_app/screens/auth_screen/sign_up_screen/bloc/sign_up_bloc.dart';

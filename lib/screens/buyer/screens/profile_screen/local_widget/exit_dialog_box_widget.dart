@@ -20,9 +20,11 @@ class ExitDialogBoxWidget extends StatelessWidget {
         super(key: key);
 
   Box tokenBox = Hive.box('tokenBox');
+  Box userIdBox = Hive.box('userIdBox');
 
   Future<void> _exitApp() async {
     await Hive.box('tokenBox').delete('token');
+    await Hive.box('userIdBox').delete('userId');
   }
 
   @override
@@ -60,9 +62,8 @@ class ExitDialogBoxWidget extends StatelessWidget {
               if (state is LoadedLogoutState) {
                 if (state.logoutUser.isLogout) {
                   _exitApp();
-                  if (tokenBox.isEmpty) {
-                    Navigator.pushReplacement(
-                      context,
+                  if (tokenBox.isEmpty && userIdBox.isEmpty) {
+                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
                         builder: (context) => const SplashScreen(),
                       ),

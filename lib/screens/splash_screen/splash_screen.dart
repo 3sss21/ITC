@@ -19,8 +19,8 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     log('TokenSplash ====== ${tokenBox.get('token')}');
-    log('PincodeSplash ====== ${tokenBox.get('pincode')}');
-    log('UserIDSplash ====== ${tokenBox.get('userId')}');
+    log('PincodeSplash ====== ${pincodeBox.get('pincode')}');
+    log('UserIDSplash ====== ${userIdBox.get('userId')}');
 
     navigate();
     super.initState();

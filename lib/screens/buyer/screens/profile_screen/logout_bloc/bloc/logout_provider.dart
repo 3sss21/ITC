@@ -8,7 +8,8 @@ class LogoutProvider {
   Future<LogoutUser> logoutUser() async {
     try {
       ApiRequester requester = ApiRequester();
-      Response response = await requester.toPost(logoutUserUrl(), body: {});
+      Response response =
+          await requester.toPost(logoutUserUrl(), isToken: true, body: {});
 
       if (response.statusCode! == 204) {
         LogoutUser logoutUser = LogoutUser(isLogout: true);

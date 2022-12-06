@@ -24,7 +24,6 @@ class _ProfileSceenState extends State<ProfileSceen> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
   late SignUpBloc _signUpBloc;
   late LogoutBloc _logoutBloc;
@@ -41,6 +40,9 @@ class _ProfileSceenState extends State<ProfileSceen> {
 
   @override
   void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
     super.dispose();
   }
 

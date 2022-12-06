@@ -11,12 +11,14 @@ class CustomCachedNetworkImageWidget extends StatelessWidget {
     required this.width,
     required this.height,
     this.radius,
+    this.isSeller,
   }) : super(key: key);
   final bool isRadius;
   final String? imageUrl;
   final double? width;
   final double? height;
   final BorderRadius? radius;
+  final bool? isSeller;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,13 @@ class CustomCachedNetworkImageWidget extends StatelessWidget {
           ),
         ),
       ),
-      placeholder: (context, url) => CircularProgressIndicator(
-        strokeWidth: 3.w,
-        color: ThemeHelper.green100,
+      placeholder: (context, url) => SizedBox(
+        width: width!,
+        height: height!,
+        child: CircularProgressIndicator(
+          strokeWidth: 3.w,
+          color: isSeller ?? false ? ThemeHelper.brown80 : ThemeHelper.green100,
+        ),
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );

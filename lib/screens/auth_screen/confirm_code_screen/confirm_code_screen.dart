@@ -110,7 +110,7 @@ class _ConfirmScreenState extends State<ConfirmScreen> {
                             }
                           },
                           builder: (context, state) {
-                            if (state is LoadedConfirmCodeState) {
+                            if (state is LoadingConfirmCodeState) {
                               return LoadingIndicatorWidget(
                                 width: 30.w,
                                 height: 30.h,

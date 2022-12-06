@@ -2,7 +2,7 @@ import 'package:cashback_app/commons/barItem_helper.dart';
 import 'package:cashback_app/commons/icon_images.dart';
 import 'package:cashback_app/commons/text_style_helper.dart';
 import 'package:cashback_app/commons/theme_helper.dart';
-import 'package:cashback_app/models/user_data_model.dart';
+import 'package:cashback_app/screens/buyer/screens/profile_screen/profile_screen.dart';
 import 'package:cashback_app/screens/seller/screens/basket_screens/basket_screen/basket_screen.dart';
 import 'package:cashback_app/screens/seller/screens/boxOffice_screen.dart/boxOffice_screen.dart';
 import 'package:cashback_app/screens/seller/screens/seller_catalog_screen/catalog_screen/catalog_screen.dart';
@@ -28,6 +28,7 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
     const CatalogScreen(),
     const BasketScreen(),
     const BoxOfficeScreen(),
+    const ProfileSceen(),
   ];
 
   @override
@@ -64,6 +65,7 @@ class _SellerNavigationWidgetState extends State<SellerNavigationWidget> {
               BarItemHelper().barItem(IconsImages.shopIcon, 'Каталог'),
               BarItemHelper().barItem(IconsImages.iconBasket, 'Корзина'),
               BarItemHelper().barItem(IconsImages.incomeIcon, 'Касса'),
+              BarItemHelper().barItem(IconsImages.incomeIcon, 'Профиль'),
             ],
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,

@@ -1,41 +1,38 @@
-// To parse this JSON data, do
+// // To parse this JSON data, do
 //
-//     final userIdModel = userIdModelFromMap(jsonString);
+//     final userIdModel = userIdModelFromJson(jsonString);
 
 import 'dart:convert';
 
 class UserIdModel {
-    UserIdModel({
-        this.username,
-        this.email,
-        this.isSeller,
-        this.id,
-        this.phone,
-    });
+  UserIdModel({
+    this.username,
+    this.isSeller,
+    this.id,
+    this.email,
+  });
 
-    String? username;
-    String? email;
-    bool? isSeller;
-    int? id;
-    String? phone;
+  String? username;
+  bool? isSeller;
+  int? id;
+  String? email;
 
-    factory UserIdModel.fromJson(String str) => UserIdModel.fromMap(json.decode(str));
+  factory UserIdModel.fromRawJson(String str) =>
+      UserIdModel.fromJson(json.decode(str));
 
-    String toJson() => json.encode(toMap());
+  String toRawJson() => json.encode(toJson());
 
-    factory UserIdModel.fromMap(Map<String, dynamic> json) => UserIdModel(
+  factory UserIdModel.fromJson(Map<String, dynamic> json) => UserIdModel(
         username: json["username"] == null ? null : json["username"],
-        email: json["email"] == null ? null : json["email"],
         isSeller: json["is_seller"] == null ? null : json["is_seller"],
         id: json["id"] == null ? null : json["id"],
-        phone: json["phone"] == null ? null : json["phone"],
-    );
+        email: json["email"] == null ? null : json["email"],
+      );
 
-    Map<String, dynamic> toMap() => {
+  Map<String, dynamic> toJson() => {
         "username": username == null ? null : username,
-        "email": email == null ? null : email,
         "is_seller": isSeller == null ? null : isSeller,
         "id": id == null ? null : id,
-        "phone": phone == null ? null : phone,
-    };
+        "email": email == null ? null : email,
+      };
 }
