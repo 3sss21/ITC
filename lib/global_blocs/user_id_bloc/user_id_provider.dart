@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:cashback_app/helper/api_requester.dart';
 import 'package:cashback_app/helper/catchException.dart';
 import 'package:cashback_app/helper/urls.dart';
@@ -16,8 +14,6 @@ class UserIdProvider {
 
       if (response.statusCode == 200) {
         userIdBox.put('userId', response.data['id']);
-        log('User ID ======= ${userIdBox.get('userId')}');
-        log('Auth Uthers Me ======== ${response.data}');
         UserIdModel userIdModel = UserIdModel.fromJson(response.data);
         return userIdModel;
       } else {
